@@ -16,9 +16,6 @@ Game::Game():
     mImpulseDown(false),
     mImpulseRight(false)
 {
-    mPlayer.setRadius(40.f);
-    mPlayer.setPosition(100.f, 100.f);
-    mPlayer.setFillColor(sf::Color::Cyan);
 }
 
 /**
@@ -148,7 +145,7 @@ void Game::update()
     if (mImpulseLeft)  impulse.x -= 0.1;
     if (mImpulseRight) impulse.x += 0.1;
 
-    mPlayer.move(impulse);
+    mPlayer.get().move(impulse);
 
     // auto pos = mPlayer.getPosition();
 }
@@ -159,6 +156,6 @@ void Game::update()
 void Game::render()
 {
     mWindow.clear();
-    mWindow.draw(mPlayer);
+    mWindow.draw(mPlayer.get());
     mWindow.display();
 }

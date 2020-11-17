@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "Player.hpp"
 
 class Game
 {
@@ -26,7 +26,7 @@ private:
 
 private:
     sf::RenderWindow mWindow;
-    sf::CircleShape mPlayer;
+    Player mPlayer;
 
     bool mImpulseUp;
     bool mImpulseLeft;
