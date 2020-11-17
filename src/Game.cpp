@@ -11,10 +11,10 @@
 Game::Game():
     mWindow(sf::VideoMode(640, 480), "SpaceWar"),
     mPlayer(),
-    mPlayerMovingUp(false),
-    mPlayerMovingLeft(false),
-    mPlayerMovingDown(false),
-    mPlayerMovingRight(false)
+    mImpulseUp(false),
+    mImpulseLeft(false),
+    mImpulseDown(false),
+    mImpulseRight(false)
 {
     mPlayer.setRadius(40.f);
     mPlayer.setPosition(100.f, 100.f);
@@ -54,15 +54,18 @@ void Game::processEvents()
             case sf::Event::KeyPressed:
             case sf::Event::KeyReleased:
             {
-                handlePlayerInput(
+                handleKeyPress(
                     event.key.code,
                     event.type == sf::Event::KeyPressed);
             }
             break;
 
+            case sf::Event::MouseButtonPressed:
+            case sf::Event::MouseButtonReleased:
             {
-                const bool pressed = false;
-                handlePlayerInput(event.key.code, pressed);
+                handleMousePress(
+                    event.mouseButton.button,
+                    event.type == sf::Event::MouseButtonPressed);
             }
             break;
 
@@ -76,7 +79,15 @@ void Game::processEvents()
     }
 }
 
-void Game::handlePlayerInput(
+void Game::handleMousePress(
+    const sf::Mouse::Button,
+    const bool isPressed)
+{
+    /* TODO */
+    // std::cout << isPressed << std::endl;
+}
+
+void Game::handleKeyPress(
     const sf::Keyboard::Key key,
     const bool isPressed)
 {
@@ -88,28 +99,28 @@ void Game::handlePlayerInput(
         case sf::Keyboard::W:
         case sf::Keyboard::Up:
         {
-            mPlayerMovingUp = isPressed;
+            mImpulseUp = isPressed;
         }
         break;
 
         case sf::Keyboard::A:
         case sf::Keyboard::Left:
         {
-            mPlayerMovingLeft = isPressed;
+            mImpulseLeft = isPressed;
         }
         break;
 
         case sf::Keyboard::S:
         case sf::Keyboard::Down:
         {
-            mPlayerMovingDown = isPressed;
+            mImpulseDown = isPressed;
         }
         break;
 
         case sf::Keyboard::D:
         case sf::Keyboard::Right:
         {
-            mPlayerMovingRight = isPressed;
+            mImpulseRight = isPressed;
         }
         break;
 
@@ -127,7 +138,19 @@ void Game::handlePlayerInput(
  */
 void Game::update()
 {
-    sf::Vector2f movement(0.0, 0.0);
+    /* For now, we'll do constant movement.
+     * TODO: Add momentum, which requires a "force" balance and then
+     * a velocity update. */
+
+    sf::Vector2f impulse(0.0, 0.0);
+    if (mImpulseUp)    impulse.y -= 0.1;
+    if (mImpulseDown)  impulse.y += 0.1;
+    if (mImpulseLeft)  impulse.x -= 0.1;
+    if (mImpulseRight) impulse.x += 0.1;
+
+    mPlayer.move(impulse);
+
+    // auto pos = mPlayer.getPosition();
 }
 
 /**

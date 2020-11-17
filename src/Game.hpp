@@ -12,8 +12,12 @@ public:
 private:
     void processEvents();
 
-    void handlePlayerInput(
+    void handleKeyPress(
         const sf::Keyboard::Key key,
+        const bool isPressed);
+
+    void handleMousePress(
+        const sf::Mouse::Button,
         const bool isPressed);
 
     void update();
@@ -24,8 +28,8 @@ private:
     sf::RenderWindow mWindow;
     sf::CircleShape mPlayer;
 
-    bool mPlayerMovingUp;
-    bool mPlayerMovingLeft;
-    bool mPlayerMovingDown;
-    bool mPlayerMovingRight;
+    bool mImpulseUp;
+    bool mImpulseLeft;
+    bool mImpulseDown;
+    bool mImpulseRight;
 };
