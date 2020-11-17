@@ -20,7 +20,9 @@ private:
         const sf::Mouse::Button,
         const bool isPressed);
 
-    void update();
+    void update(
+        const sf::Time &deltaTime);
+
     void render();
 
 

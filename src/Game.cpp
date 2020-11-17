@@ -24,10 +24,12 @@ Game::Game():
  */
 void Game::run()
 {
+    sf::Clock clock;
     while (mWindow.isOpen())
     {
+        const sf::Time deltaTime = clock.restart();
         processEvents();
-        update();
+        update(deltaTime);
         render();
     }
 }
@@ -133,19 +135,22 @@ void Game::handleKeyPress(
 /**
  * Updates everything in the Game.
  */
-void Game::update()
+void Game::update(
+    const sf::Time &deltaTime)
 {
     /* For now, we'll do constant movement.
      * TODO: Add momentum, which requires a "force" balance and then
      * a velocity update. */
 
-    sf::Vector2f impulse(0.0, 0.0);
-    if (mImpulseUp)    impulse.y -= 0.1;
-    if (mImpulseDown)  impulse.y += 0.1;
-    if (mImpulseLeft)  impulse.x -= 0.1;
-    if (mImpulseRight) impulse.x += 0.1;
+    static constexpr float playerSpeed = 100.0;
 
-    mPlayer.get().move(impulse);
+    sf::Vector2f impulse(0.0, 0.0);
+    if (mImpulseUp)    impulse.y -= playerSpeed;
+    if (mImpulseDown)  impulse.y += playerSpeed;
+    if (mImpulseLeft)  impulse.x -= playerSpeed;
+    if (mImpulseRight) impulse.x += playerSpeed;
+
+    mPlayer.get().move(impulse * deltaTime.asSeconds());
 
     // auto pos = mPlayer.getPosition();
 }

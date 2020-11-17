@@ -7,7 +7,6 @@ class Player
 public:
     Player();
 
-    const sf::CircleShape &get() const;
     sf::CircleShape &get();
 
 private:

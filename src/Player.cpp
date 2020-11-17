@@ -10,11 +10,6 @@ Player::Player():
     mBody.setFillColor(sf::Color::Cyan);
 }
 
-const sf::CircleShape &Player::get() const
-{
-    return mBody;
-}
-
 sf::CircleShape &Player::get()
 {
     return mBody;
