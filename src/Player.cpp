@@ -1,8 +1,11 @@
 #include "Player.hpp"
 
+#include "math_utils.hpp"
+
+#include <cmath>
 #include <iostream>
 
-/** Hard code the textyre path. Not amazing, but it'll get us going. */
+/** Hard code the texture path. Not amazing, but it'll get us going. */
 const std::string Player::texturePath = "../assets/textures/blue/ship.png";
 
 
@@ -22,11 +25,15 @@ Player::Player():
 
     mBody.setTexture(mTexture);
     mBody.setScale(0.4, 0.4);
-    const sf::Vector2f spriteSize(
-        mBody.getTexture()->getSize().x * mBody.getScale().x,
-        mBody.getTexture()->getSize().y * mBody.getScale().y);
 
     /* Approximates the center of mass as the blue "cockpit" */
+    const auto size  = mBody.getTexture()->getSize();
+    const auto scale = mBody.getScale();
+    const sf::Vector2f spriteSize(
+        size.x * scale.x,
+        size.y * scale.y);
+
+    /* 1.35 = magic number found by fiddling. */
     mBody.setOrigin(spriteSize.x, 1.35*spriteSize.y);
 }
 
@@ -57,24 +64,29 @@ void Player::setRotateRight(
 void Player::update(
     const sf::Time &deltaTime)
 {
-    /* For now, we'll do constant movement.
+    /* For now, we'll do constant linear velocity.
      * TODO: Add momentum, which requires a "force" balance and then
      * a velocity update. */
 
-    // sf::Vector2f vel(0.0, 0.0);
-    // float vel = 0.0;
-    // if (mImpulseUp)    vel -= playerSpeed;
-    // if (mImpulseDown)  vel += playerSpeed;
+    /* Angular and linear velocity */
+    float omega = 0.0;
+    float vel = 0.0;
+    if (mRotateRight) omega += playerAngularSpeed;
+    if (mRotateLeft)  omega -= playerAngularSpeed;
+    if (mImpulseUp)   vel   -= playerLinearSpeed;
+    if (mImpulseDown) vel   += playerLinearSpeed;
 
-    float dTheta = 0.0;
-    if (mRotateRight) dTheta -= playerAngularSpeed;
-    if (mRotateLeft)  dTheta += playerAngularSpeed;
+    const float dt = deltaTime.asSeconds();
+    const float dTheta = omega*dt;
+    mBody.rotate(dTheta);
 
-    mBody.rotate(dTheta*deltaTime.asSeconds());
-
-    // sf::Vector2f dx = vel*deltaTime.asSeconds();
-
-    // mBody.move(vel*deltaTime.asSeconds());
+    /* Rotate the unit y vector by theta to get the heading direction.
+     * There's probably a better way to do this with SFML transforms, or
+     * by leveraging a more robust library like Eigen, but this math is
+     * easy enough that we don't worry about it. */
+    const float theta = toRad(mBody.getRotation());
+    const sf::Vector2f n(-std::sin(theta), std::cos(theta));
+    mBody.move(vel*dt*n);
 }
 
 sf::Sprite &Player::get()

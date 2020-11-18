@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <memory>
 
 class Player
 {
@@ -18,8 +17,6 @@ public:
     void update(
         const sf::Time &deltaTime);
 
-public:
-
 private:
     sf::Sprite mBody;
     sf::Texture mTexture;
@@ -29,9 +26,9 @@ private:
     bool mRotateLeft;
     bool mRotateRight;
 
+    float mTheta;
+
     static constexpr float playerLinearSpeed = 200.0;
     static constexpr float playerAngularSpeed = 100.0;
     static const std::string texturePath;
-
-    float mTheta;
 };

@@ -115,17 +115,17 @@ void Game::handleKeyPress(
         }
         break;
 
-        case sf::Keyboard::A:
-        case sf::Keyboard::Left:
-        {
-            mPlayer.setRotateLeft(isPressed);
-        }
-        break;
-
         case sf::Keyboard::S:
         case sf::Keyboard::Down:
         {
             mPlayer.setImpulseDown(isPressed);
+        }
+        break;
+
+        case sf::Keyboard::A:
+        case sf::Keyboard::Left:
+        {
+            mPlayer.setRotateLeft(isPressed);
         }
         break;
 
