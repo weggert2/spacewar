@@ -16,7 +16,7 @@ Game::Game():
     mPlayer()
 {
     /* Move the player to the lower right of the screen. */
-    mPlayer.get().move(0.8*screenWidth, 0.8*screenHeight);
+    mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
 }
 
 /**
@@ -28,7 +28,7 @@ void Game::run()
     /* Use a fixed time step update. */
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
-    static const sf::Time timePerFrame = sf::seconds(1.0/60.0);
+    static const sf::Time timePerFrame = sf::seconds(1.0f/60.0f);
 
     while (mWindow.isOpen())
     {

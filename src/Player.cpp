@@ -24,7 +24,7 @@ Player::Player():
     }
 
     mBody.setTexture(mTexture);
-    mBody.setScale(0.4, 0.4);
+    mBody.setScale(0.4f, 0.4f);
 
     /* Approximates the center of mass as the blue "cockpit" */
     const auto size  = mBody.getTexture()->getSize();
@@ -34,7 +34,7 @@ Player::Player():
         size.y * scale.y);
 
     /* 1.35 = magic number found by fiddling. */
-    mBody.setOrigin(spriteSize.x, 1.35*spriteSize.y);
+    mBody.setOrigin(spriteSize.x, 1.35f*spriteSize.y);
 }
 
 void Player::setImpulseUp(

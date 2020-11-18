@@ -1,11 +1,14 @@
 #pragma once
 
-#include <cmath>
+/* Windows compatibility */
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 /**
  * SFML uses degrees, cmath uses radians. This converts.
  */
 inline float toRad(const float deg)
 {
-    return deg*M_PI/180.0;
+    static constexpr float PI_F = static_cast<float>(M_PI);
+    return deg*PI_F/180.0f;
 }

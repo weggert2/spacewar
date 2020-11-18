@@ -7,9 +7,10 @@ git submodule update
 Build Instructions
 ```
 mkdir -p build
+mkdir -p install
 cd build
-cmake ..
-cmake --build .
+cmake .. -DCMAKE_INSTALL_PREFIX=../install
+cmake --build . --config Release
 ```
 
-Run from within the build directory.
+Run from within the install directory.
