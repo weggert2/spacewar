@@ -1,13 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 class Player
 {
 public:
     Player();
 
-    sf::CircleShape &get();
+    sf::Sprite &get();
 
     void setImpulseUp(const bool choice);
     void setImpulseLeft(const bool choice);
@@ -18,14 +19,16 @@ public:
         const sf::Time &deltaTime);
 
 public:
-    static constexpr float playerSpeed = 100.0;
 
 private:
-    /* We'll make this a sprite at some point. */
-    sf::CircleShape mBody;
+    sf::Sprite mBody;
+    sf::Texture mTexture;
 
     bool mImpulseUp;
     bool mImpulseLeft;
     bool mImpulseDown;
     bool mImpulseRight;
+
+    static constexpr float playerSpeed = 200.0;
+    static const std::string texturePath;
 };

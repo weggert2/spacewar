@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+/** Hard code the textyre path. Not amazing, but it'll get us going. */
+const std::string Player::texturePath = "../assets/textures/blue/ship.png";
+
+
 Player::Player():
     mBody(),
     mImpulseUp(false),
@@ -9,9 +13,14 @@ Player::Player():
     mImpulseDown(false),
     mImpulseRight(false)
 {
-    mBody.setRadius(40.f);
-    mBody.setPosition(100.f, 100.f);
-    mBody.setFillColor(sf::Color::Cyan);
+    if (!mTexture.loadFromFile(texturePath))
+    {
+        std::cerr << "Couldn't load texture: " << texturePath;
+        /* TODO: What to do here? Some default shape? */
+    }
+
+    mBody.setTexture(mTexture);
+    mBody.setScale(0.4, 0.4);
 }
 
 void Player::setImpulseUp(
@@ -54,7 +63,7 @@ void Player::update(
     mBody.move(vel*deltaTime.asSeconds());
 }
 
-sf::CircleShape &Player::get()
+sf::Sprite &Player::get()
 {
     return mBody;
 }
