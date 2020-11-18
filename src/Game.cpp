@@ -9,7 +9,10 @@
  * Constructor. Sets up the window and all the actors.
  */
 Game::Game():
-    mWindow(sf::VideoMode(640, 480), "SpaceWar"),
+    mWindow(
+        sf::VideoMode(800, 800),
+        "SpaceWar",
+        sf::Style::Titlebar | sf::Style::Close),
     mPlayer()
 {
 }
