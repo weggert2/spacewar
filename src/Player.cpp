@@ -41,6 +41,10 @@ void Player::setImpulseRight(
 void Player::update(
     const sf::Time &deltaTime)
 {
+    /* For now, we'll do constant movement.
+     * TODO: Add momentum, which requires a "force" balance and then
+     * a velocity update. */
+
     sf::Vector2f vel(0.0, 0.0);
     if (mImpulseUp)    vel.y -= playerSpeed;
     if (mImpulseDown)  vel.y += playerSpeed;
