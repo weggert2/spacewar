@@ -20,12 +20,24 @@ Game::Game():
  */
 void Game::run()
 {
+    /* Use a fixed time step update. */
     sf::Clock clock;
+    sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    static const sf::Time timePerFrame = sf::seconds(1.0/60.0);
+
     while (mWindow.isOpen())
     {
-        const sf::Time deltaTime = clock.restart();
-        processEvents();
-        update(deltaTime);
+        const sf::Time elapsedTime = clock.restart();
+        timeSinceLastUpdate += elapsedTime;
+
+        while (timeSinceLastUpdate > timePerFrame)
+        {
+            timeSinceLastUpdate -= timePerFrame;
+
+            processEvents();
+            update(timePerFrame);
+        }
+
         render();
     }
 }
