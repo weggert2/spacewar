@@ -29,9 +29,4 @@ private:
 private:
     sf::RenderWindow mWindow;
     Player mPlayer;
-
-    bool mImpulseUp;
-    bool mImpulseLeft;
-    bool mImpulseDown;
-    bool mImpulseRight;
 };
