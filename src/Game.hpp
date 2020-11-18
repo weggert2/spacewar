@@ -29,4 +29,7 @@ private:
 private:
     sf::RenderWindow mWindow;
     Player mPlayer;
+
+    static constexpr int screenWidth  = 1000;
+    static constexpr int screenHeight = 1000;
 };

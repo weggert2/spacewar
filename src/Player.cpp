@@ -9,9 +9,10 @@ const std::string Player::texturePath = "../assets/textures/blue/ship.png";
 Player::Player():
     mBody(),
     mImpulseUp(false),
-    mImpulseLeft(false),
     mImpulseDown(false),
-    mImpulseRight(false)
+    mRotateLeft(false),
+    mRotateRight(false),
+    mTheta(0.0)
 {
     if (!mTexture.loadFromFile(texturePath))
     {
@@ -21,6 +22,12 @@ Player::Player():
 
     mBody.setTexture(mTexture);
     mBody.setScale(0.4, 0.4);
+    const sf::Vector2f spriteSize(
+        mBody.getTexture()->getSize().x * mBody.getScale().x,
+        mBody.getTexture()->getSize().y * mBody.getScale().y);
+
+    /* Approximates the center of mass as the blue "cockpit" */
+    mBody.setOrigin(spriteSize.x, 1.35*spriteSize.y);
 }
 
 void Player::setImpulseUp(
@@ -29,22 +36,22 @@ void Player::setImpulseUp(
     mImpulseUp = choice;
 }
 
-void Player::setImpulseLeft(
-    const bool choice)
-{
-    mImpulseLeft = choice;
-}
-
 void Player::setImpulseDown(
     const bool choice)
 {
     mImpulseDown = choice;
 }
 
-void Player::setImpulseRight(
+void Player::setRotateLeft(
     const bool choice)
 {
-    mImpulseRight = choice;
+    mRotateLeft = choice;
+}
+
+void Player::setRotateRight(
+    const bool choice)
+{
+    mRotateRight = choice;
 }
 
 void Player::update(
@@ -54,13 +61,20 @@ void Player::update(
      * TODO: Add momentum, which requires a "force" balance and then
      * a velocity update. */
 
-    sf::Vector2f vel(0.0, 0.0);
-    if (mImpulseUp)    vel.y -= playerSpeed;
-    if (mImpulseDown)  vel.y += playerSpeed;
-    if (mImpulseLeft)  vel.x -= playerSpeed;
-    if (mImpulseRight) vel.x += playerSpeed;
+    // sf::Vector2f vel(0.0, 0.0);
+    // float vel = 0.0;
+    // if (mImpulseUp)    vel -= playerSpeed;
+    // if (mImpulseDown)  vel += playerSpeed;
 
-    mBody.move(vel*deltaTime.asSeconds());
+    float dTheta = 0.0;
+    if (mRotateRight) dTheta -= playerAngularSpeed;
+    if (mRotateLeft)  dTheta += playerAngularSpeed;
+
+    mBody.rotate(dTheta*deltaTime.asSeconds());
+
+    // sf::Vector2f dx = vel*deltaTime.asSeconds();
+
+    // mBody.move(vel*deltaTime.asSeconds());
 }
 
 sf::Sprite &Player::get()

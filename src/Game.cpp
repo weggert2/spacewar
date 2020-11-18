@@ -10,11 +10,13 @@
  */
 Game::Game():
     mWindow(
-        sf::VideoMode(1000, 1000),
+        sf::VideoMode(screenWidth, screenHeight),
         "SpaceWar",
         sf::Style::Titlebar | sf::Style::Close),
     mPlayer()
 {
+    /* Move the player to the lower right of the screen. */
+    mPlayer.get().move(0.8*screenWidth, 0.8*screenHeight);
 }
 
 /**
@@ -116,7 +118,7 @@ void Game::handleKeyPress(
         case sf::Keyboard::A:
         case sf::Keyboard::Left:
         {
-            mPlayer.setImpulseLeft(isPressed);
+            mPlayer.setRotateLeft(isPressed);
         }
         break;
 
@@ -130,7 +132,7 @@ void Game::handleKeyPress(
         case sf::Keyboard::D:
         case sf::Keyboard::Right:
         {
-            mPlayer.setImpulseRight(isPressed);
+            mPlayer.setRotateRight(isPressed);
         }
         break;
 

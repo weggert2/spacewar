@@ -11,9 +11,9 @@ public:
     sf::Sprite &get();
 
     void setImpulseUp(const bool choice);
-    void setImpulseLeft(const bool choice);
     void setImpulseDown(const bool choice);
-    void setImpulseRight(const bool choice);
+    void setRotateLeft(const bool choice);
+    void setRotateRight(const bool choice);
 
     void update(
         const sf::Time &deltaTime);
@@ -25,10 +25,13 @@ private:
     sf::Texture mTexture;
 
     bool mImpulseUp;
-    bool mImpulseLeft;
     bool mImpulseDown;
-    bool mImpulseRight;
+    bool mRotateLeft;
+    bool mRotateRight;
 
-    static constexpr float playerSpeed = 200.0;
+    static constexpr float playerLinearSpeed = 200.0;
+    static constexpr float playerAngularSpeed = 100.0;
     static const std::string texturePath;
+
+    float mTheta;
 };
