@@ -21,12 +21,9 @@ private:
     sf::Sprite mBody;
     sf::Texture mTexture;
 
-    bool mImpulseUp;
-    bool mImpulseDown;
-    bool mRotateLeft;
-    bool mRotateRight;
-
-    float mTheta;
+    /** The linear ang angular velocities. */
+    float velocity;
+    float omega;
 
     static constexpr float playerLinearSpeed = 200.0;
     static constexpr float playerAngularSpeed = 100.0;

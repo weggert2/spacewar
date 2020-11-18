@@ -5,17 +5,13 @@
 #include <cmath>
 #include <iostream>
 
-/** Hard code the texture path. Not amazing, but it'll get us going. */
+/* Hard code the texture path. Not amazing, but it'll get us going. */
 const std::string Player::texturePath = "../assets/textures/blue/ship.png";
-
 
 Player::Player():
     mBody(),
-    mImpulseUp(false),
-    mImpulseDown(false),
-    mRotateLeft(false),
-    mRotateRight(false),
-    mTheta(0.0)
+    velocity(0.0f),
+    omega(0.0f)
 {
     if (!mTexture.loadFromFile(texturePath))
     {
@@ -40,25 +36,25 @@ Player::Player():
 void Player::setImpulseUp(
     const bool choice)
 {
-    mImpulseUp = choice;
+    velocity = choice ? -playerLinearSpeed : 0.0f;
 }
 
 void Player::setImpulseDown(
     const bool choice)
 {
-    mImpulseDown = choice;
+    velocity = choice ? playerLinearSpeed : 0.0f;
 }
 
 void Player::setRotateLeft(
     const bool choice)
 {
-    mRotateLeft = choice;
+    omega = choice ? -playerAngularSpeed : 0.0f;
 }
 
 void Player::setRotateRight(
     const bool choice)
 {
-    mRotateRight = choice;
+    omega = choice ? playerAngularSpeed : 0.0f;
 }
 
 void Player::update(
@@ -68,25 +64,14 @@ void Player::update(
      * TODO: Add momentum, which requires a "force" balance and then
      * a velocity update. */
 
-    /* Angular and linear velocity */
-    float omega = 0.0;
-    float vel = 0.0;
-    if (mRotateRight) omega += playerAngularSpeed;
-    if (mRotateLeft)  omega -= playerAngularSpeed;
-    if (mImpulseUp)   vel   -= playerLinearSpeed;
-    if (mImpulseDown) vel   += playerLinearSpeed;
-
     const float dt = deltaTime.asSeconds();
     const float dTheta = omega*dt;
     mBody.rotate(dTheta);
 
-    /* Rotate the unit y vector by theta to get the heading direction.
-     * There's probably a better way to do this with SFML transforms, or
-     * by leveraging a more robust library like Eigen, but this math is
-     * easy enough that we don't worry about it. */
+    /* Rotate the unit y vector by theta to get the heading direction. */
     const float theta = toRad(mBody.getRotation());
     const sf::Vector2f n(-std::sin(theta), std::cos(theta));
-    mBody.move(vel*dt*n);
+    mBody.move(velocity*n*dt);
 }
 
 sf::Sprite &Player::get()
