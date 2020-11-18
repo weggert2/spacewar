@@ -9,18 +9,20 @@ set (CMAKE_CXX_STANDARD 17)
 file(GLOB all_srcs src/*.c* src/*.h*)
 
 # Build the game. Hope you enjoy!
-add_executable(spacewar ${all_srcs})
+add_executable(${PROJECT_NAME} ${all_srcs})
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
+install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 
 # To make things portable as possible, we'll compile SFML
 set(SFML_DIR src/3rdparty/SFML)
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
-add_subdirectory(${SFML_DIR})
-target_include_directories(spacewar PRIVATE ${SFML_DIR}/include)
+
+add_subdirectory(${SFML_DIR} EXCLUDE_FROM_ALL)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SFML_DIR}/include)
 target_link_libraries(
-    spacewar
+    ${PROJECT_NAME}
     sfml-system
     sfml-audio
     sfml-window
     sfml-graphics)
-
