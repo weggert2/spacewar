@@ -11,3 +11,5 @@ cd build
 cmake ..
 cmake --build .
 ```
+
+Run from within the build directory.
