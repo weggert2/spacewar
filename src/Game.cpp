@@ -10,7 +10,7 @@
  */
 Game::Game():
     mWindow(
-        sf::VideoMode(800, 800),
+        sf::VideoMode(1000, 1000),
         "SpaceWar",
         sf::Style::Titlebar | sf::Style::Close),
     mPlayer()
