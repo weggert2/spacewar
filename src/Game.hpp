@@ -2,10 +2,12 @@
 
 #include "Player.hpp"
 
+class AssetManager;
+
 class Game
 {
 public:
-    Game();
+    explicit Game(AssertManager &assetManager);
 
     void run();
 
@@ -27,6 +29,7 @@ private:
 
 
 private:
+    AssetManager &mAssetManager;
     sf::RenderWindow mWindow;
     Player mPlayer;
 

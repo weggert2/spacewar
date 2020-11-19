@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include <unordered_map>
 
 template <typename Asset, typename Identifier>
 class AssetManager

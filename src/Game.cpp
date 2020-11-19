@@ -1,18 +1,17 @@
 #include "Game.hpp"
+#include "AssetManager.hpp"
 
 #include <iostream>
 
 /* Debug printing. In production, you want a logging framework. */
 // #define DEBUG 1
 
-/**
- * Constructor. Sets up the window and all the actors.
- */
-Game::Game():
+Game::Game(AssetManager &assetManager):
     mWindow(
         sf::VideoMode(screenWidth, screenHeight),
         "SpaceWar",
         sf::Style::Titlebar | sf::Style::Close),
+    mAssetmanager(assetManager),
     mPlayer()
 {
     /* Move the player to the lower right of the screen. */
