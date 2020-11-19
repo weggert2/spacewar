@@ -1,3 +1,6 @@
 [submodule "src/3rdparty/SFML"]
 	path = src/3rdparty/SFML
 	url = https://github.com/SFML/SFML.git
+[submodule "src/3rdparty/entityx"]
+	path = src/3rdparty/entityx
+	url = https://github.com/alecthomas/entityx.git
