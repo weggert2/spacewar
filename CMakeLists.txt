@@ -13,12 +13,16 @@ add_executable(${PROJECT_NAME} ${all_srcs})
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 
-# TODO: Turn on compile warnings
+# Turn on compile warnings
 target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
         -Wall
         -Wextra
         -Werror
+        -Wdouble-promotion
+        -Wshadow
+        -Wformat=2
+        -Wno-narrowing
         -fPIC>
     $<$<CXX_COMPILER_ID:MSVC>:
         /W4

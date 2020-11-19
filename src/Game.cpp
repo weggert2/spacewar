@@ -9,11 +9,11 @@
 
 Game::Game(
     const TextureManager &textureManager,
-    const SoundManager &SoundManager,
+    const SoundManager &soundManager,
     Player &player):
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
-        mSoundManger(SoundManager),
+        mSoundManger(soundManager),
         mPlayer(player)
 {
     /* Move the player to the lower right of the screen. */

@@ -9,7 +9,7 @@ class Game
 public:
     Game(
         const TextureManager &textureManager,
-        const SoundManager &SoundManger,
+        const SoundManager &soundManager,
         Player &player);
 
     void run();
