@@ -24,16 +24,26 @@ install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 #           /W4
 #           /WX>)
 
-# To make things portable as possible, we'll compile SFML
-set(SFML_DIR src/3rdparty/SFML)
+# Compile our dependencies
+set(DEPS_DIR src/3rdparty)
+set(SFML_DIR ${DEPS_DIR}/SFML)
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 
-add_subdirectory(${SFML_DIR} EXCLUDE_FROM_ALL)
+set(ENTITYX_DIR ${DEPS_DIR}/entityx)
+set(ENTITYX_BUILD_SHARED 0)
+set(ENTITYX_BUILD_TESTING 0)
+
+add_subdirectory(${SFML_DIR}    EXCLUDE_FROM_ALL)
+add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${SFML_DIR}/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${ENTITYX_DIR})
+
 target_link_libraries(
     ${PROJECT_NAME}
     sfml-system
     sfml-audio
     sfml-window
-    sfml-graphics)
+    sfml-graphics
+    entityx)

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Entity.hpp"
+// #include "Entity.hpp"
 
-class Ship : public Entity
-{
-};
+// class Ship : public Entity
+// {
+// };

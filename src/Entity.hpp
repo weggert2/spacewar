@@ -23,14 +23,14 @@
  * interest of actually finishing, we'll go with the easy route.
  */
 
-class Entity
-{
-public:
-    void setVelocity(const sf::Vector2f &velocity);
-    void setVelocity(const float vx, const float vy);
+// class Entity
+// {
+// public:
+//     void setVelocity(const sf::Vector2f &velocity);
+//     void setVelocity(const float vx, const float vy);
 
-    const sf::Vector2f &getVelocity() const;
+//     const sf::Vector2f &getVelocity() const;
 
-private:
-    sf::Vector2f mVelocity;
-};
+// private:
+//     sf::Vector2f mVelocity;
+// };
