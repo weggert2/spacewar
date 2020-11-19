@@ -1,13 +1,14 @@
 #pragma once
 
+#include "AssetManager.hpp"
 #include "Player.hpp"
-
-class AssetManager;
 
 class Game
 {
 public:
-    explicit Game(AssertManager &assetManager);
+    Game(
+        const TextureManager &textureManager,
+        const SoundManager &SoundManger);
 
     void run();
 
@@ -29,7 +30,9 @@ private:
 
 
 private:
-    AssetManager &mAssetManager;
+    const TextureManager &mTextureManager;
+    const SoundManager &mSoundManger;
+
     sf::RenderWindow mWindow;
     Player mPlayer;
 

@@ -1,6 +1,7 @@
-class AssetManager;
+#include "AssetManager.hpp"
 
 namespace AssetLibrary
 {
-    bool loadAllAssets(AssetManager &assetManager) {}
+    void loadAllTextures(TextureManager &textureManager) {}
+    void loadAllSounds(SoundManager &soundManager) {}
 }

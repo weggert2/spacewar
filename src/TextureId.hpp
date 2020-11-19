@@ -1,6 +1,6 @@
 #pragma once
 
-enum class TextureType
+enum class TextureId
 {
     Background,
     Ship,

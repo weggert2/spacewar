@@ -6,22 +6,21 @@
 /* Debug printing. In production, you want a logging framework. */
 // #define DEBUG 1
 
-Game::Game(AssetManager &assetManager):
-    mWindow(
-        sf::VideoMode(screenWidth, screenHeight),
-        "SpaceWar",
-        sf::Style::Titlebar | sf::Style::Close),
-    mAssetmanager(assetManager),
-    mPlayer()
+Game::Game(
+    const TextureManager &textureManager,
+    const SoundManager &SoundManager):
+        mWindow(
+            sf::VideoMode(screenWidth, screenHeight),
+            "SpaceWar",
+            sf::Style::Titlebar | sf::Style::Close),
+        mTextureManager(textureManager),
+        mSoundManger(SoundManager),
+        mPlayer()
 {
     /* Move the player to the lower right of the screen. */
     mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
 }
 
-/**
- * Main game loop. Processes events, updates state,
- * and renders the window.
- */
 void Game::run()
 {
     /* Use a fixed time step update. */
@@ -46,9 +45,6 @@ void Game::run()
     }
 }
 
-/**
- * Process events like key presses.
- */
 void Game::processEvents()
 {
     sf::Event event;
@@ -144,18 +140,12 @@ void Game::handleKeyPress(
     }
 }
 
-/**
- * Updates everything in the Game.
- */
 void Game::update(
     const sf::Time &deltaTime)
 {
     mPlayer.update(deltaTime);
 }
 
-/**
- * Renders the graphics.
- */
 void Game::render()
 {
     mWindow.clear();
