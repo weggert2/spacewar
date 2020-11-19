@@ -31,8 +31,8 @@ set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 
 set(ENTITYX_DIR ${DEPS_DIR}/entityx)
-set(ENTITYX_BUILD_SHARED 0)
-set(ENTITYX_BUILD_TESTING 0)
+set(ENTITYX_BUILD_SHARED 0 CACHE BOOL "Build entityx statically")
+set(ENTITYX_BUILD_TESTING 0 CACHE BOOL "Don't build entityx tests")
 
 add_subdirectory(${SFML_DIR}    EXCLUDE_FROM_ALL)
 add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)
