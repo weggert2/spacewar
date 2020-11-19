@@ -86,11 +86,12 @@ void Game::processEvents()
 }
 
 void Game::handleMousePress(
-    const sf::Mouse::Button,
+    const sf::Mouse::Button button,
     const bool isPressed)
 {
     /* TODO */
-    // std::cout << isPressed << std::endl;
+    (void)button;
+    (void)isPressed;
 }
 
 void Game::handleKeyPress(

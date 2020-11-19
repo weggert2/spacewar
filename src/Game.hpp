@@ -22,7 +22,7 @@ private:
         const bool isPressed);
 
     void handleMousePress(
-        const sf::Mouse::Button,
+        const sf::Mouse::Button button,
         const bool isPressed);
 
     void update(
