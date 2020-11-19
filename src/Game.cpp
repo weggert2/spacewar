@@ -12,7 +12,7 @@ Game::Game(
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManger(SoundManager),
-        mPlayer()
+        mPlayer(textureManager.get(TextureId::PlayerShip))
 {
     /* Move the player to the lower right of the screen. */
     mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);

@@ -6,8 +6,9 @@
 
 int main()
 {
+    /* Dependency injection - make as many things up front as you can. */
     TextureManager textureManager;
-    SoundManager SoundManager;
+    SoundManager soundManager;
 
     /*
      * Our game is simple enough that we can load all our assets at once.
@@ -15,8 +16,8 @@ int main()
      * etc.
      */
     AssetLibrary::loadAllTextures(textureManager);
-    AssetLibrary::loadAllSounds(SoundManager);
+    AssetLibrary::loadAllSounds(soundManager);
 
-    Game game(textureManager, SoundManager);
+    Game game(textureManager, soundManager);
     game.run();
 }

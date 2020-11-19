@@ -5,21 +5,14 @@
 #include <cmath>
 #include <iostream>
 
-/* Hard code the texture path. Not amazing, but it'll get us going. */
-const std::string Player::texturePath = "../assets/textures/blue/ship.png";
-
-Player::Player():
-    mBody(),
-    velocity(0.0f),
-    omega(0.0f)
+Player::Player(
+    const sf::Texture &texture):
+        mBody(),
+        velocity(0.0f),
+        omega(0.0f)
 {
-    if (!mTexture.loadFromFile(texturePath))
-    {
-        std::cerr << "Couldn't load texture: " << texturePath;
-        /* TODO: What to do here? Some default shape? */
-    }
 
-    mBody.setTexture(mTexture);
+    mBody.setTexture(texture);
     mBody.setScale(0.4f, 0.4f);
 
     /* Approximates the center of mass as the blue "cockpit" */

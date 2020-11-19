@@ -10,8 +10,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-// TODO: Better error messages when things fail to load or get.
-
 template <typename AssetType, typename AssetId>
 class AssetManager
 {
@@ -40,19 +38,23 @@ public:
         return true;
     }
 
-    bool get(
-        const AssetId id,
-        AssetType &asset) const
+    const AssetType &get(const AssetId id) const
     {
         const auto found = mAssetMap.find(id);
         if (found == mAssetMap.end())
         {
             std::cerr << "Could not get asset\n";
-            return false;
+            if (mAssetMap.empty())
+            {
+                /* No assets at all, we're sunk. */
+                throw std::logic_error("No assets!");
+            }
+
+            /* Try to use a default asset. */
+            return *mAssetMap.begin()->second;
         }
 
-        asset = *found->second;
-        return true;
+        return *found->second;
     }
 
 private:

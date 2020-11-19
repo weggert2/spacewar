@@ -2,6 +2,6 @@
 
 namespace AssetLibrary
 {
-    void loadAllTextures(TextureManager &textureManager) {}
-    void loadAllSounds(SoundManager &soundManager) {}
-}
+    bool loadAllTextures(TextureManager &textureManager);
+    bool loadAllSounds(SoundManager &soundManager);
+}; /* end namespace AssetLibrary. */

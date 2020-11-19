@@ -3,6 +3,6 @@
 enum class TextureId
 {
     Background,
-    Ship,
+    PlayerShip,
     Bullet,
 };

@@ -5,7 +5,8 @@
 class Player
 {
 public:
-    Player();
+    explicit Player(
+        const sf::Texture &texture);
 
     sf::Sprite &get();
 
@@ -19,7 +20,6 @@ public:
 
 private:
     sf::Sprite mBody;
-    sf::Texture mTexture;
 
     /** The linear ang angular velocities. */
     float velocity;
