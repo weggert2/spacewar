@@ -25,11 +25,14 @@ install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 #           /WX>)
 
 # Compile our dependencies
+
+# SFML
 set(DEPS_DIR src/3rdparty)
 set(SFML_DIR ${DEPS_DIR}/SFML)
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 
+# EntityX
 set(ENTITYX_DIR ${DEPS_DIR}/entityx)
 set(ENTITYX_BUILD_SHARED 0 CACHE BOOL "Build entityx statically")
 set(ENTITYX_BUILD_TESTING 0 CACHE BOOL "Don't build entityx tests")
