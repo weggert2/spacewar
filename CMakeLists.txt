@@ -13,6 +13,17 @@ add_executable(${PROJECT_NAME} ${all_srcs})
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 
+# TODO: Turn on compile warnings
+# target_compile_options(${PROJECT_NAME} PRIVATE
+#      $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
+#           -Wall
+#           -Wextra
+#           -Werror
+#           -fPIC>
+#      $<$<CXX_COMPILER_ID:MSVC>:
+#           /W4
+#           /WX>)
+
 # To make things portable as possible, we'll compile SFML
 set(SFML_DIR src/3rdparty/SFML)
 set(SFML_STATIC_LIBRARIES TRUE)
