@@ -3,6 +3,7 @@
 #include "TextureId.hpp"
 #include "SoundId.hpp"
 #include "Game.hpp"
+#include "Player.hpp"
 
 int main()
 {
@@ -18,6 +19,12 @@ int main()
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
 
-    Game game(textureManager, soundManager);
+    Player player(textureManager.get(TextureId::PlayerShip));
+
+    Game game(
+        textureManager,
+        soundManager,
+        player);
+
     game.run();
 }

@@ -1,5 +1,6 @@
 #include "Game.hpp"
-#include "AssetManager.hpp"
+
+#include "Player.hpp"
 
 #include <iostream>
 
@@ -8,11 +9,12 @@
 
 Game::Game(
     const TextureManager &textureManager,
-    const SoundManager &SoundManager):
+    const SoundManager &SoundManager,
+    Player &player):
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManger(SoundManager),
-        mPlayer(textureManager.get(TextureId::PlayerShip))
+        mPlayer(player)
 {
     /* Move the player to the lower right of the screen. */
     mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);

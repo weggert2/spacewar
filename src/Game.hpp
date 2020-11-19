@@ -1,14 +1,16 @@
 #pragma once
 
 #include "AssetManager.hpp"
-#include "Player.hpp"
+
+class Player;
 
 class Game
 {
 public:
     Game(
         const TextureManager &textureManager,
-        const SoundManager &SoundManger);
+        const SoundManager &SoundManger,
+        Player &player);
 
     void run();
 
@@ -31,11 +33,11 @@ private:
     static sf::RenderWindow defaultWindow();
 
 private:
+    sf::RenderWindow mWindow;
+
     const TextureManager &mTextureManager;
     const SoundManager &mSoundManger;
-
-    sf::RenderWindow mWindow;
-    Player mPlayer;
+    Player &mPlayer;
 
     static constexpr int screenWidth  = 1000;
     static constexpr int screenHeight = 1000;
