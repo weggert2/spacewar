@@ -9,10 +9,7 @@
 Game::Game(
     const TextureManager &textureManager,
     const SoundManager &SoundManager):
-        mWindow(
-            sf::VideoMode(screenWidth, screenHeight),
-            "SpaceWar",
-            sf::Style::Titlebar | sf::Style::Close),
+        mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManger(SoundManager),
         mPlayer()
@@ -151,4 +148,12 @@ void Game::render()
     mWindow.clear();
     mWindow.draw(mPlayer.get());
     mWindow.display();
+}
+
+sf::RenderWindow Game::defaultWindow()
+{
+    return sf::RenderWindow(
+        sf::VideoMode(screenWidth, screenHeight),
+        "SpaceWar",
+        sf::Style::Titlebar | sf::Style::Close);
 }

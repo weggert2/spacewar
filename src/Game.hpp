@@ -28,6 +28,7 @@ private:
 
     void render();
 
+    static sf::RenderWindow defaultWindow();
 
 private:
     const TextureManager &mTextureManager;
