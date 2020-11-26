@@ -10,6 +10,8 @@ void Movement::update(
 
     for (Entity e : entities.entities_with_components(motion, position))
     {
+        (void)e;
+
         position.rotate(motion.getOmega()*dt);
 
         /* Rotate the y unit vector by theta to get the heading direction. */

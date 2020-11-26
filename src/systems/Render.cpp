@@ -14,4 +14,13 @@ void Render::update(
     const double dt)
 {
     mWindow.clear();
+    Position::Handle position;
+    Display::Handle display;
+
+    for (Entity e : entities.entities_with_component(position, display))
+    {
+        display.mSprite.setPosition(position.getX());
+        display.mSprite.setRotation(position.getTheta());
+        mWindow.draw(display.mSprite);
+    }
 }

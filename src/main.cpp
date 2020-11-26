@@ -37,7 +37,7 @@ int main()
         soundManager,
         eventManager,
         entityManager,
-        systemManager
+        systemManager,
         player);
 
     /* Run the game! Hope you enjoy! */
