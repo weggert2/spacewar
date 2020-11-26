@@ -2,6 +2,8 @@
 
 #include "AssetManager.hpp"
 
+#include <entityx/System.h>
+
 class Player;
 
 class Game
@@ -36,7 +38,12 @@ private:
     sf::RenderWindow mWindow;
 
     const TextureManager &mTextureManager;
-    const SoundManager &mSoundManger;
+    const SoundManager &mSoundManager;
+
+    entityx::EventManager mEventManager;
+    entityx::EntityManager mEntityManager;
+
+
     Player &mPlayer;
 
     static constexpr int screenWidth  = 1000;

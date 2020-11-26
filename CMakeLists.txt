@@ -44,8 +44,8 @@ set(ENTITYX_BUILD_TESTING 0 CACHE BOOL "Don't build entityx tests")
 add_subdirectory(${SFML_DIR}    EXCLUDE_FROM_ALL)
 add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SFML_DIR}/include)
-target_include_directories(${PROJECT_NAME} PRIVATE ${ENTITYX_DIR})
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${SFML_DIR}/include)
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${ENTITYX_DIR})
 
 target_link_libraries(
     ${PROJECT_NAME}

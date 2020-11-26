@@ -19,6 +19,7 @@ int main()
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
 
+    /* Make the player. */
     Player player(textureManager.get(TextureId::PlayerShip));
 
     Game game(
