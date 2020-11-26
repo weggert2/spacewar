@@ -1,6 +1,6 @@
 #pragma once
 
-class Menu
+class MenuBase
 {
 public:
     virtual ~Menu() = default;
