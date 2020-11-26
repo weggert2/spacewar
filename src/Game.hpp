@@ -2,7 +2,12 @@
 
 #include "AssetManager.hpp"
 
-#include <entityx/System.h>
+namespace entityx
+{
+    class EventManager;
+    class EntityManager;
+    class SystemManager;
+}
 
 class Player;
 
@@ -17,6 +22,9 @@ public:
     void run();
 
 private:
+    void subscribeEvents();
+    void buildSystems();
+
     void processEvents();
 
     void handleKeyPress(
@@ -40,9 +48,9 @@ private:
     const TextureManager &mTextureManager;
     const SoundManager &mSoundManager;
 
-    entityx::EventManager mEventManager;
-    entityx::EntityManager mEntityManager;
-    entityx::SystemManager mSystemManager;
+    entityx::EventManager  &mEventManager;
+    entityx::EntityManager &mEntityManager;
+    entityx::SystemManager &mSystemManager;
 
     Player &mPlayer;
 

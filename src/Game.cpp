@@ -3,6 +3,9 @@
 #include "Events.hpp"
 #include "Player.hpp"
 
+#include <entityx/Event.h>
+#include <entityx/Entity.h>
+#include <entityx/System.h>
 
 #include <iostream>
 
@@ -12,21 +15,23 @@
 Game::Game(
     const TextureManager &textureManager,
     const SoundManager &soundManager,
+    entityx::EventManager &eventManager,
+    entityx::EntityManager &entityManager,
+    entityx::SystemManager &systemManager,
     Player &player):
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManager(soundManager),
-        mEventManager(),
-        mEntityManager(mEventManager),
-        mSystemManager(mEntityManager, mEventManager)
+        mEventManager(eventManager),
+        mEntityManager(entityManager),
+        mSystemManager(systemManager),
         mPlayer(player)
 {
+    subscribeEvents();
+    buildSystems();
+
     /* Move the player to the lower right of the screen. */
     mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
-
-    /* Connect the event manager to the events. */
-    mEventManager.subscribe<StartGameEvent>(*this);
-    mEventManager.subscribe<QuitGameEvent>(*this);
 }
 
 void Game::run()
@@ -51,6 +56,19 @@ void Game::run()
 
         render();
     }
+}
+
+void Game::subscribeEvents()
+{
+    /* Connect the event manager to the events. */
+    // mEventManager.subscribe<StartGameEvent>(*this);
+    // mEventManager.subscribe<QuitGameEvent>(*this);
+}
+
+void Game::buildSystems()
+{
+    /* Build the 'system' part of entity component system */
+    mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
 }
 
 void Game::processEvents()
