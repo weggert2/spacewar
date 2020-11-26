@@ -1,6 +1,8 @@
 #include "Game.hpp"
 
+#include "Events.hpp"
 #include "Player.hpp"
+
 
 #include <iostream>
 
@@ -21,6 +23,10 @@ Game::Game(
 {
     /* Move the player to the lower right of the screen. */
     mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
+
+    /* Connect the event manager to the events. */
+    mEventManager.subscribe<StartGameEvent>(*this);
+    mEventManager.subscribe<QuitGameEvent>(*this);
 }
 
 void Game::run()
