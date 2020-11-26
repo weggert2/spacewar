@@ -8,12 +8,12 @@ Position::Position(
 {
 }
 
-const sf::Vector2f &Position::getPos() const
+const sf::Vector2f &Position::getX() const
 {
     return mX;
 }
 
-double Position::getRot() const
+double Position::getTheta() const
 {
     return mTheta;
 }
