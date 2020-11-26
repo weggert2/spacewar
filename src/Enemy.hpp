@@ -21,4 +21,4 @@ public:
 private:
     const EnemyType mType;
     const size_t mPointValue;
-}
+};

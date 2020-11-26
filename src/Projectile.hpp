@@ -16,4 +16,4 @@ private:
     double mMaxDuration;
     double mCurrDuration;
     double mDamage;
-}
+};

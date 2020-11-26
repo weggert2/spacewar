@@ -15,4 +15,4 @@ public:
 private:
     const double mMaxCooldown;
     const double mDamageCoeff;
-}
+};
