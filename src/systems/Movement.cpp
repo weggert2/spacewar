@@ -10,16 +10,11 @@ void Movement::update(
 
     for (Entity e : entities.entities_with_components(motion, position))
     {
-        position = motion.getTheta();
+        position.rotate(motion.getOmega()*dt);
 
-
-//     const float dt = deltaTime.asSeconds();
-//     const float dTheta = omega*dt;
-//     mBody.rotate(dTheta);
-
-//     /* Rotate the unit y vector by theta to get the heading direction. */
-//     const float theta = toRad(mBody.getRotation());
-//     const sf::Vector2f n(-std::sin(theta), std::cos(theta));
-//     mBody.move(velocity*n*dt);
+        /* Rotate the y unit vector by theta to get the heading direction. */
+        const float theta = position.getTheta();
+        const sf::Vector2f n(-std::sin(theta), std::cos(theta));
+        position.move(motion.getSpeed()*n*dt);
     }
 }

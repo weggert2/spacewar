@@ -7,7 +7,7 @@ public:
         const double linearSpeed = 200.0,
         const double angularSpeed = 100.0);
 
-    double getV() const;
+    double getSpeed() const;
     double getOmega() const;
 
     void setImpulseUp(const bool choice);

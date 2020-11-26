@@ -10,7 +10,7 @@ Motion::Motion(
 {
 }
 
-double Motion::getV() const
+double Motion::getSpeed() const
 {
     return mCurrSpeed;
 }
