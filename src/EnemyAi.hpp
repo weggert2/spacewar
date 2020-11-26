@@ -5,7 +5,7 @@
 /**
  * The component representing the enemy gameplay logic.
  */
-class EnemyAiComponent : public entityx::Component<Ai>
+class EnemyAi : public entityx::Component<EnemyAi>
 {
 public:
     EnemyAi() = default;
