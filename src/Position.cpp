@@ -7,3 +7,13 @@ Position::Position(
         mTheta(rotation)
 {
 }
+
+const sf::Vector2f &Position::getPos() const
+{
+    return mX;
+}
+
+double Position::getRot() const
+{
+    return mTheta;
+}

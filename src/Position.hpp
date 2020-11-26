@@ -10,6 +10,9 @@ public:
         const sf::Vector2f &position,
         const double rotation);
 
+    const sf::Vector2f &getPos() const;
+    double getRot() const;
+
 private:
     /* Position and rotation. */
     sf::Vector2f mX;
