@@ -17,6 +17,9 @@ public:
     Game(
         const TextureManager &textureManager,
         const SoundManager &soundManager,
+        entityx::EventManager &eventManager,
+        entityx::EntityManager &entityManager,
+        entityx::SystemManager &systemManager,
         Player &player);
 
     void run();

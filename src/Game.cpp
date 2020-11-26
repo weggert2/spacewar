@@ -1,7 +1,8 @@
 #include "Game.hpp"
 
-#include "Events.hpp"
-#include "Player.hpp"
+// #include "Events.hpp"
+
+#include "components/Player.hpp"
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
@@ -31,7 +32,7 @@ Game::Game(
     buildSystems();
 
     /* Move the player to the lower right of the screen. */
-    mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
+    // mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
 }
 
 void Game::run()
@@ -68,7 +69,7 @@ void Game::subscribeEvents()
 void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
-    mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
+    // mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
 }
 
 void Game::processEvents()
@@ -125,6 +126,8 @@ void Game::handleKeyPress(
     const sf::Keyboard::Key key,
     const bool isPressed)
 {
+    (void)key;
+    (void)isPressed;
     /* Note - multiple keyboard presses are processed in sequential events,
      * so we can treat these as single events. */
 
@@ -133,28 +136,28 @@ void Game::handleKeyPress(
         case sf::Keyboard::W:
         case sf::Keyboard::Up:
         {
-            mPlayer.setImpulseUp(isPressed);
+            // mPlayer.setImpulseUp(isPressed);
         }
         break;
 
         case sf::Keyboard::S:
         case sf::Keyboard::Down:
         {
-            mPlayer.setImpulseDown(isPressed);
+            // mPlayer.setImpulseDown(isPressed);
         }
         break;
 
         case sf::Keyboard::A:
         case sf::Keyboard::Left:
         {
-            mPlayer.setRotateLeft(isPressed);
+            // mPlayer.setRotateLeft(isPressed);
         }
         break;
 
         case sf::Keyboard::D:
         case sf::Keyboard::Right:
         {
-            mPlayer.setRotateRight(isPressed);
+            // mPlayer.setRotateRight(isPressed);
         }
         break;
 
@@ -170,13 +173,13 @@ void Game::handleKeyPress(
 void Game::update(
     const sf::Time &deltaTime)
 {
-    mPlayer.update(deltaTime);
+    // mPlayer.update(deltaTime);
 }
 
 void Game::render()
 {
     mWindow.clear();
-    mWindow.draw(mPlayer.get());
+    // mWindow.draw(mPlayer.get());
     mWindow.display();
 }
 

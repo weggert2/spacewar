@@ -1,6 +1,8 @@
 #pragma once
 
-class Player : public entityx::Component<SpaceShip>
+#include <entityx/Entity.h>
+
+class Player : public entityx::Component<Player>
 {
 public:
     Player() = default;

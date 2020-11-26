@@ -3,7 +3,8 @@
 #include "TextureId.hpp"
 #include "SoundId.hpp"
 #include "Game.hpp"
-#include "Player.hpp"
+
+#include "components/Player.hpp"
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
@@ -29,7 +30,8 @@ int main()
     entityx::SystemManager systemManager(entityManager, eventManager);
 
     /* Make the player. */
-    Player player(textureManager.get(TextureId::PlayerShip));
+    // Player player(textureManager.get(TextureId::PlayerShip));
+    Player player;
 
     /* Make the game. */
     Game game(
