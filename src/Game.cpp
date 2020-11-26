@@ -16,6 +16,7 @@ Game::Game(
         mSoundManager(soundManager),
         mEventManager(),
         mEntityManager(mEventManager),
+        mSystemManager(mEntityManager, mEventManager)
         mPlayer(player)
 {
     /* Move the player to the lower right of the screen. */

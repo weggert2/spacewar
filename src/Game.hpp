@@ -42,7 +42,7 @@ private:
 
     entityx::EventManager mEventManager;
     entityx::EntityManager mEntityManager;
-
+    entityx::SystemManager mSystemManager;
 
     Player &mPlayer;
 
