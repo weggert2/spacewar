@@ -13,6 +13,12 @@ public:
     const sf::Vector2f &getX() const;
     double getTheta() const;
 
+    void move(const sf::Vector2f &dx);
+    void setX(const sf::Vector2f x);
+
+    void rotate(const double dTheta);
+    void setTheta(const double theta);
+
 private:
     /* Position and rotation. */
     sf::Vector2f mX;

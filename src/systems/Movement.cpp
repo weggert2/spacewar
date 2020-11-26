@@ -10,7 +10,9 @@ void Movement::update(
 
     for (Entity e : entities.entities_with_components(motion, position))
     {
-        const float dTheta = motion.getTheta();
+        position = motion.getTheta();
+
+
 //     const float dt = deltaTime.asSeconds();
 //     const float dTheta = omega*dt;
 //     mBody.rotate(dTheta);
