@@ -1,6 +1,6 @@
-#include "RenderSystem.hpp"
+#include "Render.hpp"
 
-RenderSystem::RenderSystem(
+Render::Render(
     sf::RenderWindow &window,
     TextureManager &textureManager):
         mWindow(window),
@@ -8,7 +8,7 @@ RenderSystem::RenderSystem(
 {
 }
 
-void RenderSystem::update(
+void Render::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
     const double dt)
