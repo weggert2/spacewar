@@ -18,4 +18,4 @@ public:
 
 private:
     ObstacleType mType;
-}
+};

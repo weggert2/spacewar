@@ -20,4 +20,4 @@ private:
      */
     const double mSpeed;
     const double mOmega;
-}
+};
