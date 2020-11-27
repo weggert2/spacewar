@@ -64,8 +64,12 @@ void PlayerCreator::create(
 }
 
 EnemyCreator::EnemyCreator(
-    const TextureManager &textureManager):
-        mTextureManager(textureManager)
+    const TextureManager &textureManager,
+    const sf::Vector2f &initialPos,
+    const float initialAngle):
+        mTextureManager(textureManager),
+        mInitialPos(initialPos),
+        mInitialAngle(initialAngle)
 {
 }
 
@@ -77,5 +81,6 @@ void EnemyCreator::create(
     // entity.assign<Health>();
     // entity.assign<Hitbox>();
     // entity.assign<Motion>();
+    entity.assign<Position>(mInitialPos, mInitialAngle);
     // entity.assign<Weapon>();
 }

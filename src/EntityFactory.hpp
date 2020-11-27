@@ -72,11 +72,15 @@ class EnemyCreator : public EntityCreator
 {
 public:
     explicit EnemyCreator(
-        const TextureManager &textureManager);
+        const TextureManager &textureManager,
+        const sf::Vector2f &initialPos,
+        const float initialAngle);
 
     virtual void create(
         entityx::Entity entity) override final;
 
 private:
     const TextureManager &mTextureManager;
+    const sf::Vector2f mInitialPos;
+    const float mInitialAngle;
 };
