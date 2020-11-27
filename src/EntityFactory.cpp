@@ -1,6 +1,6 @@
 #include "EntityFactory.hpp"
 
-void SplashScreenCreator::create(entityx::Entity entity)
+void StartScreenCreator::create(entityx::Entity entity)
 {
 
 }

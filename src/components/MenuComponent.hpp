@@ -4,13 +4,15 @@
 #include <entityx/Event.h>
 #include <SFML/Graphics.hpp>
 
+#include <memory>
+
 class MenuBase;
 
 class MenuComponent : public entityx::Component<MenuComponent>
 {
 public:
     explicit MenuComponent(
-        MenuBase *menu);
+        std::shared_ptr<MenuBase> menu);
 
     void update(entityx::EventManager &events, const float dt);
     void draw(sf::RenderWindow &window);
@@ -22,5 +24,5 @@ public:
     void right(entityx::EventManager &eventManager);
 
 private:
-    MenuBase *mMenu;
+    std::shared_ptr<MenuBase> mMenu;
 };

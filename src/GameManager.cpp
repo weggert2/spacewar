@@ -32,8 +32,5 @@ void GameManager::subscribeEvents()
 void GameManager::receive(
     const LaunchGameEvent &launch)
 {
-    auto splashText = mTextManager.get(TextId::SplashScreen);
-
-    // std::cout << splashText.get() << std::endl;
-    // SplashScreenCreator().create()
+    StartMenuCreator().create(mEntityManager.create());
 }

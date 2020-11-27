@@ -3,7 +3,7 @@
 #include "MenuBase.hpp"
 
 MenuComponent::MenuComponent(
-    MenuBase *menu):
+    std::shared_ptr<MenuBase> menu):
         mMenu(menu)
 {
 }
