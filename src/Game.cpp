@@ -1,10 +1,9 @@
 #include "Game.hpp"
+
+#include "Events.hpp"
 #include "KeyManager.hpp"
 
-// #include "Events.hpp"
-
 #include "components/Player.hpp"
-
 #include "systems/Render.hpp"
 
 #include <entityx/Event.h>
@@ -94,18 +93,21 @@ void Game::processEvents()
             case sf::Event::KeyPressed:
             case sf::Event::KeyReleased:
             {
-                handleKeyPress(
-                    event.key.code,
-                    event.type == sf::Event::KeyPressed);
+                const auto key = event.key.code;
+                const bool isPressed = event.type == sf::Event::KeyPressed;
+                mEventManager.emit<KeyboardEvent>(key, isPressed);
+                mKeyManager.updateKey(key, isPressed);
             }
             break;
 
             case sf::Event::MouseButtonPressed:
             case sf::Event::MouseButtonReleased:
             {
-                handleMousePress(
-                    event.mouseButton.button,
-                    event.type == sf::Event::MouseButtonPressed);
+                /* TODO! */
+                // const auto button = event.mouseButton.button;
+                // const bool isPressed = event.type == sf::Event::MouseButtonPressed;
+                // mEventManager.emit<MousePressEvent>(button, isPressed);
+                // mMouseManager.updateMouse(button, isPressed);
             }
             break;
 
@@ -115,63 +117,6 @@ void Game::processEvents()
                 std::cout << "Unexpected event: " << event.type << '\n';
                 #endif
             }
-        }
-    }
-}
-
-void Game::handleMousePress(
-    const sf::Mouse::Button button,
-    const bool isPressed)
-{
-    /* TODO */
-    (void)button;
-    (void)isPressed;
-}
-
-void Game::handleKeyPress(
-    const sf::Keyboard::Key key,
-    const bool isPressed)
-{
-    (void)key;
-    (void)isPressed;
-    /* Note - multiple keyboard presses are processed in sequential events,
-     * so we can treat these as single events. */
-
-    switch(key)
-    {
-        case sf::Keyboard::W:
-        case sf::Keyboard::Up:
-        {
-            // mPlayer.setImpulseUp(isPressed);
-        }
-        break;
-
-        case sf::Keyboard::S:
-        case sf::Keyboard::Down:
-        {
-            // mPlayer.setImpulseDown(isPressed);
-        }
-        break;
-
-        case sf::Keyboard::A:
-        case sf::Keyboard::Left:
-        {
-            // mPlayer.setRotateLeft(isPressed);
-        }
-        break;
-
-        case sf::Keyboard::D:
-        case sf::Keyboard::Right:
-        {
-            // mPlayer.setRotateRight(isPressed);
-        }
-        break;
-
-        default:
-        {
-            #ifdef DEBUG
-            std::cout << "Unexpected key press: " << key << '\n';
-            #endif
         }
     }
 }

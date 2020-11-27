@@ -32,14 +32,6 @@ private:
 
     void processEvents();
 
-    void handleKeyPress(
-        const sf::Keyboard::Key key,
-        const bool isPressed);
-
-    void handleMousePress(
-        const sf::Mouse::Button button,
-        const bool isPressed);
-
     void update(
         const sf::Time &deltaTime);
 
