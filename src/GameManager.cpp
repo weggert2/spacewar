@@ -25,17 +25,25 @@ GameManager::GameManager(
 void GameManager::subscribeEvents()
 {
     mEventManager.subscribe<LaunchGameEvent>(*this);
-    // mEventManager.subscribe<StartGameEvent>(*this);
-    // mEventManager.subscribe<QuitGameEvent>(*this);
+    mEventManager.subscribe<StartGameEvent>(*this);
     // mEventManager.subscribe<PauseGameEvent>(*this);
     // mEventManager.subscribe<ResumeGameEvent>(*this);
 
-    /* Note the Game class is subscribed to the QuitGameEvent direclt.y */
+    /* Note the Game class is subscribed to the QuitGameEvent directly */
 }
 
 void GameManager::receive(
     const LaunchGameEvent &launch)
 {
+    (void)launch;
+
     StartMenuCreator creator(mTextManager, mFontManager);
     creator.create(mEntityManager.create());
+}
+
+void GameManager::receive(
+    const StartGameEvent &event)
+{
+    /* Blows away all the entities, which clears the menu. */
+    mEntityManager.reset();
 }
