@@ -37,17 +37,26 @@ int main()
     entityx::EventManager eventManager;
     entityx::EntityManager entityManager(eventManager);
     entityx::SystemManager systemManager(entityManager, eventManager);
-    GameManager gameManager(entityManager, eventManager);
     KeyManager keyManager;
 
     /* Make the player. */
     Player player;
     // Player player(textureManager.get(TextureId::PlayerShip));
 
+    GameManager gameManager(
+        textureManager,
+        soundManager,
+        textManager,
+        fontManager,
+        entityManager,
+        eventManager);
+
     /* Make the game. */
     Game game(
         textureManager,
         soundManager,
+        textManager,
+        fontManager,
         eventManager,
         entityManager,
         systemManager,

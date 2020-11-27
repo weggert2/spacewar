@@ -13,12 +13,18 @@ class GameManager;
 class KeyManager;
 class Player;
 
+/*
+ * The monolithic game class. Responsible for running your game!
+ */
+
 class Game
 {
 public:
     Game(
         const TextureManager &textureManager,
         const SoundManager &soundManager,
+        const TextManager &textManager,
+        const FontManager &fontManager,
         entityx::EventManager &eventManager,
         entityx::EntityManager &entityManager,
         entityx::SystemManager &systemManager,
@@ -42,20 +48,30 @@ private:
     static sf::RenderWindow defaultWindow();
 
 private:
+    /* The render window */
     sf::RenderWindow mWindow;
 
+    /* Asset managers */
     const TextureManager &mTextureManager;
     const SoundManager &mSoundManager;
+    const TextManager &mTextManager;
+    const FontManager &mFontManager;
+
+    /* Keyboard input handler. */
     KeyManager &mKeyManager;
 
+    /* Entity-component system */
     entityx::EventManager  &mEventManager;
     entityx::EntityManager &mEntityManager;
     entityx::SystemManager &mSystemManager;
 
+    /* The game state stack. */
     GameManager &mGameManager;
 
+    /* The player. */
     Player &mPlayer;
 
+    /* Misc settings */
     static constexpr int screenWidth  = 1000;
     static constexpr int screenHeight = 1000;
 };

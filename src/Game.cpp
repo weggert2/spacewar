@@ -18,6 +18,8 @@
 Game::Game(
     const TextureManager &textureManager,
     const SoundManager &soundManager,
+    const TextManager &textManager,
+    const FontManager &fontManager,
     entityx::EventManager &eventManager,
     entityx::EntityManager &entityManager,
     entityx::SystemManager &systemManager,
@@ -27,6 +29,8 @@ Game::Game(
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManager(soundManager),
+        mTextManager(textManager),
+        mFontManager(fontManager),
         mEventManager(eventManager),
         mEntityManager(entityManager),
         mSystemManager(systemManager),
@@ -37,6 +41,7 @@ Game::Game(
     subscribeEvents();
     buildSystems();
 
+    /* Get things kicked off. */
     mEventManager.emit<LaunchGameEvent>();
 
     /* Move the player to the lower right of the screen. */

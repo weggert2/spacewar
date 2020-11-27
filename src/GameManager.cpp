@@ -3,11 +3,19 @@
 #include <iostream>
 
 GameManager::GameManager(
+    const TextureManager &textureManager,
+    const SoundManager &soundManager,
+    const TextManager &textManager,
+    const FontManager &fontManager,
     entityx::EntityManager &entityManager,
     entityx::EventManager &eventManager):
+        mTextureManager(textureManager),
+        mSoundManager(soundManager),
+        mTextManager(textManager),
+        mFontManager(fontManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
-        mGameState(GameState::start_menu)
+        mGameState(GameState::Unknown)
 {
     subscribeEvents();
 }
@@ -24,5 +32,8 @@ void GameManager::subscribeEvents()
 void GameManager::receive(
     const LaunchGameEvent &launch)
 {
-    std::cout << "Game launched!\n";
+    auto splashText = mTextManager.get(TextId::SplashScreen);
+
+    // std::cout << splashText.get() << std::endl;
+    // SplashScreenCreator().create()
 }

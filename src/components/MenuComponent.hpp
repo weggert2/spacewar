@@ -4,10 +4,10 @@
 
 class MenuBase;
 
-class Menu : public entityx::Component<Menu>
+class MenuComponent : public entityx::Component<MenuComponent>
 {
 public:
-    explicit Menu(
+    explicit MenuComponent(
         MenuBase *menu);
 
 private:

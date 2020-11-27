@@ -3,5 +3,5 @@
 class MenuBase
 {
 public:
-    virtual ~Menu() = default;
+    virtual ~MenuBase() = default;
 };

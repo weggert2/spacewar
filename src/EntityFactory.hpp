@@ -9,7 +9,8 @@ public:
     virtual void create(entityx::Entity entity) = 0;
 };
 
-// class SplashScreenCreator : public EntityCreator
-// {
-// public:
-// }
+class SplashScreenCreator : public EntityCreator
+{
+public:
+    virtual void create(entityx::Entity entity) override final;
+};
