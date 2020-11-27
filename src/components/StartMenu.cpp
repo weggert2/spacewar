@@ -3,11 +3,14 @@
 
 StartMenu::StartMenu(
     const TextManager &textManager,
-    const FontManager &fontManager)
+    const FontManager &fontManager):
+        mLogoText(),
+        mPlayText(),
+        mQuitText(),
+        mMenuChoice(MenuChoice::Play)
 {
     const sf::Font &logoFont = fontManager.get(FontId::Default);
     const sf::Font &menuFont = fontManager.get(FontId::Menu);
-
     const std::string &logoText = textManager.get(TextId::Logo).get();
 
     const auto setOrigin = [](sf::Text &t) {
@@ -24,7 +27,6 @@ StartMenu::StartMenu(
     mPlayText.setFont(menuFont);
     mPlayText.setCharacterSize(60);
     mPlayText.setString("Play");
-    mPlayText.setStyle(sf::Text::Underlined);
     setOrigin(mPlayText);
 
 
@@ -49,7 +51,36 @@ void StartMenu::draw(
     mPlayText.setPosition(pos.x, nextY(mLogoText));
     mQuitText.setPosition(pos.x, nextY(mPlayText));
 
+    mPlayText.setStyle(sf::Text::Regular);
+    mQuitText.setStyle(sf::Text::Regular);
+
+    switch (mMenuChoice)
+    {
+        case MenuChoice::Play: mPlayText.setStyle(sf::Text::Underlined); break;
+        case MenuChoice::Quit: mQuitText.setStyle(sf::Text::Underlined); break;
+    }
+
     window.draw(mLogoText);
     window.draw(mPlayText);
     window.draw(mQuitText);
+}
+
+void StartMenu::up(entityx::EventManager &eventManager)
+{
+    /* This is overkill for just two choices. If we add more, it'll be easy. */
+    switch (mMenuChoice)
+    {
+        case MenuChoice::Play: mMenuChoice = MenuChoice::Quit; break;
+        case MenuChoice::Quit: mMenuChoice = MenuChoice::Play; break;
+    }
+}
+
+void StartMenu::down(entityx::EventManager &eventManager)
+{
+    /* This is overkill for just two choices. If we add more, it'll be easy. */
+    switch (mMenuChoice)
+    {
+        case MenuChoice::Play: mMenuChoice = MenuChoice::Quit; break;
+        case MenuChoice::Quit: mMenuChoice = MenuChoice::Play; break;
+    }
 }
