@@ -4,6 +4,9 @@
 
 #include <entityx/Entity.h>
 
+/*
+ * Base class for Entities.
+ */
 class EntityCreator
 {
 public:
@@ -11,6 +14,9 @@ public:
     virtual void create(entityx::Entity entity) = 0;
 };
 
+/*
+ * Start menu creator.
+ */
 class StartMenuCreator : public EntityCreator
 {
 public:
@@ -26,6 +32,9 @@ private:
     const FontManager &mFontManager;
 };
 
+/*
+ * Background creator.
+ */
 class BackgroundCreator : public EntityCreator
 {
 public:
@@ -40,10 +49,29 @@ private:
 };
 
 
+/*
+ * Player creator.
+ */
 class PlayerCreator : public EntityCreator
 {
 public:
     explicit PlayerCreator(
+        const TextureManager &textureManager);
+
+    virtual void create(
+        entityx::Entity entity) override final;
+
+private:
+    const TextureManager &mTextureManager;
+};
+
+/*
+ * Enemy creator.
+ */
+class EnemyCreator : public EntityCreator
+{
+public:
+    explicit EnemyCreator(
         const TextureManager &textureManager);
 
     virtual void create(

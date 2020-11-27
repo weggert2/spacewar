@@ -30,7 +30,7 @@ public:
         AssetType *asset = new AssetType();
         if (!asset->loadFromFile(filename))
         {
-            std::cerr << "Could not load asset " << filename << '\n';
+            /* SFML will already print to cerr, so we don't have to. */
             return false;
         }
 

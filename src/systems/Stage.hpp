@@ -3,6 +3,7 @@
 #include "AssetManager.hpp"
 
 #include <entityx/System.h>
+#include <SFML/System/Vector2.hpp>
 
 class StartGameEvent;
 class StageClearedEvent;
@@ -25,6 +26,11 @@ public:
 
     void receive(const StartGameEvent &event);
     void receive(const StageClearedEvent &event);
+
+private:
+    void getPlayerData(
+        sf::Vector2f &playerPos,
+        float &offset) const;
 
 private:
     const TextureManager &mTextureManager;

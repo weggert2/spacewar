@@ -5,6 +5,7 @@
 #include "components/MenuComponent.hpp"
 #include "components/Motion.hpp"
 #include "components/Position.hpp"
+#include "components/Player.hpp"
 #include "components/StartMenu.hpp"
 #include "Game.hpp"
 
@@ -54,9 +55,27 @@ void PlayerCreator::create(
     // entity.assign<Health>();
     // entity.assign<Hitbox>();
     // entity.assign<Motion>();
+    entity.assign<Player>();
     // entity.assign<Weapon>();
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);
     entity.assign<Position>(pos, 0.0);
+}
+
+EnemyCreator::EnemyCreator(
+    const TextureManager &textureManager):
+        mTextureManager(textureManager)
+{
+}
+
+void EnemyCreator::create(
+    entityx::Entity entity)
+{
+    // entity.assign<Control>();
+    entity.assign<Display>(mTextureManager.get(TextureId::EnemyShip));
+    // entity.assign<Health>();
+    // entity.assign<Hitbox>();
+    // entity.assign<Motion>();
+    // entity.assign<Weapon>();
 }

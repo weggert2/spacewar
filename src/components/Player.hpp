@@ -1,17 +1,12 @@
 #pragma once
 
 #include <entityx/Entity.h>
-#include <SFML/Graphics.hpp>
 
-// class Player : public entityx::Component<Player>
-// {
-// public:
-//     explicit Player(
-//         const sf::Texture &texture);
-
-// public:
-//     sf::Sprite mSprite;
-// };
+class Player : public entityx::Component<Player>
+{
+public:
+    Player() = default;
+};
 
 // #include <SFML/Graphics.hpp>
 
