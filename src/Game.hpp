@@ -27,8 +27,7 @@ public:
         entityx::EntityManager &entityManager,
         entityx::SystemManager &systemManager,
         GameManager &gameManager,
-        KeyManager &keyManager,
-        Player &player);
+        KeyManager &keyManager);
 
     void run();
     void receive(const QuitGameEvent &event);
@@ -68,7 +67,4 @@ private:
 
     /* The game state stack. */
     GameManager &mGameManager;
-
-    /* The player. */
-    Player &mPlayer;
 };

@@ -5,8 +5,6 @@
 #include "KeyManager.hpp"
 #include "AssetIds.hpp"
 
-#include "components/Player.hpp"
-
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
 #include <entityx/System.h>
@@ -39,10 +37,6 @@ int main()
     entityx::SystemManager systemManager(entityManager, eventManager);
     KeyManager keyManager;
 
-    /* Make the player. */
-    Player player;
-    // Player player(textureManager.get(TextureId::PlayerShip));
-
     GameManager gameManager(
         textureManager,
         soundManager,
@@ -61,8 +55,7 @@ int main()
         entityManager,
         systemManager,
         gameManager,
-        keyManager,
-        player);
+        keyManager);
 
     /* Run the game! Hope you enjoy! */
     game.run();

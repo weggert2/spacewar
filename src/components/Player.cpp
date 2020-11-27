@@ -1,9 +1,17 @@
-// #include "Player.hpp"
+#include "Player.hpp"
 
 // #include "math_utils.hpp"
 
 // #include <cmath>
 // #include <iostream>
+
+// Player::Player(
+//     const sf::Texture &texture):
+//         mSprite()
+// {
+//     mSprite.setTexture(texture);
+// }
+
 
 // Player::Player(
 //     const sf::Texture &texture):

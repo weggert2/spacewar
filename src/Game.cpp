@@ -22,8 +22,7 @@ Game::Game(
     entityx::EntityManager &entityManager,
     entityx::SystemManager &systemManager,
     GameManager &gameManager,
-    KeyManager &keyManager,
-    Player &player):
+    KeyManager &keyManager):
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
         mSoundManager(soundManager),
@@ -33,17 +32,13 @@ Game::Game(
         mEntityManager(entityManager),
         mSystemManager(systemManager),
         mGameManager(gameManager),
-        mKeyManager(keyManager),
-        mPlayer(player)
+        mKeyManager(keyManager)
 {
     subscribeEvents();
     buildSystems();
 
     /* Get things kicked off. */
     mEventManager.emit<LaunchGameEvent>();
-
-    /* Move the player to the lower right of the screen. */
-    // mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);
 }
 
 void Game::run()

@@ -37,6 +37,7 @@ void Stage::receive(
 {
     /* Make the background. */
     BackgroundCreator(mTextureManager).create(mEntityManager.create());
+    PlayerCreator(mTextureManager).create(mEntityManager.create());
 }
 
 void Stage::receive(

@@ -38,3 +38,17 @@ public:
 private:
     const TextureManager &mTextureManager;
 };
+
+
+class PlayerCreator : public EntityCreator
+{
+public:
+    explicit PlayerCreator(
+        const TextureManager &textureManager);
+
+    virtual void create(
+        entityx::Entity entity) override final;
+
+private:
+    const TextureManager &mTextureManager;
+};
