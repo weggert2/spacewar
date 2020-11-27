@@ -40,10 +40,8 @@ private:
 
     void processEvents();
 
-    void update(
-        const sf::Time &deltaTime);
-
-    void render();
+    void update(const sf::Time &deltaTime);
+    void render(const sf::Time &deltaTime);
 
     static sf::RenderWindow defaultWindow();
 

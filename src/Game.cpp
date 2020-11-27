@@ -5,6 +5,7 @@
 
 #include "components/Player.hpp"
 #include "systems/Render.hpp"
+#include "systems/MenuSystem.hpp"
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
@@ -68,7 +69,7 @@ void Game::run()
             update(timePerFrame);
         }
 
-        render();
+        render(timePerFrame);
     }
 }
 
@@ -83,6 +84,7 @@ void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
     mSystemManager.add<Render>(mWindow, mTextureManager);
+    mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     // mSystemManager.add<Control>(mKeyManager);
 }
 
@@ -136,9 +138,17 @@ void Game::update(
     // mPlayer.update(deltaTime);
 }
 
-void Game::render()
+void Game::render(
+    const sf::Time &deltaTime)
 {
+    const float dt = deltaTime.asSeconds();
+
     mWindow.clear();
+
+    /* Render the things that need rendering. */
+    mSystemManager.update<Render>(dt);
+    mSystemManager.update<MenuSystem>(dt);
+
     // mWindow.draw(mPlayer.get());
     mWindow.display();
 }

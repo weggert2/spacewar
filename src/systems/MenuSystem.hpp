@@ -25,7 +25,7 @@ public:
     void update(
         entityx::EntityManager &entities,
         entityx::EventManager &events,
-        float dt);
+        double dt);
 
     void receive(
         const KeyboardEvent &event);

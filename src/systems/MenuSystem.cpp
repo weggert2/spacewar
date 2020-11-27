@@ -22,7 +22,7 @@ void MenuSystem::subscribeEvents()
 void MenuSystem::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
-    float dt)
+    double dt)
 {
     MenuComponent::Handle menu;
     Position::Handle position;
