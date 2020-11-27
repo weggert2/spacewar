@@ -25,16 +25,16 @@ StartMenu::StartMenu(
     mLogoText.setFillColor(sf::Color::Red);
     setOrigin(mLogoText);
 
-    mPlayText.setFont(menuFont);
-    mPlayText.setCharacterSize(60);
-    mPlayText.setString("Play");
-    setOrigin(mPlayText);
+    const auto initMenu = [&](sf::Text &t, const std::string &s) {
+        t.setFont(menuFont);
+        t.setCharacterSize(60);
+        t.setString(s);
+        setOrigin(t);
+    };
 
-
-    mQuitText.setFont(menuFont);
-    mQuitText.setCharacterSize(60);
-    mQuitText.setString("Quit");
-    setOrigin(mQuitText);
+    initMenu(mPlayText,     "Play");
+    initMenu(mControlsText, "Controls");
+    initMenu(mQuitText,     "Quit");
 }
 
 void StartMenu::update(
@@ -53,26 +53,29 @@ void StartMenu::draw(
 {
     mLogoText.setPosition(pos);
 
-    const auto nextY = [](const sf::Text &t) {
+    const auto nextY = [](const sf::Text &t, const float spacing = 40.0f) {
         const sf::FloatRect sz = t.getGlobalBounds();
-        const float spacing = 40.0f;
         return sz.top + sz.height + spacing;
     };
 
-    mPlayText.setPosition(pos.x, nextY(mLogoText));
-    mQuitText.setPosition(pos.x, nextY(mPlayText));
+    mPlayText.setPosition(pos.x,     nextY(mLogoText));
+    mControlsText.setPosition(pos.x, nextY(mPlayText, 20.0f));
+    mQuitText.setPosition(pos.x,     nextY(mControlsText));
 
     mPlayText.setStyle(sf::Text::Regular);
+    mControlsText.setStyle(sf::Text::Regular);
     mQuitText.setStyle(sf::Text::Regular);
 
     switch (mMenuChoice)
     {
-        case MenuChoice::Play: mPlayText.setStyle(sf::Text::Underlined); break;
-        case MenuChoice::Quit: mQuitText.setStyle(sf::Text::Underlined); break;
+        case MenuChoice::Play:     mPlayText.setStyle(sf::Text::Underlined);     break;
+        case MenuChoice::Controls: mControlsText.setStyle(sf::Text::Underlined); break;
+        case MenuChoice::Quit:     mQuitText.setStyle(sf::Text::Underlined);     break;
     }
 
     window.draw(mLogoText);
     window.draw(mPlayText);
+    window.draw(mControlsText);
     window.draw(mQuitText);
 }
 
@@ -81,8 +84,9 @@ void StartMenu::select(
 {
     switch (mMenuChoice)
     {
-        case MenuChoice::Play: eventManager.emit<StartGameEvent>(); break;
-        case MenuChoice::Quit: eventManager.emit<QuitGameEvent>();  break;
+        case MenuChoice::Play:     eventManager.emit<StartGameEvent>();    break;
+        case MenuChoice::Quit:     eventManager.emit<QuitGameEvent>();     break;
+        case MenuChoice::Controls: eventManager.emit<ShowControlsEvent>(); break;
     }
 }
 
@@ -99,11 +103,11 @@ void StartMenu::up(
 {
     (void)eventManager;
 
-    /* This is overkill for just two choices. If we add more, it'll be easy. */
     switch (mMenuChoice)
     {
-        case MenuChoice::Play: mMenuChoice = MenuChoice::Quit; break;
-        case MenuChoice::Quit: mMenuChoice = MenuChoice::Play; break;
+        case MenuChoice::Play:     mMenuChoice = MenuChoice::Quit;     break;
+        case MenuChoice::Controls: mMenuChoice = MenuChoice::Play;     break;
+        case MenuChoice::Quit:     mMenuChoice = MenuChoice::Controls; break;
     }
 }
 
@@ -113,8 +117,9 @@ void StartMenu::down(
     (void)eventManager;
     switch (mMenuChoice)
     {
-        case MenuChoice::Play: mMenuChoice = MenuChoice::Quit; break;
-        case MenuChoice::Quit: mMenuChoice = MenuChoice::Play; break;
+        case MenuChoice::Play:     mMenuChoice = MenuChoice::Controls; break;
+        case MenuChoice::Controls: mMenuChoice = MenuChoice::Quit;     break;
+        case MenuChoice::Quit:     mMenuChoice = MenuChoice::Play;     break;
     }
 }
 

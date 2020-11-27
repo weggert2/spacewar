@@ -24,11 +24,13 @@ private:
     enum class MenuChoice
     {
         Play,
+        Controls,
         Quit,
     };
 
     sf::Text mLogoText;
     sf::Text mPlayText;
     sf::Text mQuitText;
+    sf::Text mControlsText;
     MenuChoice mMenuChoice;
 };
