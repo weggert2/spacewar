@@ -21,6 +21,7 @@ Game::Game(
     entityx::EventManager &eventManager,
     entityx::EntityManager &entityManager,
     entityx::SystemManager &systemManager,
+    GameManager &gameManager,
     KeyManager &keyManager,
     Player &player):
         mWindow(defaultWindow()),
@@ -29,11 +30,14 @@ Game::Game(
         mEventManager(eventManager),
         mEntityManager(entityManager),
         mSystemManager(systemManager),
+        mGameManager(gameManager),
         mKeyManager(keyManager),
         mPlayer(player)
 {
     subscribeEvents();
     buildSystems();
+
+    mEventManager.emit<LaunchGameEvent>();
 
     /* Move the player to the lower right of the screen. */
     // mPlayer.get().move(0.8f*screenWidth, 0.8f*screenHeight);

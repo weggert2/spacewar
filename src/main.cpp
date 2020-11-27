@@ -1,6 +1,7 @@
 #include "AssetLibrary.hpp"
 #include "AssetManager.hpp"
 #include "Game.hpp"
+#include "GameManager.hpp"
 #include "KeyManager.hpp"
 #include "TextureId.hpp"
 #include "SoundId.hpp"
@@ -33,6 +34,7 @@ int main()
     entityx::EventManager eventManager;
     entityx::EntityManager entityManager(eventManager);
     entityx::SystemManager systemManager(entityManager, eventManager);
+    GameManager gameManager(entityManager, eventManager);
     KeyManager keyManager;
 
     /* Make the player. */
@@ -45,6 +47,7 @@ int main()
         eventManager,
         entityManager,
         systemManager,
+        gameManager,
         keyManager,
         player);
 

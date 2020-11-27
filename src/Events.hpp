@@ -4,9 +4,13 @@
 
 #include <entityx/Entity.h>
 #include <entityx/Event.h>
+#include <SFML/Window/Keyboard.hpp>
 
-class StartGameEvent : public entityx::Event<StartGameEvent> {};
-class QuitGameEvent  : public entityx::Event<QuitGameEvent>  {};
+class LaunchGameEvent : public entityx::Event<LaunchGameEvent> {};
+class StartGameEvent  : public entityx::Event<StartGameEvent>  {};
+class QuitGameEvent   : public entityx::Event<QuitGameEvent>   {};
+class PauseGameEvent  : public entityx::Event<PauseGameEvent>  {};
+class ResumeGameEvent : public entityx::Event<ResumeGameEvent> {};
 
 class KeyboardEvent : public entityx::Event<KeyboardEvent>
 {

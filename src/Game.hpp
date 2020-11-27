@@ -9,6 +9,7 @@ namespace entityx
     class SystemManager;
 }
 
+class GameManager;
 class KeyManager;
 class Player;
 
@@ -21,6 +22,7 @@ public:
         entityx::EventManager &eventManager,
         entityx::EntityManager &entityManager,
         entityx::SystemManager &systemManager,
+        GameManager &gameManager,
         KeyManager &keyManager,
         Player &player);
 
@@ -49,6 +51,8 @@ private:
     entityx::EventManager  &mEventManager;
     entityx::EntityManager &mEntityManager;
     entityx::SystemManager &mSystemManager;
+
+    GameManager &mGameManager;
 
     Player &mPlayer;
 
