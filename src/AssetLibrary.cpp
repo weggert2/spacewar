@@ -10,6 +10,7 @@ bool loadAllTextures(
     bool success = true;
 
     success &= textureManager.load(TextureId::PlayerShip, "../assets/textures/blue/ship.png");
+    success &= textureManager.load(TextureId::Background, "../assets/textures/background/black_hole.jpg");
 
     return success;
 }

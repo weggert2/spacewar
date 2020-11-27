@@ -25,3 +25,16 @@ private:
     const TextManager &mTextManager;
     const FontManager &mFontManager;
 };
+
+class BackgroundCreator : public EntityCreator
+{
+public:
+    explicit BackgroundCreator(
+        const TextureManager &textureManager);
+
+    virtual void create(
+        entityx::Entity entity) override final;
+
+private:
+    const TextureManager &mTextureManager;
+};
