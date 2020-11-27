@@ -5,6 +5,7 @@ Weapon::Weapon(
     const double damageCoeff):
         mCurrCooldown(0.0),
         mActive(false),
-        mMaxCooldown(maxCooldown)
+        mMaxCooldown(maxCooldown),
+        mDamageCoeff(damageCoeff)
 {
 }

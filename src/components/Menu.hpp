@@ -8,7 +8,7 @@ class Menu : public entityx::Component<Menu>
 {
 public:
     explicit Menu(
-        const MenuBase *menu);
+        MenuBase *menu);
 
 private:
     MenuBase *mMenu;

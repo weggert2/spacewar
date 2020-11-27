@@ -52,6 +52,7 @@ add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)
 
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${SFML_DIR}/include)
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${ENTITYX_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 target_link_libraries(
     ${PROJECT_NAME}

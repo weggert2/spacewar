@@ -8,5 +8,5 @@ public:
     void update(
         entityx::EntityManager &entities,
         entityx::EventManager &events,
-        double dt);
-}
+        float dt);
+};

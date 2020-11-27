@@ -1,6 +1,7 @@
 #include "Render.hpp"
 
-#include "AssetManager.hpp"
+#include "components/Display.hpp"
+#include "components/Position.hpp"
 
 Render::Render(
     sf::RenderWindow &window,
@@ -19,10 +20,10 @@ void Render::update(
     Position::Handle position;
     Display::Handle display;
 
-    for (Entity e : entities.entities_with_component(position, display))
+    for (entityx::Entity e : entities.entities_with_components(position, display))
     {
-        display.mSprite.setPosition(position.getX());
-        display.mSprite.setRotation(position.getTheta());
-        mWindow.draw(display.mSprite);
+        display->mSprite.setPosition(position->getX());
+        display->mSprite.setRotation(position->getTheta());
+        mWindow.draw(display->mSprite);
     }
 }

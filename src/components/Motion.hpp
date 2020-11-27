@@ -4,11 +4,11 @@ class Motion : public entityx::Component<Motion>
 {
 public:
     Motion(
-        const double linearSpeed = 200.0,
-        const double angularSpeed = 100.0);
+        const float linearSpeed = 200.0,
+        const float angularSpeed = 100.0);
 
-    double getSpeed() const;
-    double getOmega() const;
+    float getSpeed() const;
+    float getOmega() const;
 
     void setImpulseUp(const bool choice);
     void setImpulseDown(const bool choice);
@@ -20,12 +20,12 @@ private:
      * The current values of the linear/angular speed. For now, either 0 or at
      * their settings mSpeed and mOmega.
      */
-    double mCurrSpeed;
-    double mCurrOmega;
+    float mCurrSpeed;
+    float mCurrOmega;
 
     /**
      * The linear/angular speeds when the motion is active.
      */
-    const double mSpeed;
-    const double mOmega;
+    const float mSpeed;
+    const float mOmega;
 };

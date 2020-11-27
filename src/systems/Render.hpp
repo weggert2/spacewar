@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AssetManager.hpp"
+
 #include <entityx/System.h>
 #include <SFML/Graphics.hpp>
 

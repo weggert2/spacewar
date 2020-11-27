@@ -1,8 +1,8 @@
 #include "Motion.hpp"
 
 Motion::Motion(
-    const double linearSpeed,
-    const double angularSpeed):
+    const float linearSpeed,
+    const float angularSpeed):
         mCurrSpeed(0.0),
         mCurrOmega(0.0),
         mSpeed(linearSpeed),
@@ -10,12 +10,12 @@ Motion::Motion(
 {
 }
 
-double Motion::getSpeed() const
+float Motion::getSpeed() const
 {
     return mCurrSpeed;
 }
 
-double Motion::getOmega() const
+float Motion::getOmega() const
 {
     return mCurrOmega;
 }
@@ -23,23 +23,23 @@ double Motion::getOmega() const
 void Motion::setImpulseUp(
     const bool choice)
 {
-    mCurrSpeed = choice ? -mSpeed : 0.0;
+    mCurrSpeed = choice ? -mSpeed : 0.0f;
 }
 
 void Motion::setImpulseDown(
     const bool choice)
 {
-    mCurrSpeed = choice ? mSpeed : 0.0;
+    mCurrSpeed = choice ? mSpeed : 0.0f;
 }
 
 void Motion::setRotateLeft(
     const bool choice)
 {
-    mCurrOmega = choice ? -mOmega : 0.0;
+    mCurrOmega = choice ? -mOmega : 0.0f;
 }
 
 void Motion::setRotateRight(
     const bool choice)
 {
-    mCurrOmega = choice ? mOmega : 0.0;
+    mCurrOmega = choice ? mOmega : 0.0f;
 }

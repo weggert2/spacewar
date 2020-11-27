@@ -74,9 +74,7 @@ void Game::subscribeEvents()
 void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
-    // mSystemManager.add<Render>(mWindow, mTextureManager);
-
-    Render render(mWindow);//, mTextureManager);
+    mSystemManager.add<Render>(mWindow, mTextureManager);
     // mSystemManager.add<Control>(mKeyManager);
 }
 

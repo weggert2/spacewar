@@ -2,6 +2,8 @@
 
 #include <entityx/Entity.h>
 
+class Position;
+
 /**
  * A hitbox component. Ships, bullets, black holes have these.
  */
@@ -24,4 +26,4 @@ public:
 private:
     const double mWidth;
     const double mHeight;
-}
+};

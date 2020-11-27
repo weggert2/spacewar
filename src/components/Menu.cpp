@@ -1,7 +1,7 @@
 #include "Menu.hpp"
 
 Menu::Menu(
-    const MenuBase *menu):
+    MenuBase *menu):
         mMenu(menu)
 {
 }

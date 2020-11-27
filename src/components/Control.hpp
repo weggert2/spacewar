@@ -36,4 +36,4 @@ private:
     sf::Keyboard::Key mDown;
     sf::Keyboard::Key mRight;
     sf::Keyboard::Key mShoot;
-}
+};

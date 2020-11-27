@@ -1,6 +1,7 @@
 #include "Hitbox.hpp"
 
 #include <SFML/Graphics/Rect.hpp>
+#include "Position.hpp"
 
 Hitbox::Hitbox(
     const double width,
@@ -15,7 +16,7 @@ double Hitbox::getWidth() const
     return mWidth;
 }
 
-double getHeight() const
+double Hitbox::getHeight() const
 {
     return mHeight;
 }
@@ -26,7 +27,7 @@ bool Hitbox::collides(
     const Hitbox &otherBox) const
 {
     /* We won't worry about the rotated box - we'll use take the AABB */
-    const auto buildRect(sf::Vector2f p, double w, double h) {
+    const auto buildRect = [&](sf::Vector2f p, double w, double h) {
         return sf::Rect<float>(
             p.x - w/2.0,
             p.y - h/2.0,
@@ -35,12 +36,12 @@ bool Hitbox::collides(
     };
 
     const sf::Rect<float> thisRect = buildRect(
-        thisPos.getPos(),
+        thisPos.getX(),
         mWidth,
         mHeight);
 
     const sf::Rect<float> otherRect = buildRect(
-        otherPos.getPos(),
+        otherPos.getX(),
         otherBox.getWidth(),
         otherBox.getHeight());
 
