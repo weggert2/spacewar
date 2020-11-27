@@ -9,8 +9,11 @@ bool loadAllTextures(
 {
     bool success = true;
 
-    success &= textureManager.load(TextureId::PlayerShip, "../assets/textures/blue/ship.png");
-    success &= textureManager.load(TextureId::Background, "../assets/textures/background/black_hole5.jpg");
+    success &= textureManager.load(TextureId::PlayerShip,   "../assets/textures/blue/ship.png");
+    success &= textureManager.load(TextureId::PlayerBullet, "../assets/textures/blue/bullet.png");
+    success &= textureManager.load(TextureId::EnemyShip,    "../assets/textures/red/spaceship_enemy_red.png");
+    success &= textureManager.load(TextureId::EnemyBullet,  "../assets/textures/red/bullet.png");
+    success &= textureManager.load(TextureId::Background,   "../assets/textures/background/black_hole5.jpg");
 
     return success;
 }

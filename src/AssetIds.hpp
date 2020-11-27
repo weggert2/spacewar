@@ -4,7 +4,9 @@ enum class TextureId
 {
     Background,
     PlayerShip,
-    Bullet,
+    EnemyShip,
+    PlayerBullet,
+    EnemyBullet
 };
 
 enum class SoundId
