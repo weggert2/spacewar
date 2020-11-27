@@ -18,8 +18,8 @@ void StartMenuCreator::create(entityx::Entity entity)
     auto menu = std::make_shared<StartMenu>(mTextManager, mFontManager);
     entity.assign<MenuComponent>(menu);
 
-    const float x = Game::screenHeight/4.0;
-    const float y = Game::screenHeight/10.0;
+    const float x = Game::screenWidth/2.0;
+    const float y = Game::screenHeight/2.5;
     entity.assign<Position>(sf::Vector2f(x,y), 0.0);
 
     // const std::string &splashText = mTextManager.get(TextId::Logo).get();
