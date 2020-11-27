@@ -1,5 +1,7 @@
 #include "MenuComponent.hpp"
 
+#include "MenuBase.hpp"
+
 MenuComponent::MenuComponent(
     MenuBase *menu):
         mMenu(menu)
