@@ -1,5 +1,6 @@
 #include "StartMenu.hpp"
 #include "Game.hpp"
+#include "Events.hpp"
 
 StartMenu::StartMenu(
     const TextManager &textManager,
@@ -80,8 +81,8 @@ void StartMenu::select(
 {
     switch (mMenuChoice)
     {
-        case MenuChoice::Play: std::cout << "Play" << std::endl; break;
-        case MenuChoice::Quit: std::cout << "Quit" << std::endl; break;
+        case MenuChoice::Play: eventManager.emit<StartGameEvent>(); break;
+        case MenuChoice::Quit: eventManager.emit<QuitGameEvent>();  break;
     }
 }
 

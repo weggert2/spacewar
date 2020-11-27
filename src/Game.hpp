@@ -2,22 +2,20 @@
 
 #include "AssetManager.hpp"
 
-namespace entityx
-{
-    class EventManager;
-    class EntityManager;
-    class SystemManager;
-}
+#include <entityx/Event.h>
+#include <entityx/Entity.h>
+#include <entityx/System.h>
 
 class GameManager;
 class KeyManager;
 class Player;
+class QuitGameEvent;
 
 /*
  * The monolithic game class. Responsible for running your game!
  */
 
-class Game
+class Game : public entityx::Receiver<Game>
 {
 public:
     Game(
@@ -33,11 +31,11 @@ public:
         Player &player);
 
     void run();
+    void receive(const QuitGameEvent &event);
 
 private:
     void subscribeEvents();
     void buildSystems();
-
     void processEvents();
 
     void update(const sf::Time &deltaTime);

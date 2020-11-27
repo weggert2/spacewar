@@ -7,10 +7,6 @@
 #include "systems/Render.hpp"
 #include "systems/MenuSystem.hpp"
 
-#include <entityx/Event.h>
-#include <entityx/Entity.h>
-#include <entityx/System.h>
-
 #include <iostream>
 
 /* Debug printing. In production, you want a logging framework. */
@@ -77,7 +73,7 @@ void Game::subscribeEvents()
 {
     /* Connect the event manager to the events. */
     // mEventManager.subscribe<StartGameEvent>(*this);
-    // mEventManager.subscribe<QuitGameEvent>(*this);
+    mEventManager.subscribe<QuitGameEvent>(*this);
 }
 
 void Game::buildSystems()
@@ -114,17 +110,6 @@ void Game::processEvents()
             }
             break;
 
-            case sf::Event::MouseButtonPressed:
-            case sf::Event::MouseButtonReleased:
-            {
-                /* TODO! */
-                // const auto button = event.mouseButton.button;
-                // const bool isPressed = event.type == sf::Event::MouseButtonPressed;
-                // mEventManager.emit<MousePressEvent>(button, isPressed);
-                // mMouseManager.updateMouse(button, isPressed);
-            }
-            break;
-
             default:
             {
                 #ifdef DEBUG
@@ -133,6 +118,11 @@ void Game::processEvents()
             }
         }
     }
+}
+
+void Game::receive(const QuitGameEvent &event)
+{
+    mWindow.close();
 }
 
 void Game::update(

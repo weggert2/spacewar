@@ -29,6 +29,8 @@ void GameManager::subscribeEvents()
     // mEventManager.subscribe<QuitGameEvent>(*this);
     // mEventManager.subscribe<PauseGameEvent>(*this);
     // mEventManager.subscribe<ResumeGameEvent>(*this);
+
+    /* Note the Game class is subscribed to the QuitGameEvent direclt.y */
 }
 
 void GameManager::receive(

@@ -46,10 +46,10 @@ void MenuSystem::receive(
     {
         switch (event.getKey())
         {
-            case sf::Keyboard::Up:    menu->up(mEventManager);    break;
-            case sf::Keyboard::Down:  menu->down(mEventManager);  break;
-            case sf::Keyboard::Left:  menu->left(mEventManager);  break;
-            case sf::Keyboard::Right: menu->right(mEventManager); break;
+            case sf::Keyboard::Up:    menu->up(mEventManager);     break;
+            case sf::Keyboard::Down:  menu->down(mEventManager);   break;
+            case sf::Keyboard::Left:  menu->left(mEventManager);   break;
+            case sf::Keyboard::Right: menu->right(mEventManager);  break;
             case sf::Keyboard::Enter: menu->select(mEventManager); break;
             default: break;
         }
