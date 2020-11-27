@@ -3,8 +3,7 @@
 #include "Game.hpp"
 #include "GameManager.hpp"
 #include "KeyManager.hpp"
-#include "TextureId.hpp"
-#include "SoundId.hpp"
+#include "AssetIds.hpp"
 
 #include "components/Player.hpp"
 
@@ -27,8 +26,10 @@ int main()
      */
     TextureManager textureManager;
     SoundManager soundManager;
+    TextManager textManager;
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
+    AssetLibrary::loadAllText(textManager);
 
     /* Make the entity, event, and system managers. */
     entityx::EventManager eventManager;
@@ -39,6 +40,7 @@ int main()
 
     /* Make the player. */
     Player player;
+    // Player player(textureManager.get(TextureId::PlayerShip));
 
     /* Make the game. */
     Game game(
