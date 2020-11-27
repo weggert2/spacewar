@@ -20,6 +20,7 @@ public:
         entityx::EventManager &eventManager,
         entityx::EntityManager &entityManager,
         entityx::SystemManager &systemManager,
+        KeyManager &keyManager,
         Player &player);
 
     void run();
@@ -50,6 +51,7 @@ private:
 
     const TextureManager &mTextureManager;
     const SoundManager &mSoundManager;
+    KeyManager &mKeyManager;
 
     entityx::EventManager  &mEventManager;
     entityx::EntityManager &mEntityManager;

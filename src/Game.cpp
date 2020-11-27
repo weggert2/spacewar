@@ -19,6 +19,7 @@ Game::Game(
     entityx::EventManager &eventManager,
     entityx::EntityManager &entityManager,
     entityx::SystemManager &systemManager,
+    KeyManager &keyManager,
     Player &player):
         mWindow(defaultWindow()),
         mTextureManager(textureManager),
@@ -26,6 +27,7 @@ Game::Game(
         mEventManager(eventManager),
         mEntityManager(entityManager),
         mSystemManager(systemManager),
+        mKeyManager(keyManager),
         mPlayer(player)
 {
     subscribeEvents();
@@ -69,7 +71,8 @@ void Game::subscribeEvents()
 void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
-    // mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
+    mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
+    mSystemManager.add<ControlSystem>(mKeyManager);
 }
 
 void Game::processEvents()

@@ -1,8 +1,9 @@
 #include "AssetLibrary.hpp"
 #include "AssetManager.hpp"
+#include "Game.hpp"
+#include "KeyManager.hpp"
 #include "TextureId.hpp"
 #include "SoundId.hpp"
-#include "Game.hpp"
 
 #include "components/Player.hpp"
 
@@ -12,15 +13,19 @@
 
 int main()
 {
-    /* Dependency injection - make as many things up front as you can. */
-    TextureManager textureManager;
-    SoundManager soundManager;
+    /***********************************************************************
+     * Dependency injection - make as many things up front as you can.     *
+     * Main can look a bit crazy, but it's much easier to figure out where *
+     * objects are coming from.                                            *
+     ***********************************************************************/
 
     /*
      * Our game is simple enough that we can load all our assets at once.
      * For real games, these would be loaded / freed based on level, location,
      * etc.
      */
+    TextureManager textureManager;
+    SoundManager soundManager;
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
 
@@ -28,9 +33,9 @@ int main()
     entityx::EventManager eventManager;
     entityx::EntityManager entityManager(eventManager);
     entityx::SystemManager systemManager(entityManager, eventManager);
+    KeyManager keyManager;
 
     /* Make the player. */
-    // Player player(textureManager.get(TextureId::PlayerShip));
     Player player;
 
     /* Make the game. */
@@ -40,6 +45,7 @@ int main()
         eventManager,
         entityManager,
         systemManager,
+        keyManager,
         player);
 
     /* Run the game! Hope you enjoy! */
