@@ -16,9 +16,10 @@ void MenuComponent::update(
 }
 
 void MenuComponent::draw(
-    sf::RenderWindow &window)
+    sf::RenderWindow &window,
+    const sf::Vector2f &pos)
 {
-    mMenu->draw(window);
+    mMenu->draw(window, pos);
 }
 
 void MenuComponent::select(

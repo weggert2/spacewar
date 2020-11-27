@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AssetManager.hpp"
+
 #include <entityx/Entity.h>
 
 class EntityCreator
@@ -9,8 +11,17 @@ public:
     virtual void create(entityx::Entity entity) = 0;
 };
 
-class StartScreenCreator : public EntityCreator
+class StartMenuCreator : public EntityCreator
 {
 public:
-    virtual void create(entityx::Entity entity) override final;
+    StartMenuCreator(
+        const TextManager &textManager,
+        const FontManager &fontManager);
+
+    virtual void create(
+        entityx::Entity entity) override final;
+
+private:
+    const TextManager &mTextManager;
+    const FontManager &mFontManager;
 };

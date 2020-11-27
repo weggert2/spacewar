@@ -26,7 +26,7 @@ bool loadAllText(
 {
     bool success = true;
 
-    success &= textManager.load(TextId::SplashScreen, "../assets/text/space_war.txt");
+    success &= textManager.load(TextId::Logo, "../assets/text/space_war.txt");
 
     return success;
 }

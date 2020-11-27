@@ -47,6 +47,11 @@ private:
 
     static sf::RenderWindow defaultWindow();
 
+public:
+    /* Misc settings */
+    static constexpr int screenWidth  = 1000;
+    static constexpr int screenHeight = 1000;
+
 private:
     /* The render window */
     sf::RenderWindow mWindow;
@@ -70,8 +75,4 @@ private:
 
     /* The player. */
     Player &mPlayer;
-
-    /* Misc settings */
-    static constexpr int screenWidth  = 1000;
-    static constexpr int screenHeight = 1000;
 };

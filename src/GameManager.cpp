@@ -1,5 +1,7 @@
 #include "GameManager.hpp"
 
+#include "EntityFactory.hpp"
+
 #include <iostream>
 
 GameManager::GameManager(
@@ -32,5 +34,6 @@ void GameManager::subscribeEvents()
 void GameManager::receive(
     const LaunchGameEvent &launch)
 {
-    StartMenuCreator().create(mEntityManager.create());
+    StartMenuCreator creator(mTextManager, mFontManager);
+    creator.create(mEntityManager.create());
 }

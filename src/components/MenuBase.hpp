@@ -13,7 +13,7 @@ public:
     virtual ~MenuBase() = default;
 
     virtual void update(entityx::EventManager &events, float dt) = 0;
-    virtual void draw(sf::RenderWindow &window) = 0;
+    virtual void draw(sf::RenderWindow &window, const sf::Vector2f &pos) = 0;
     virtual void select(entityx::EventManager &eventManager) = 0;
     virtual void cancel(entityx::EventManager &eventManager) = 0;
     virtual void up(entityx::EventManager &eventManager) = 0;

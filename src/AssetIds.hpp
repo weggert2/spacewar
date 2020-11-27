@@ -13,7 +13,7 @@ enum class SoundId
 
 enum class TextId
 {
-    SplashScreen,
+    Logo,
     Pause,
     GameOver,
 };

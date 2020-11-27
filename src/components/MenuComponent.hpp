@@ -15,7 +15,7 @@ public:
         std::shared_ptr<MenuBase> menu);
 
     void update(entityx::EventManager &events, const float dt);
-    void draw(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window, const sf::Vector2f &pos);
     void select(entityx::EventManager &eventManager);
     void cancel(entityx::EventManager &eventManager);
     void up(entityx::EventManager &eventManager);

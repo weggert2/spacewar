@@ -1,6 +1,7 @@
 #include "MenuSystem.hpp"
 
 #include "components/MenuComponent.hpp"
+#include "components/Position.hpp"
 
 MenuSystem::MenuSystem(
     sf::RenderWindow &window,
@@ -24,10 +25,11 @@ void MenuSystem::update(
     float dt)
 {
     MenuComponent::Handle menu;
-    for (entityx::Entity e : entities.entities_with_components(menu))
+    Position::Handle position;
+    for (entityx::Entity e : entities.entities_with_components(menu, position))
     {
         menu->update(events, dt);
-        menu->draw(mWindow);
+        menu->draw(mWindow, position->getX());
     }
 }
 
