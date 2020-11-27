@@ -54,22 +54,6 @@ void Stage::receive(
     mEventManager.emit<StageClearedEvent>();
 }
 
-static bool validPos(
-    const sf::Vector2f &pos,
-    const std::vector<sf::Vector2f> &placed,
-    const float threshold)
-{
-    for (const sf::Vector2f &p : placed)
-    {
-        if (distsq(pos, p) < threshold)
-        {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 void Stage::receive(
     const StageClearedEvent &event)
 {
@@ -94,7 +78,7 @@ void Stage::receive(
     std::vector<sf::Vector2f> placed;
     placed.push_back(playerPos);
 
-    const int maxIter = 100;
+    const int maxIter = 20;
     int toPlace = mStage;
     std::uniform_real_distribution<float> xrange(edgeOffset, Game::screenWidth-edgeOffset);
     std::uniform_real_distribution<float> yrange(edgeOffset, Game::screenHeight-edgeOffset);
@@ -109,6 +93,7 @@ void Stage::receive(
     std::mt19937 rng(rd());
     #endif
 
+    /* Place the enemies. */
     while (toPlace > 0)
     {
         int iter = 0;
@@ -118,7 +103,8 @@ void Stage::receive(
             const float enemyAngle = rotrange(rng);
             if (validPos(enemyPos, placed, playerOffset))
             {
-                EnemyCreator(mTextureManager, enemyPos, enemyAngle).create(mEntityManager.create());
+                EnemyCreator(mTextureManager, enemyPos, enemyAngle).create(
+                    mEntityManager.create());
                 placed.push_back(enemyPos);
                 break;
             }
@@ -154,3 +140,18 @@ void Stage::getPlayerData(
     std::cerr << "entity manager couldn't find a player\n";
 }
 
+bool Stage::validEnemyPos(
+    const sf::Vector2f &pos,
+    const std::vector<sf::Vector2f> &placed,
+    const float threshold)
+{
+    for (const sf::Vector2f &p : placed)
+    {
+        if (distsq(pos, p) < threshold)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}

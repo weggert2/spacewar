@@ -1,13 +1,15 @@
 #include "EntityFactory.hpp"
 
+#include "Game.hpp"
+
 #include "components/Background.hpp"
 #include "components/Display.hpp"
 #include "components/MenuComponent.hpp"
 #include "components/Motion.hpp"
 #include "components/Position.hpp"
 #include "components/Player.hpp"
+#include "components/PlayerControl.hpp"
 #include "components/StartMenu.hpp"
-#include "Game.hpp"
 
 StartMenuCreator::StartMenuCreator(
     const TextManager &textManager,
@@ -50,13 +52,13 @@ PlayerCreator::PlayerCreator(
 void PlayerCreator::create(
     entityx::Entity entity)
 {
-    // entity.assign<Control>();
     entity.assign<Display>(mTextureManager.get(TextureId::PlayerShip));
     // entity.assign<Health>();
     // entity.assign<Hitbox>();
-    // entity.assign<Motion>();
+    entity.assign<Motion>();
     entity.assign<Player>();
-    // entity.assign<Weapon>();
+    entity.assign<PlayerControl>();
+    entity.assign<Weapon>();
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);
