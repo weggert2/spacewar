@@ -4,6 +4,9 @@
 
 #include <entityx/System.h>
 
+class StartGameEvent;
+class StageClearedEvent;
+
 class Stage : public entityx::System<Stage>,
               public entityx::Receiver<Stage>
 {

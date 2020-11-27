@@ -1,5 +1,8 @@
 #include "Stage.hpp"
 
+#include "Events.hpp"
+#include "EntityFactory.hpp"
+
 Stage::Stage(
     const TextureManager &textureManager,
     entityx::EntityManager &entityManager,
