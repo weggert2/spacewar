@@ -8,7 +8,7 @@ class Render : public entityx::System<Render>
 public:
     Render(
         sf::RenderWindow &window,
-        TextureManager &textureManager);
+        const TextureManager &textureManager);
 
    void update(
         entityx::EntityManager &entities,
@@ -17,5 +17,5 @@ public:
 
 private:
     sf::RenderWindow &mWindow;
-    TextureManager &mTextureManager;
+    const TextureManager &mTextureManager;
 };

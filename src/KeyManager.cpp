@@ -1,14 +1,14 @@
 #include "KeyManager.hpp"
 
 void KeyManager::updateKey(
-    const sf::KeyManager::Key key,
+    const sf::Keyboard::Key key,
     const bool pressed)
 {
     pressedMap[key] = pressed;
 }
 
 bool KeyManager::isPressed(
-    const sf::KeyManager::Key key) const
+    const sf::Keyboard::Key key) const
 {
     /* If key is not in the map already, C++ makes an entry for us.
      * I don't like to rely on that behavior though, so we'll add

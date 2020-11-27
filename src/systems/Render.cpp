@@ -1,8 +1,10 @@
 #include "Render.hpp"
 
+#include "AssetManager.hpp"
+
 Render::Render(
     sf::RenderWindow &window,
-    TextureManager &textureManager):
+    const TextureManager &textureManager):
         mWindow(window),
         mTextureManager(textureManager)
 {

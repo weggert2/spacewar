@@ -1,8 +1,11 @@
 #include "Game.hpp"
+#include "KeyManager.hpp"
 
 // #include "Events.hpp"
 
 #include "components/Player.hpp"
+
+#include "systems/Render.hpp"
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
@@ -71,8 +74,10 @@ void Game::subscribeEvents()
 void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
-    mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
-    mSystemManager.add<ControlSystem>(mKeyManager);
+    // mSystemManager.add<Render>(mWindow, mTextureManager);
+
+    Render render(mWindow);//, mTextureManager);
+    // mSystemManager.add<Control>(mKeyManager);
 }
 
 void Game::processEvents()

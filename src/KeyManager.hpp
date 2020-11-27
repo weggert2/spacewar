@@ -14,5 +14,5 @@ public:
         const sf::Keyboard::Key key) const;
 
 private:
-    std::unordered_map<sf::Keyboard::key, bool> pressedMap;
-}
+    std::unordered_map<sf::Keyboard::Key, bool> pressedMap;
+};

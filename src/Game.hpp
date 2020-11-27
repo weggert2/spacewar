@@ -9,6 +9,7 @@ namespace entityx
     class SystemManager;
 }
 
+class KeyManager;
 class Player;
 
 class Game
