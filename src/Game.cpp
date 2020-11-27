@@ -6,6 +6,7 @@
 #include "components/Player.hpp"
 #include "systems/Render.hpp"
 #include "systems/MenuSystem.hpp"
+#include "systems/Stage.hpp"
 
 #include <iostream>
 
@@ -81,6 +82,7 @@ void Game::buildSystems()
     /* Build the 'system' part of entity component system */
     mSystemManager.add<Render>(mWindow, mTextureManager);
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
+    mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
     // mSystemManager.add<Control>(mKeyManager);
 
     /* Required by entityx to be called after all the systems are added. */

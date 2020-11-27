@@ -1,5 +1,6 @@
 #include "EntityFactory.hpp"
 
+#include "components/Background.hpp"
 #include "components/Display.hpp"
 #include "components/MenuComponent.hpp"
 #include "components/StartMenu.hpp"
@@ -34,6 +35,7 @@ BackgroundCreator::BackgroundCreator(
 void BackgroundCreator::create(
     entityx::Entity entity)
 {
-    entity.assign<Display>(mTextureManager.get(TextureId::Background));
+
+    entity.assign<Background>(mTextureManager.get(TextureId::Background));
     entity.assign<Position>(sf::Vector2f(), 0.0);
 }

@@ -1,5 +1,6 @@
 #include "Render.hpp"
 
+#include "components/Background.hpp"
 #include "components/Display.hpp"
 #include "components/Position.hpp"
 
@@ -17,9 +18,16 @@ void Render::update(
     const double dt)
 {
     mWindow.clear();
-    Position::Handle position;
-    Display::Handle display;
 
+    Position::Handle position;
+    Background::Handle background;
+    for (entityx::Entity e : entities.entities_with_components(position, background))
+    {
+        background->mSprite.setPosition(position->getX());
+        mWindow.draw(background->mSprite);
+    }
+
+    Display::Handle display;
     for (entityx::Entity e : entities.entities_with_components(position, display))
     {
         display->mSprite.setPosition(position->getX());

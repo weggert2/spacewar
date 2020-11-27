@@ -46,4 +46,6 @@ void GameManager::receive(
 {
     /* Blows away all the entities, which clears the menu. */
     mEntityManager.reset();
+
+    /* The background, player, and enemies are placed in the Level system. */
 }

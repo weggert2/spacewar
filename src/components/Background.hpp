@@ -9,8 +9,6 @@ public:
     explicit Background(
         const sf::Texture &texture);
 
-    const sf::Sprite &get() const;
-
-private:
+public:
     sf::Sprite mSprite;
 };
