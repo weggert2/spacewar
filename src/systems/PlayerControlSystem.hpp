@@ -18,4 +18,4 @@ public:
 
 private:
     const KeyManager &mKeyManager;
-}
+};

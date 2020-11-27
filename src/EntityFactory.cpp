@@ -58,7 +58,7 @@ void PlayerCreator::create(
     entity.assign<Motion>();
     entity.assign<Player>();
     entity.assign<PlayerControl>();
-    entity.assign<Weapon>();
+    // entity.assign<Weapon>();
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);

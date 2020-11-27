@@ -7,3 +7,11 @@ PlayerControlSystem::PlayerControlSystem(
         mKeyManager(keyManager)
 {
 }
+
+void PlayerControlSystem::update(
+    entityx::EntityManager &entities,
+    entityx::EventManager &events,
+    const double dt)
+{
+
+}

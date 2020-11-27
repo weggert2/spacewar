@@ -7,15 +7,10 @@
  * The component representing controls (movement, fire keys)
  */
 
-class Control : public entityx::Component<Control>
+class PlayerControl : public entityx::Component<PlayerControl>
 {
 public:
-    Control(
-        const sf::Keyboard::Key up,
-        const sf::Keyboard::Key left,
-        const sf::Keyboard::Key down,
-        const sf::Keyboard::Key right,
-        const sf::Keyboard::Key shoot);
+    PlayerControl();
 
     /* Bind new keys. */
     void bindUp(const sf::Keyboard::Key k);

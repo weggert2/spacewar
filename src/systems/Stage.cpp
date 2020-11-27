@@ -101,7 +101,7 @@ void Stage::receive(
         {
             const sf::Vector2f enemyPos(xrange(rng), yrange(rng));
             const float enemyAngle = rotrange(rng);
-            if (validPos(enemyPos, placed, playerOffset))
+            if (validEnemyPos(enemyPos, placed, playerOffset))
             {
                 EnemyCreator(mTextureManager, enemyPos, enemyAngle).create(
                     mEntityManager.create());
@@ -143,7 +143,7 @@ void Stage::getPlayerData(
 bool Stage::validEnemyPos(
     const sf::Vector2f &pos,
     const std::vector<sf::Vector2f> &placed,
-    const float threshold)
+    const float threshold) const
 {
     for (const sf::Vector2f &p : placed)
     {
