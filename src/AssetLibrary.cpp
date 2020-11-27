@@ -31,4 +31,15 @@ bool loadAllText(
     return success;
 }
 
+bool loadAllFonts(
+    FontManager &fontManager)
+{
+    bool success = true;
+
+    success &= fontManager.load(FontId::Default, "../assets/fonts/arial-monospace.ttf");
+    success &= fontManager.load(FontId::Menu, "../assets/fonts/galiver-sans.ttf");
+
+    return success;
+}
+
 } /* end namespace AssetLibrary. */

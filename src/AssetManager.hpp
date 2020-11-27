@@ -64,4 +64,5 @@ private:
 /* Convenience typedefs. */
 typedef AssetManager<sf::Texture,     TextureId> TextureManager;
 typedef AssetManager<sf::SoundBuffer, SoundId>   SoundManager;
+typedef AssetManager<sf::Font,        FontId>    FontManager;
 typedef AssetManager<StringWrapper,   TextId>    TextManager;

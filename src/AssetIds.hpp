@@ -17,3 +17,9 @@ enum class TextId
     Pause,
     GameOver,
 };
+
+enum class FontId
+{
+    Default,
+    Menu,
+};

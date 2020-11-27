@@ -27,9 +27,11 @@ int main()
     TextureManager textureManager;
     SoundManager soundManager;
     TextManager textManager;
+    FontManager fontManager;
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
     AssetLibrary::loadAllText(textManager);
+    AssetLibrary::loadAllFonts(fontManager);
 
     /* Make the entity, event, and system managers. */
     entityx::EventManager eventManager;
