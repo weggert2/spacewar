@@ -50,6 +50,7 @@ void MenuSystem::receive(
             case sf::Keyboard::Down:  menu->down(mEventManager);  break;
             case sf::Keyboard::Left:  menu->left(mEventManager);  break;
             case sf::Keyboard::Right: menu->right(mEventManager); break;
+            case sf::Keyboard::Enter: menu->select(mEventManager); break;
             default: break;
         }
     }

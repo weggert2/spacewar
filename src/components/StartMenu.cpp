@@ -36,6 +36,16 @@ StartMenu::StartMenu(
     setOrigin(mQuitText);
 }
 
+void StartMenu::update(
+    entityx::EventManager &events,
+    float dt)
+{
+    (void)events;
+    (void)dt;
+
+    /* Nothing needed. */
+}
+
 void StartMenu::draw(
     sf::RenderWindow &window,
     const sf::Vector2f &pos)
@@ -65,8 +75,29 @@ void StartMenu::draw(
     window.draw(mQuitText);
 }
 
-void StartMenu::up(entityx::EventManager &eventManager)
+void StartMenu::select(
+    entityx::EventManager &eventManager)
 {
+    switch (mMenuChoice)
+    {
+        case MenuChoice::Play: std::cout << "Play" << std::endl; break;
+        case MenuChoice::Quit: std::cout << "Quit" << std::endl; break;
+    }
+}
+
+void StartMenu::cancel(
+    entityx::EventManager &eventManager)
+{
+    (void)eventManager;
+
+    /* Nothing needed. */
+}
+
+void StartMenu::up(
+    entityx::EventManager &eventManager)
+{
+    (void)eventManager;
+
     /* This is overkill for just two choices. If we add more, it'll be easy. */
     switch (mMenuChoice)
     {
@@ -75,12 +106,27 @@ void StartMenu::up(entityx::EventManager &eventManager)
     }
 }
 
-void StartMenu::down(entityx::EventManager &eventManager)
+void StartMenu::down(
+    entityx::EventManager &eventManager)
 {
-    /* This is overkill for just two choices. If we add more, it'll be easy. */
+    (void)eventManager;
     switch (mMenuChoice)
     {
         case MenuChoice::Play: mMenuChoice = MenuChoice::Quit; break;
         case MenuChoice::Quit: mMenuChoice = MenuChoice::Play; break;
     }
+}
+
+void StartMenu::left(
+    entityx::EventManager &eventManager)
+{
+    /* No left/right in this menu. */
+    (void)eventManager;
+}
+
+void StartMenu::right(
+    entityx::EventManager &eventManager)
+{
+    /* No left/right in this menu. */
+    (void)eventManager;
 }
