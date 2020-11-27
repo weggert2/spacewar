@@ -36,7 +36,7 @@ bool loadAllFonts(
 {
     bool success = true;
 
-    success &= fontManager.load(FontId::Default, "../assets/fonts/arial-monospace.ttf");
+    success &= fontManager.load(FontId::Default, "../assets/fonts/RobotoMono-Regular.ttf");
     success &= fontManager.load(FontId::Menu, "../assets/fonts/galiver-sans.ttf");
 
     return success;

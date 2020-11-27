@@ -4,14 +4,15 @@ StartMenu::StartMenu(
     const TextManager &textManager,
     const FontManager &fontManager)
 {
-    const auto logoFont = fontManager.get(FontId::Default);
-    const auto menuFont = fontManager.get(FontId::Menu);
+    const sf::Font &logoFont = fontManager.get(FontId::Default);
+    const sf::Font &menuFont = fontManager.get(FontId::Menu);
 
     const std::string &logoText = textManager.get(TextId::Logo).get();
 
     mLogoText.setFont(logoFont);
-    mLogoText.setCharacterSize(10);
+    mLogoText.setCharacterSize(20);
     mLogoText.setString(logoText);
+    mLogoText.setFillColor(sf::Color::Red);
 
 
 

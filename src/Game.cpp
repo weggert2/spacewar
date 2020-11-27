@@ -86,6 +86,9 @@ void Game::buildSystems()
     mSystemManager.add<Render>(mWindow, mTextureManager);
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     // mSystemManager.add<Control>(mKeyManager);
+
+    /* Required by entityx to be called after all the systems are added. */
+    mSystemManager.configure();
 }
 
 void Game::processEvents()

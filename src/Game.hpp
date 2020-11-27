@@ -47,8 +47,8 @@ private:
 
 public:
     /* Misc settings */
-    static constexpr int screenWidth  = 1000;
-    static constexpr int screenHeight = 1000;
+    static constexpr int screenWidth  = 1920;
+    static constexpr int screenHeight = 1200;
 
 private:
     /* The render window */
