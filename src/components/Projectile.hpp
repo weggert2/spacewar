@@ -8,7 +8,7 @@ public:
     Projectile(
         const double currDuration = 0.0,
         const double durationCoeff = 1.0,
-        const double baseDuration = 0.5,
+        const double baseDuration = 4.0,
         const double damageCoeff = 1.0,
         const double baseDamage = 1.0);
 

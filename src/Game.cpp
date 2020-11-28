@@ -7,6 +7,7 @@
 #include "systems/MenuSystem.hpp"
 #include "systems/MovementSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
+#include "systems/ProjectileDurationSystem.hpp"
 #include "systems/RenderSystem.hpp"
 #include "systems/StageSystem.hpp"
 #include "systems/WeaponSystem.hpp"
@@ -83,6 +84,7 @@ void Game::buildSystems()
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<MovementSystem>();
     mSystemManager.add<WeaponSystem>(mTextureManager);
+    mSystemManager.add<ProjectileDurationSystem>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -140,6 +142,7 @@ void Game::update(
     mSystemManager.update<PlayerControlSystem>(dt);
     mSystemManager.update<MovementSystem>(dt);
     mSystemManager.update<WeaponSystem>(dt);
+    mSystemManager.update<ProjectileDurationSystem>(dt);
     mSystemManager.update<StageSystem>(dt);
 }
 

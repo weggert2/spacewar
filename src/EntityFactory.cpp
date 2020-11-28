@@ -121,10 +121,10 @@ void ProjectileCreator::create(
         mTextureInfo.mOrigX,
         mTextureInfo.mOrigY);
 
-    const float bulletSpeed = -450.0f;
-    const float bulletOmega = 0.0;
+    const float speed = -450.0f;
+    const float omega = 0.0;
 
-    entity.assign<Motion>(bulletSpeed, bulletOmega, bulletSpeed, bulletOmega);
+    entity.assign<Motion>(speed, omega, speed, omega);
     entity.assign<Position>(mInitialPos, mInitialAngle);
     entity.assign<Projectile>();
 }
