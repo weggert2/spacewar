@@ -1,10 +1,10 @@
-#include "Render.hpp"
+#include "RenderSystem.hpp"
 
 #include "components/Background.hpp"
 #include "components/Display.hpp"
 #include "components/Position.hpp"
 
-Render::Render(
+RenderSystem::RenderSystem(
     sf::RenderWindow &window,
     const TextureManager &textureManager):
         mWindow(window),
@@ -12,7 +12,7 @@ Render::Render(
 {
 }
 
-void Render::update(
+void RenderSystem::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
     const double dt)

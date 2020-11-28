@@ -7,8 +7,9 @@
 #include "systems/MenuSystem.hpp"
 #include "systems/Movement.hpp"
 #include "systems/PlayerControlSystem.hpp"
-#include "systems/Render.hpp"
+#include "systems/RenderSystem.hpp"
 #include "systems/Stage.hpp"
+#include "systems/WeaponSystem.hpp"
 
 #include <iostream>
 
@@ -76,12 +77,12 @@ void Game::subscribeEvents()
 void Game::buildSystems()
 {
     /* Build the 'system' part of entity component system */
-    mSystemManager.add<Render>(mWindow, mTextureManager);
+    mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<Movement>();
-    mSystemManager.add<WeaponSystem>()
+    // mSystemManager.add<WeaponSystem>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -149,7 +150,7 @@ void Game::render(
     mWindow.clear();
 
     /* Render the things that need rendering. */
-    mSystemManager.update<Render>(dt);
+    mSystemManager.update<RenderSystem>(dt);
     mSystemManager.update<MenuSystem>(dt);
 
     // mWindow.draw(mPlayer.get());

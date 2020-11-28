@@ -5,10 +5,10 @@
 #include <entityx/System.h>
 #include <SFML/Graphics.hpp>
 
-class Render : public entityx::System<Render>
+class RenderSystem : public entityx::System<RenderSystem>
 {
 public:
-    Render(
+    RenderSystem(
         sf::RenderWindow &window,
         const TextureManager &textureManager);
 

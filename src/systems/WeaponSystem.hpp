@@ -2,4 +2,6 @@
 
 #include <entityx/System.h>
 
-class WeaponSystem : public entityx::System<GunSystem>
+class WeaponSystem : public entityx::System<WeaponSystem>
+{
+};
