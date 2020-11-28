@@ -37,6 +37,8 @@ public:
     void receive(const PauseGameEvent &event);
     void receive(const ShowControlsEvent &event);
     void receive(const ShowCreditsEvent &event);
+    void receive(const WinGameEvent &event);
+    void receive(const LoseGameEvent &event);
 
 private:
     void subscribeEvents();

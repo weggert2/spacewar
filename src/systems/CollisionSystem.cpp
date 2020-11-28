@@ -7,6 +7,12 @@
 #include "components/Position.hpp"
 #include "components/Projectile.hpp"
 
+CollisionSystem::CollisionSystem(
+    entityx::EventManager &eventManager)
+{
+    eventManager.subscribe<LoseGameEvent>(*this);
+}
+
 /*
  * A little hack to do easy hitboxes.
  * TODO: Upgrade to use the real hitbox component. I implemented one,
@@ -71,6 +77,21 @@ static void detectCollisions(
 
             if (rect1.intersects(rect2))
             {
+
+                /*
+                 * I really don't know what's going on here. On the first cycle,
+                 * the global bounding boxes of the enemy and the player are
+                 * identical. After the first cycle, they're in the right spot.
+                 * Maybe it's the ordering of how the systems are updated?
+                 * I don't know. Let's hack around it for now.
+                 *
+                 * Obviously this is not appropriate for production code.
+                 */
+                if (firstCycle)
+                {
+                    firstCycle = false;
+                    return;
+                }
                 /*
                  * TODO: Damage, don't destroy. Let another system do that.
                  * TODO: Animation.
@@ -92,24 +113,14 @@ void CollisionSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-    /*
-     * I really don't know what's going on here. On the first cycle,
-     * the global bounding boxes of the enemy and the player are identical.
-     * After the first cycle, they're in the right spot. Maybe it's the ordering
-     * of how the systems are updated? I don't know. Let's hack around it for
-     * now.
-     *
-     * Obviously this is not appropriate for production code.
-     */
-    static bool firstCycle = true;
-    if (firstCycle)
-    {
-        firstCycle = false;
-        return;
-    }
-
     detectCollisions<Player, Enemy>(entities, events, dt, 0.25, 0.25);
     detectCollisions<Player, Projectile>(entities, events, dt);
     detectCollisions<Enemy, Projectile>(entities, events, dt);
     detectCollisions<Projectile, Projectile>(entities, events, dt, 0.35, 0.35);
+}
+
+void CollisionSystem::receive(
+    const LoseGameEvent &event)
+{
+    firstCycle = true;
 }

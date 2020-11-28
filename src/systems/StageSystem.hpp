@@ -1,12 +1,10 @@
 #pragma once
 
 #include "AssetManager.hpp"
+#include "Events.hpp"
 
 #include <entityx/System.h>
 #include <SFML/System/Vector2.hpp>
-
-class StartGameEvent;
-class StageClearedEvent;
 
 class StageSystem : public entityx::System<StageSystem>,
                     public entityx::Receiver<StageSystem>
@@ -26,6 +24,8 @@ public:
 
     void receive(const StartGameEvent &event);
     void receive(const StageClearedEvent &event);
+    void receive(const WinGameEvent &event);
+    void receive(const LoseGameEvent &event);
 
 private:
     bool validEnemyPos(

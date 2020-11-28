@@ -30,6 +30,8 @@ void GameManager::subscribeEvents()
     mEventManager.subscribe<ResumeGameEvent>(*this);
     mEventManager.subscribe<ShowControlsEvent>(*this);
     mEventManager.subscribe<ShowCreditsEvent>(*this);
+    mEventManager.subscribe<WinGameEvent>(*this);
+    mEventManager.subscribe<LoseGameEvent>(*this);
 
     /* Note the Game class is subscribed to the QuitGameEvent directly */
 }
@@ -134,6 +136,45 @@ void GameManager::receive(
         mFontManager.get(FontId::Menu),
         *this,
         30);
+
+    creator.create(mEntityManager.create());
+}
+
+void GameManager::receive(
+    const WinGameEvent &event)
+{
+    (void)event;
+
+    Menu::Handle menu;
+    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
+    {
+        e.destroy();
+    }
+
+    mGameState = GameState::GameOver;
+
+    StartMenuCreator creator(
+        mTextManager.get(TextId::Win).get(),
+        mFontManager.get(FontId::Pause),
+        mFontManager.get(FontId::Menu),
+        *this);
+
+    creator.create(mEntityManager.create());
+}
+
+void GameManager::receive(
+    const LoseGameEvent &event)
+{
+    (void)event;
+
+    mEntityManager.reset();
+    mGameState = GameState::GameOver;
+
+    StartMenuCreator creator(
+        mTextManager.get(TextId::GameOver).get(),
+        mFontManager.get(FontId::Pause),
+        mFontManager.get(FontId::Menu),
+        *this);
 
     creator.create(mEntityManager.create());
 }

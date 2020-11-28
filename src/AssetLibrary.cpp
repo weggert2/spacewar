@@ -35,6 +35,7 @@ bool loadAllText(
     success &= textManager.load(TextId::GameOver, "../assets/text/game_over.txt");
     success &= textManager.load(TextId::Controls, "../assets/text/controls.txt");
     success &= textManager.load(TextId::Credits,  "../assets/text/credits.txt");
+    success &= textManager.load(TextId::Win,      "../assets/text/win.txt");
 
     return success;
 }

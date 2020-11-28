@@ -19,6 +19,7 @@ enum class TextId
     Pause,
     Controls,
     Credits,
+    Win,
     GameOver,
 };
 

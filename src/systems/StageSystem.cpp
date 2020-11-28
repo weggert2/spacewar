@@ -6,7 +6,6 @@
 #include "components/Enemy.hpp"
 
 #include "Game.hpp"
-#include "Events.hpp"
 #include "EntityFactory.hpp"
 #include "entity_utils.hpp"
 #include "math_utils.hpp"
@@ -30,6 +29,8 @@ void StageSystem::subscribeEvents()
 {
     mEventManager.subscribe<StartGameEvent>(*this);
     mEventManager.subscribe<StageClearedEvent>(*this);
+    mEventManager.subscribe<WinGameEvent>(*this);
+    mEventManager.subscribe<LoseGameEvent>(*this);
 }
 
 void StageSystem::update(
@@ -156,4 +157,14 @@ bool StageSystem::validEnemyPos(
     }
 
     return true;
+}
+
+void StageSystem::receive(const WinGameEvent &event)
+{
+    mStage = 0;
+}
+
+void StageSystem::receive(const LoseGameEvent &event)
+{
+    mStage = 0;
 }

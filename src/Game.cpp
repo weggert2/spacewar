@@ -8,6 +8,7 @@
 #include "systems/MenuSystem.hpp"
 #include "systems/MovementSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
+#include "systems/PlayerDeathSystem.hpp"
 #include "systems/ProjectileDurationSystem.hpp"
 #include "systems/RenderSystem.hpp"
 #include "systems/StageSystem.hpp"
@@ -80,10 +81,11 @@ void Game::buildSystems()
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     mSystemManager.add<StageSystem>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
+    mSystemManager.add<PlayerDeathSystem>();
     mSystemManager.add<MovementSystem>();
     mSystemManager.add<WeaponSystem>(mTextureManager);
     mSystemManager.add<ProjectileDurationSystem>();
-    mSystemManager.add<CollisionSystem>();
+    mSystemManager.add<CollisionSystem>(mEventManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -138,12 +140,13 @@ void Game::update(
 
     const float dt = deltaTime.asSeconds();
 
+    mSystemManager.update<StageSystem>(dt);
     mSystemManager.update<PlayerControlSystem>(dt);
+    mSystemManager.update<PlayerDeathSystem>(dt);
     mSystemManager.update<MovementSystem>(dt);
     mSystemManager.update<WeaponSystem>(dt);
     mSystemManager.update<ProjectileDurationSystem>(dt);
     mSystemManager.update<CollisionSystem>(dt);
-    mSystemManager.update<StageSystem>(dt);
 }
 
 void Game::render(

@@ -15,6 +15,7 @@ class ResumeGameEvent   : public entityx::Event<ResumeGameEvent>   {};
 class ShowControlsEvent : public entityx::Event<ShowControlsEvent> {};
 class ShowCreditsEvent  : public entityx::Event<ShowCreditsEvent>  {};
 class WinGameEvent      : public entityx::Event<WinGameEvent>      {};
+class LoseGameEvent     : public entityx::Event<LoseGameEvent>     {};
 
 class KeyboardEvent : public entityx::Event<KeyboardEvent>
 {

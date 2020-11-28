@@ -153,9 +153,10 @@ void StartMenu::resumeGame(
 {
     switch (mGameManager.getGameState())
     {
-        case GameState::StartMenu: eventManager.emit<StartGameEvent>();  break;
+        case GameState::StartMenu:
+        case GameState::GameOver:  eventManager.emit<StartGameEvent>();  break;
+
         case GameState::Playing:   /* Do nothing */                      break;
         case GameState::Paused:    eventManager.emit<ResumeGameEvent>(); break;
-        case GameState::GameOver:  eventManager.emit<StartGameEvent>();  break;
     }
 }
