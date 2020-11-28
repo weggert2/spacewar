@@ -94,3 +94,30 @@ private:
 /*
  * Bullet creator
  */
+class ProjectileCreator : public EntityCreator
+{
+public:
+    struct TextureInfo
+    {
+        TextureId mTextureId;
+        float mScaleX;
+        float mScaleY;
+        float mOrigX;
+        float mOrigY;
+    }
+
+    ProjectileCreator(
+        const TextureManager &textureManager,
+        const TextureInfo &textureInfo,
+        const sf::Vector2f &initialPos,
+        const float initialAngle);
+
+    virtual void create(
+        entityx::Entity) override final;
+
+private:
+    const TextureManger &mTextureManager
+    const TextureInfo mTextureInfo;
+    const sf::Vector2f mInitialPos,
+    const float mInitialAngle;
+};

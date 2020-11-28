@@ -6,14 +6,23 @@ class Projectile : public entityx::Component<Projectile>
 {
 public:
     Projectile(
-        const entityx::Entity::Id ownerId,
-        const double maxDuration,
-        const double currDuration,
-        const double damage);
+        const double currDuration = 0.0,
+        const double durationCoeff = 1.0,
+        const double baseDuration = 0.5,
+        const double damageCoeff = 1.0,
+        const double baseDamage = 1.0);
+
+    void increaseDuration(const double dt);
+    double getDuration() const;
+    double getMaxDuration() const;
+    double getDamage() const;
 
 private:
-    entityx::Entity::Id mOwnerId;
-    double mMaxDuration;
+    /* The current duration. */
     double mCurrDuration;
-    double mDamage;
+
+    const double mDurationCoeff;
+    const double mBaseDuration;
+    const double mDamageCoeff;
+    const double mBaseDamage;
 };

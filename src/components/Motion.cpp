@@ -1,10 +1,12 @@
 #include "Motion.hpp"
 
 Motion::Motion(
+    const float currSpeed,
+    const float currOmega,
     const float linearSpeed,
     const float angularSpeed):
-        mCurrSpeed(0.0),
-        mCurrOmega(0.0),
+        mCurrSpeed(currSpeed),
+        mCurrOmega(currOmega),
         mSpeed(linearSpeed),
         mOmega(angularSpeed)
 {

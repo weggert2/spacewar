@@ -6,8 +6,12 @@
 class Display : public entityx::Component<Display>
 {
 public:
-    explicit Display(
-        const sf::Texture &texture);
+    Display(
+        const sf::Texture &texture,
+        const float scaleX = 0.4f,
+        const float scaleY = 0.4f,
+        const float origX = 1.0f,
+        const float origY = 1.35f);
 
 public:
     sf::Sprite mSprite;

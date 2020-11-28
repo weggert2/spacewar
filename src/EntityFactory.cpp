@@ -10,6 +10,7 @@
 #include "components/Position.hpp"
 #include "components/Player.hpp"
 #include "components/PlayerControl.hpp"
+#include "components/Projectile.hpp"
 #include "components/StartMenu.hpp"
 #include "components/Weapon.hpp"
 
@@ -96,4 +97,29 @@ void EnemyCreator::create(
     // entity.assign<Motion>();
     entity.assign<Position>(mInitialPos, mInitialAngle);
     // entity.assign<Weapon>();
+}
+
+ProjectileCreator::ProjectileCreator(
+    const TextureManager &textureManager,
+    const TextureInfo &textureInfo,
+    const sf::Vector2f &initialPos,
+    const float initialAngle):
+        mTextureManager(textureManager),
+        mTextureInfo(textureInfo)0,
+        mInitialPos(initialPos),
+        mInitialAngle(initialAngle)
+{
+}
+
+void ProjectileCreator::create(
+    entityx::Entity entity)
+{
+    entity.assign<Display>(mTextureInfo);
+
+    const float bulletSpeed = 450.0f;
+    const float bulletOmega = 0.0;
+
+    entity.assign<Motion>(bulletSpeed, bulletSpeed, bulletOmega, bulletOmega);
+    entity.assign<Position>(mInitialPos, mInitialAngle);
+    entity.assign<Projectile>();
 }

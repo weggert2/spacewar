@@ -4,8 +4,10 @@ class Motion : public entityx::Component<Motion>
 {
 public:
     Motion(
-        const float linearSpeed = 300.0,
-        const float angularSpeed = 200.0);
+        const float currSpeed = 0.0f,
+        const float currOmega = 0.0f,
+        const float linearSpeed = 300.0f,
+        const float angularSpeed = 200.0f);
 
     float getSpeed() const;
     float getOmega() const;
