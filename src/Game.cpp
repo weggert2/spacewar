@@ -70,7 +70,6 @@ void Game::run()
 void Game::subscribeEvents()
 {
     /* Connect the event manager to the events. */
-    // mEventManager.subscribe<StartGameEvent>(*this);
     mEventManager.subscribe<QuitGameEvent>(*this);
 }
 
@@ -82,6 +81,7 @@ void Game::buildSystems()
     mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<Movement>();
+    mSystemManager.add<WeaponSystem>()
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
