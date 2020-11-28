@@ -17,7 +17,7 @@ GameManager::GameManager(
         mFontManager(fontManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
-        mGameState(GameState::Unknown)
+        mGameState(GameState::StartMenu)
 {
     subscribeEvents();
 }
@@ -30,6 +30,11 @@ void GameManager::subscribeEvents()
     // mEventManager.subscribe<ResumeGameEvent>(*this);
 
     /* Note the Game class is subscribed to the QuitGameEvent directly */
+}
+
+GameState GameManager::getGameState() const
+{
+    return mGameState;
 }
 
 void GameManager::receive(
@@ -46,6 +51,8 @@ void GameManager::receive(
 {
     /* Blows away all the entities, which clears the menu. */
     mEntityManager.reset();
+
+    mGameState = GameState::Playing;
 
     /* The background, player, and enemies are placed in the Level system. */
 }

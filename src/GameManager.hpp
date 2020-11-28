@@ -12,7 +12,6 @@ enum class GameState
     Playing,
     Paused,
     GameOver,
-    Unknown,
 };
 
 /**
@@ -29,6 +28,8 @@ public:
         const FontManager &fontManager,
         entityx::EntityManager &entityManager,
         entityx::EventManager &eventManager);
+
+    GameState getGameState() const;
 
     void receive(const LaunchGameEvent &launch);
     void receive(const StartGameEvent &start);

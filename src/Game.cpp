@@ -1,11 +1,12 @@
 #include "Game.hpp"
 
+#include "GameManager.hpp"
 #include "Events.hpp"
 #include "KeyManager.hpp"
 
-#include "components/Player.hpp"
-#include "systems/Render.hpp"
 #include "systems/MenuSystem.hpp"
+#include "systems/PlayerControlSystem.hpp"
+#include "systems/Render.hpp"
 #include "systems/Stage.hpp"
 
 #include <iostream>
@@ -78,7 +79,7 @@ void Game::buildSystems()
     mSystemManager.add<Render>(mWindow, mTextureManager);
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
-    // mSystemManager.add<Control>(mKeyManager);
+    mSystemManager.add<PlayerControlSystem>(mKeyManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -125,7 +126,15 @@ void Game::receive(const QuitGameEvent &event)
 void Game::update(
     const sf::Time &deltaTime)
 {
-    // mPlayer.update(deltaTime);
+    if (mGameManager.getGameState() != GameState::Playing)
+    {
+        return;
+    }
+
+    const float dt = deltaTime.asSeconds();
+
+    mSystemManager.update<PlayerControlSystem>(dt);
+    mSystemManager.update<Stage>(dt);
 }
 
 void Game::render(

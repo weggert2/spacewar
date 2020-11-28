@@ -13,5 +13,5 @@ void PlayerControlSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-
+    std::cout << "Got here" << std::endl;
 }
