@@ -11,7 +11,7 @@ public:
     Position(
         const sf::Vector2f &position,
         const double rotation,
-        const sf::Vector2f &offset = sf::Vector2f(80.0, -80.0));
+        const sf::Vector2f &offset = sf::Vector2f(80.0, -50.0));
 
     const sf::Vector2f &getX() const;
     const sf::Vector2f &getOffset() const;

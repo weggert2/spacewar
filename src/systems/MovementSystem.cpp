@@ -4,6 +4,7 @@
 
 #include "components/Enemy.hpp"
 #include "components/Position.hpp"
+#include "components/Projectile.hpp"
 #include "components/Motion.hpp"
 
 #include "entity_utils.hpp"
@@ -32,7 +33,12 @@ void MovementSystem::update(
 
         const sf::Vector2f n = computeHeading(position->getTheta());
         position->move(motion->getSpeed()*n*dtf);
-        position->setX(wrap(position->getX()));
+
+        /* Wrap around for things that aren't projectiles. */
+        if (!e.has_component<Projectile>())
+        {
+            position->setX(wrap(position->getX()));
+        }
     }
 }
 

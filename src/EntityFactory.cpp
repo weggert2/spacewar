@@ -5,6 +5,7 @@
 
 #include "components/Background.hpp"
 #include "components/Display.hpp"
+#include "components/Hitbox.hpp"
 #include "components/Menu.hpp"
 #include "components/Motion.hpp"
 #include "components/Position.hpp"
@@ -64,9 +65,13 @@ PlayerCreator::PlayerCreator(
 void PlayerCreator::create(
     entityx::Entity entity)
 {
-    entity.assign<Display>(mTextureManager.get(TextureId::PlayerShip));
+    /* Get the sprite bounds to determine the hitbox. */
+    const sf::Texture &texture = mTextureManager.get(TextureId::PlayerShip);
+    const sf::FloatRect bounds = Display(texture).mSprite.getGlobalBounds();
+
+    entity.assign<Display>(texture);
     // entity.assign<Health>();
-    // entity.assign<Hitbox>();
+    entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Motion>();
     entity.assign<Player>();
     entity.assign<PlayerControl>();
@@ -90,10 +95,14 @@ EnemyCreator::EnemyCreator(
 void EnemyCreator::create(
     entityx::Entity entity)
 {
+    /* Get the sprite bounds to determine the hitbox. */
+    const sf::Texture &texture = mTextureManager.get(TextureId::EnemyShip);
+    const sf::FloatRect bounds = Display(texture).mSprite.getGlobalBounds();
+
     // entity.assign<Control>();
-    entity.assign<Display>(mTextureManager.get(TextureId::EnemyShip));
+    entity.assign<Display>(texture);
     // entity.assign<Health>();
-    // entity.assign<Hitbox>();
+    entity.assign<Hitbox>(bounds.width, bounds.height);
     // entity.assign<Motion>();
     entity.assign<Position>(mInitialPos, mInitialAngle);
     // entity.assign<Weapon>();
@@ -114,17 +123,22 @@ ProjectileCreator::ProjectileCreator(
 void ProjectileCreator::create(
     entityx::Entity entity)
 {
-    entity.assign<Display>(
-        mTextureManager.get(mTextureInfo.mTextureId),
-        mTextureInfo.mScaleX,
+    /* Get the sprite bounds to determine the hitbox. */
+    const sf::Texture &texture = mTextureManager.get(mTextureInfo.mTextureId);
+    const Display display(
+        texture,
         mTextureInfo.mScaleY,
         mTextureInfo.mOrigX,
         mTextureInfo.mOrigY);
 
-    const float speed = -450.0f;
+    const sf::FloatRect bounds = display.mSprite.getGlobalBounds();
+    entity.assign_from_copy<Display>(display);
+
+    const float speed = 0.0;//-450.0f;
     const float omega = 0.0;
 
     entity.assign<Motion>(speed, omega, speed, omega);
     entity.assign<Position>(mInitialPos, mInitialAngle);
+    entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Projectile>();
 }

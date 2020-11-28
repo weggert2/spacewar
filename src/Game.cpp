@@ -4,6 +4,7 @@
 #include "Events.hpp"
 #include "KeyManager.hpp"
 
+#include "systems/CollisionSystem.hpp"
 #include "systems/MenuSystem.hpp"
 #include "systems/MovementSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
@@ -85,6 +86,7 @@ void Game::buildSystems()
     mSystemManager.add<MovementSystem>();
     mSystemManager.add<WeaponSystem>(mTextureManager);
     mSystemManager.add<ProjectileDurationSystem>();
+    mSystemManager.add<CollisionSystem>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -143,6 +145,7 @@ void Game::update(
     mSystemManager.update<MovementSystem>(dt);
     mSystemManager.update<WeaponSystem>(dt);
     mSystemManager.update<ProjectileDurationSystem>(dt);
+    mSystemManager.update<CollisionSystem>(dt);
     mSystemManager.update<StageSystem>(dt);
 }
 
