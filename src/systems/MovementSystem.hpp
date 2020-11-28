@@ -2,7 +2,7 @@
 
 #include <entityx/System.h>
 
-class Movement : public entityx::System<Movement>
+class MovementSystem : public entityx::System<MovementSystem>
 {
 public:
     void update(

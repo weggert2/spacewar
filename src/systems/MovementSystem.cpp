@@ -1,4 +1,4 @@
-#include "Movement.hpp"
+#include "MovementSystem.hpp"
 
 #include "components/Position.hpp"
 #include "components/Motion.hpp"
@@ -7,7 +7,7 @@
 
 #include <cmath>
 
-void Movement::update(
+void MovementSystem::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
     const double dt)
