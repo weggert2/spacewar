@@ -133,7 +133,7 @@ void GameManager::receive(
         mFontManager.get(FontId::Menu),
         mFontManager.get(FontId::Menu),
         *this,
-        40);
+        30);
 
     creator.create(mEntityManager.create());
 }
