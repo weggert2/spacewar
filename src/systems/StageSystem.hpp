@@ -41,4 +41,6 @@ private:
     /* What stage the player is currently on. Every time all the enemies on
      * a stage are killed, the stage increases and more enemies are added. */
     size_t mStage;
+
+    const size_t winStage = 10u;
 };

@@ -3,6 +3,7 @@
 #include "components/Display.hpp"
 #include "components/Position.hpp"
 #include "components/Player.hpp"
+#include "components/Enemy.hpp"
 
 #include "Game.hpp"
 #include "Events.hpp"
@@ -36,10 +37,20 @@ void StageSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-    /* Nothing needed, I think? */
-    (void)entities;
-    (void)events;
-    (void)dt;
+    /* If there are no enemies, clear the stage. */
+    bool enemiesRemain = false;
+    Enemy::Handle enemy;
+    for (entityx::Entity e : entities.entities_with_components(enemy))
+    {
+        (void)e;
+        enemiesRemain = true;
+        break;
+    }
+
+    if (!enemiesRemain)
+    {
+        events.emit<StageClearedEvent>();
+    }
 }
 
 void StageSystem::receive(
@@ -61,6 +72,11 @@ void StageSystem::receive(
     (void)event;
 
     mStage++;
+    if (mStage >= winStage)
+    {
+        mEventManager.emit<WinGameEvent>();
+        return;
+    }
 
     /*
      * We want to place mStage enemies such that they are:
@@ -76,7 +92,7 @@ void StageSystem::receive(
     const sf::Vector2f playerPos = getPlayerPos(mEntityManager);
     const sf::FloatRect playerBounds = getPlayerBounds(mEntityManager);
     const float edgeOffset = playerBounds.width/2.0;
-    const float playerOffset = edgeOffset*edgeOffset;
+    const float playerOffset = 5.0*edgeOffset*edgeOffset;
 
     std::vector<sf::Vector2f> placed;
     placed.push_back(playerPos);
@@ -113,6 +129,13 @@ void StageSystem::receive(
             }
 
             iter++;
+        }
+
+        if (iter == maxIter)
+        {
+            #ifdef DEBUG
+            std::cout << "Could not place enemy\n";
+            #endif
         }
 
         toPlace--;
