@@ -36,10 +36,6 @@ public:
     void receive(const ResumeGameEvent &event);
     void receive(const PauseGameEvent &event);
 
-    // void receive(const QuitGameEvent &quit);
-    // void receive(const PauseGameEvent &pause);
-    // void receive(const ResumeGameEvent &resume);
-
 private:
     void subscribeEvents();
 
