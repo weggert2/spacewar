@@ -8,7 +8,7 @@
 #include "systems/MovementSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
 #include "systems/RenderSystem.hpp"
-#include "systems/Stage.hpp"
+#include "systems/StageSystem.hpp"
 #include "systems/WeaponSystem.hpp"
 
 #include <iostream>
@@ -79,7 +79,7 @@ void Game::buildSystems()
     /* Build the 'system' part of entity component system */
     mSystemManager.add<RenderSystem>(mWindow, mTextureManager);
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
-    mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
+    mSystemManager.add<StageSystem>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<MovementSystem>();
     // mSystemManager.add<WeaponSystem>();
@@ -139,7 +139,7 @@ void Game::update(
 
     mSystemManager.update<PlayerControlSystem>(dt);
     mSystemManager.update<MovementSystem>(dt);
-    mSystemManager.update<Stage>(dt);
+    mSystemManager.update<StageSystem>(dt);
 }
 
 void Game::render(

@@ -1,4 +1,4 @@
-#include "Stage.hpp"
+#include "StageSystem.hpp"
 
 #include "components/Display.hpp"
 #include "components/Position.hpp"
@@ -14,7 +14,7 @@
 
 #define DEBUG 1
 
-Stage::Stage(
+StageSystem::StageSystem(
     const TextureManager &textureManager,
     entityx::EntityManager &entityManager,
     entityx::EventManager &eventManager):
@@ -26,13 +26,13 @@ Stage::Stage(
     subscribeEvents();
 }
 
-void Stage::subscribeEvents()
+void StageSystem::subscribeEvents()
 {
     mEventManager.subscribe<StartGameEvent>(*this);
     mEventManager.subscribe<StageClearedEvent>(*this);
 }
 
-void Stage::update(
+void StageSystem::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
     const double dt)
@@ -43,7 +43,7 @@ void Stage::update(
     (void)dt;
 }
 
-void Stage::receive(
+void StageSystem::receive(
     const StartGameEvent &event)
 {
     (void)event;
@@ -56,7 +56,7 @@ void Stage::receive(
     mEventManager.emit<StageClearedEvent>();
 }
 
-void Stage::receive(
+void StageSystem::receive(
     const StageClearedEvent &event)
 {
     (void)event;
@@ -120,7 +120,7 @@ void Stage::receive(
     }
 }
 
-void Stage::getPlayerData(
+void StageSystem::getPlayerData(
     sf::Vector2f &playerPos,
     float &offset) const
 {
@@ -146,7 +146,7 @@ void Stage::getPlayerData(
     std::cerr << "entity manager couldn't find a player\n";
 }
 
-bool Stage::validEnemyPos(
+bool StageSystem::validEnemyPos(
     const sf::Vector2f &pos,
     const std::vector<sf::Vector2f> &placed,
     const float threshold) const

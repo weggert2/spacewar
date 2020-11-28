@@ -8,11 +8,11 @@
 class StartGameEvent;
 class StageClearedEvent;
 
-class Stage : public entityx::System<Stage>,
-              public entityx::Receiver<Stage>
+class StageSystem : public entityx::System<StageSystem>,
+                    public entityx::Receiver<StageSystem>
 {
 public:
-    Stage(
+    StageSystem(
         const TextureManager &textureManager,
         entityx::EntityManager &entityManager,
         entityx::EventManager &eventManager);

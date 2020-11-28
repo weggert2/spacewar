@@ -65,7 +65,7 @@ void GameManager::receive(
 
     mGameState = GameState::Playing;
 
-    /* The background, player, and enemies are placed in the Level system. */
+    /* The background, player, and enemies are placed in the Stage system. */
 }
 
 void GameManager::receive(
@@ -73,7 +73,7 @@ void GameManager::receive(
 {
     /* We want to do the same thing as a StartGameEvent. We just don't
      * want an _actual_ StartGameEvent, since that has other implications with
-     * systems like the Stage system. Therefore, just defer to the relevant
+     * systems like the StageSystem. Therefore, just defer to the relevant
      * 'receive' method here. */
     (void)event;
     StartGameEvent dummyEvent;
