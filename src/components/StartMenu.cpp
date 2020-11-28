@@ -16,7 +16,7 @@ StartMenu::StartMenu(
 
     const auto setOrigin = [](sf::Text &t) {
         const sf::FloatRect sz = t.getLocalBounds();
-        t.setOrigin(sz.width/2.0, sz.height/2.0);
+        t.setOrigin(sz.width/2.0f, sz.height/2.0f);
     };
 
     mLogoText.setFont(logoFont);

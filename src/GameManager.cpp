@@ -49,6 +49,8 @@ void GameManager::receive(
 void GameManager::receive(
     const StartGameEvent &event)
 {
+    (void)event;
+
     /* Blows away all the entities, which clears the menu. */
     mEntityManager.reset();
 

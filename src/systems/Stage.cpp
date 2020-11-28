@@ -46,6 +46,8 @@ void Stage::update(
 void Stage::receive(
     const StartGameEvent &event)
 {
+    (void)event;
+
     /* Make the background. */
     BackgroundCreator(mTextureManager).create(mEntityManager.create());
     PlayerCreator(mTextureManager).create(mEntityManager.create());
@@ -57,6 +59,8 @@ void Stage::receive(
 void Stage::receive(
     const StageClearedEvent &event)
 {
+    (void)event;
+
     mStage++;
 
     /*
@@ -129,11 +133,13 @@ void Stage::getPlayerData(
      * probably for this reason. */
     for (entityx::Entity e : mEntityManager.entities_with_components(player, display, position))
     {
+        (void)e;
+
         /* There should only ever be one of these, so we don't mind iterating. */
         playerPos = position->getX();
 
         /* To prevent ships from being placed too close to the edge: */
-        offset = display->mSprite.getLocalBounds().width/2.0;
+        offset = display->mSprite.getLocalBounds().width/2.0f;
         return;
     }
 

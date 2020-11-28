@@ -12,6 +12,8 @@ void Movement::update(
     entityx::EventManager &events,
     const double dt)
 {
+    (void)events;
+
     Position::Handle position;
     Motion::Handle motion;
 

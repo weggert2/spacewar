@@ -122,6 +122,7 @@ void Game::processEvents()
 
 void Game::receive(const QuitGameEvent &event)
 {
+    (void)event;
     mWindow.close();
 }
 

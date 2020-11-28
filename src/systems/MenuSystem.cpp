@@ -24,10 +24,14 @@ void MenuSystem::update(
     entityx::EventManager &events,
     double dt)
 {
+    (void)events;
+
     MenuComponent::Handle menu;
     Position::Handle position;
     for (entityx::Entity e : entities.entities_with_components(menu, position))
     {
+        (void)e;
+
         menu->update(events, dt);
         menu->draw(mWindow, position->getX());
     }
@@ -44,6 +48,8 @@ void MenuSystem::receive(
     MenuComponent::Handle menu;
     for (entityx::Entity e : mEntityManager.entities_with_components(menu))
     {
+        (void)e;
+
         switch (event.getKey())
         {
             case sf::Keyboard::Up:    menu->up(mEventManager);     break;

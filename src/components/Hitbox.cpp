@@ -4,19 +4,19 @@
 #include "Position.hpp"
 
 Hitbox::Hitbox(
-    const double width,
-    const double height):
+    const float width,
+    const float height):
         mWidth(width),
         mHeight(height)
 {
 }
 
-double Hitbox::getWidth() const
+float Hitbox::getWidth() const
 {
     return mWidth;
 }
 
-double Hitbox::getHeight() const
+float Hitbox::getHeight() const
 {
     return mHeight;
 }
@@ -27,20 +27,20 @@ bool Hitbox::collides(
     const Hitbox &otherBox) const
 {
     /* We won't worry about the rotated box - we'll use take the AABB */
-    const auto buildRect = [&](sf::Vector2f p, double w, double h) {
-        return sf::Rect<float>(
-            p.x - w/2.0,
-            p.y - h/2.0,
+    const auto buildRect = [&](sf::Vector2f p, float w, float h) {
+        return sf::FloatRect(
+            p.x - w/2.0f,
+            p.y - h/2.0f,
             mWidth,
             mHeight);
     };
 
-    const sf::Rect<float> thisRect = buildRect(
+    const sf::FloatRect thisRect = buildRect(
         thisPos.getX(),
         mWidth,
         mHeight);
 
-    const sf::Rect<float> otherRect = buildRect(
+    const sf::FloatRect otherRect = buildRect(
         otherPos.getX(),
         otherBox.getWidth(),
         otherBox.getHeight());

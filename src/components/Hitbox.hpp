@@ -12,18 +12,18 @@ class Hitbox : public entityx::Component<Hitbox>
 {
 public:
     Hitbox(
-        const double width,
-        const double height);
+        const float width,
+        const float height);
 
     bool collides(
         const Position &thisPos,
         const Position &otherPos,
         const Hitbox &otherBox) const;
 
-    double getWidth() const;
-    double getHeight() const;
+    float getWidth() const;
+    float getHeight() const;
 
 private:
-    const double mWidth;
-    const double mHeight;
+    const float mWidth;
+    const float mHeight;
 };

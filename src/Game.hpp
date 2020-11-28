@@ -57,9 +57,6 @@ private:
     const TextManager &mTextManager;
     const FontManager &mFontManager;
 
-    /* Keyboard input handler. */
-    KeyManager &mKeyManager;
-
     /* Entity-component system */
     entityx::EventManager  &mEventManager;
     entityx::EntityManager &mEntityManager;
@@ -67,4 +64,7 @@ private:
 
     /* The game state stack. */
     GameManager &mGameManager;
+
+    /* Keyboard input handler. */
+    KeyManager &mKeyManager;
 };

@@ -16,11 +16,16 @@ void PlayerControlSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
+    (void)events;
+    (void)dt;
+
     PlayerControl::Handle playerControl;
     Motion::Handle motion;
 
     for (entityx::Entity e : entities.entities_with_components(playerControl, motion))
     {
+        (void)e;
+
         motion->setImpulse(
             mKeyManager.isPressed(playerControl->getBindUp()),
             mKeyManager.isPressed(playerControl->getBindDown()));
