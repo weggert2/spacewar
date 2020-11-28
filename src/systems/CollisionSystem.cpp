@@ -7,8 +7,12 @@
 #include "components/Position.hpp"
 #include "components/Projectile.hpp"
 
-/* A little hack to do easy hitboxes.
- * TODO: Upgrade to use the real hitbox component. */
+/*
+ * A little hack to do easy hitboxes.
+ * TODO: Upgrade to use the real hitbox component. I implemented one,
+ * but it didn't seem to give me the right answer... so go revisit that
+ * when we can.
+ */
 static sf::FloatRect adjustHitbox(
     const sf::FloatRect &r,
     const float fac)
@@ -67,7 +71,10 @@ static void detectCollisions(
 
             if (rect1.intersects(rect2))
             {
-                /* TODO: Animation. */
+                /*
+                 * TODO: Damage, don't destroy. Let another system do that.
+                 * TODO: Animation.
+                 */
                 e2.destroy();
                 e1Destroyed = true;
             }

@@ -105,9 +105,9 @@ void EnemyCreator::create(
     entity.assign<Enemy>();
     // entity.assign<Health>();
     entity.assign<Hitbox>(bounds.width, bounds.height);
-    // entity.assign<Motion>();
+    entity.assign<Motion>();
     entity.assign<Position>(mInitialPos, mInitialAngle);
-    // entity.assign<Weapon>();
+    entity.assign<Weapon>();
 }
 
 ProjectileCreator::ProjectileCreator(
