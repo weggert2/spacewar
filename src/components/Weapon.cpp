@@ -24,7 +24,11 @@ bool Weapon::getActive() const
 void Weapon::decreaseCooldown(
     const float dt)
 {
-    mCurrCooldown -= dt;
+    /* Prevent underflow, although it would take a _very_ long time. */
+    if (mCurrCooldown >= 0.0)
+    {
+        mCurrCooldown -= dt;
+    }
 }
 
 double Weapon::getCooldown() const

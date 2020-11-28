@@ -6,7 +6,7 @@ class Weapon : public entityx::Component<Weapon>
 {
 public:
     Weapon(
-        const double maxCooldown,
+        const double maxCooldown = 0.5,
         const double damageCoeff = 1.0);
 
     void setActive(const bool active);

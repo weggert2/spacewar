@@ -70,7 +70,7 @@ void PlayerCreator::create(
     entity.assign<Motion>();
     entity.assign<Player>();
     entity.assign<PlayerControl>();
-    entity.assign<Weapon>(0.5);
+    entity.assign<Weapon>();
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);
@@ -121,10 +121,10 @@ void ProjectileCreator::create(
         mTextureInfo.mOrigX,
         mTextureInfo.mOrigY);
 
-    const float bulletSpeed = 450.0f;
+    const float bulletSpeed = -450.0f;
     const float bulletOmega = 0.0;
 
-    entity.assign<Motion>(bulletSpeed, bulletSpeed, bulletOmega, bulletOmega);
+    entity.assign<Motion>(bulletSpeed, bulletOmega, bulletSpeed, bulletOmega);
     entity.assign<Position>(mInitialPos, mInitialAngle);
     entity.assign<Projectile>();
 }

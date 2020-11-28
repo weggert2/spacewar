@@ -82,7 +82,7 @@ void Game::buildSystems()
     mSystemManager.add<StageSystem>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<MovementSystem>();
-    mSystemManager.add<WeaponSystem>();
+    mSystemManager.add<WeaponSystem>(mTextureManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();

@@ -6,11 +6,15 @@
 class Position : public entityx::Component<Position>
 {
 public:
+    /* The offset is a hack so that projectiles can be placed at the
+     * center of ships. TODO: remove the ugly hack. */
     Position(
         const sf::Vector2f &position,
-        const double rotation);
+        const double rotation,
+        const sf::Vector2f &offset = sf::Vector2f(80.0, -80.0));
 
     const sf::Vector2f &getX() const;
+    const sf::Vector2f &getOffset() const;
     double getTheta() const;
 
     void move(const sf::Vector2f &dx);
@@ -23,4 +27,5 @@ private:
     /* Position and rotation. */
     sf::Vector2f mX;
     double mTheta;
+    const sf::Vector2f mOffset;
 };

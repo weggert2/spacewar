@@ -2,15 +2,22 @@
 
 Position::Position(
     const sf::Vector2f &position,
-    const double rotation):
+    const double rotation,
+    const sf::Vector2f &offset):
         mX(position),
-        mTheta(rotation)
+        mTheta(rotation),
+        mOffset(offset)
 {
 }
 
 const sf::Vector2f &Position::getX() const
 {
     return mX;
+}
+
+const sf::Vector2f &Position::getOffset() const
+{
+    return mOffset;
 }
 
 double Position::getTheta() const
