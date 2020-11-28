@@ -90,3 +90,7 @@ private:
     const sf::Vector2f mInitialPos;
     const float mInitialAngle;
 };
+
+/*
+ * Bullet creator
+ */

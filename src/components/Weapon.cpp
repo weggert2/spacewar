@@ -9,3 +9,30 @@ Weapon::Weapon(
         mDamageCoeff(damageCoeff)
 {
 }
+
+void Weapon::setActive(
+    const bool active)
+{
+    mActive = active;
+}
+
+bool Weapon::getActive() const
+{
+    return mActive;
+}
+
+void Weapon::decreaseCooldown(
+    const float dt)
+{
+    mCurrCooldown -= dt;
+}
+
+double Weapon::getCooldown() const
+{
+    return mCurrCooldown;
+}
+
+void Weapon::resetCooldown()
+{
+    mCurrCooldown = mMaxCooldown;
+}

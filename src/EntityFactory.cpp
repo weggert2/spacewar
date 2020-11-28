@@ -11,6 +11,7 @@
 #include "components/Player.hpp"
 #include "components/PlayerControl.hpp"
 #include "components/StartMenu.hpp"
+#include "components/Weapon.hpp"
 
 StartMenuCreator::StartMenuCreator(
     const std::wstring &logoText,
@@ -68,7 +69,7 @@ void PlayerCreator::create(
     entity.assign<Motion>();
     entity.assign<Player>();
     entity.assign<PlayerControl>();
-    // entity.assign<Weapon>();
+    entity.assign<Weapon>(0.5);
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);

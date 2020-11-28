@@ -13,20 +13,16 @@ void MovementSystem::update(
     const double dt)
 {
     (void)events;
+    const float dtf = (float)dt;
 
     Position::Handle position;
     Motion::Handle motion;
-
     for (entityx::Entity e : entities.entities_with_components(motion, position))
     {
         (void)e;
-
-        const float dtf = (float)dt;
         position->rotate(motion->getOmega()*dtf);
 
-        /* Rotate the y unit vector by theta to get the heading direction. */
-        const float theta = toRad(position->getTheta());
-        const sf::Vector2f n(-std::sin(theta), std::cos(theta));
+        const sf::Vector2f n = computeHeading(position->getTheta());
         position->move(motion->getSpeed()*n*dtf);
     }
 }

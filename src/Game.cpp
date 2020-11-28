@@ -82,7 +82,7 @@ void Game::buildSystems()
     mSystemManager.add<StageSystem>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
     mSystemManager.add<MovementSystem>();
-    // mSystemManager.add<WeaponSystem>();
+    mSystemManager.add<WeaponSystem>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -139,6 +139,7 @@ void Game::update(
 
     mSystemManager.update<PlayerControlSystem>(dt);
     mSystemManager.update<MovementSystem>(dt);
+    mSystemManager.update<WeaponSystem>(dt);
     mSystemManager.update<StageSystem>(dt);
 }
 
@@ -153,7 +154,6 @@ void Game::render(
     mSystemManager.update<RenderSystem>(dt);
     mSystemManager.update<MenuSystem>(dt);
 
-    // mWindow.draw(mPlayer.get());
     mWindow.display();
 }
 

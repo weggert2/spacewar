@@ -92,7 +92,7 @@ void StageSystem::receive(
     #ifdef DEBUG
     /* Fix the seed. */
     (void)rd;
-    std::mt19937 rng(5);
+    std::mt19937 rng(5); /* This puts the first ship in a good spot for testing. */
     #else
     std::mt19937 rng(rd());
     #endif

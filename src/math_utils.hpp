@@ -28,3 +28,12 @@ inline float distsq(
 
     return dx*dx + dy*dy;
 }
+
+/**
+ * Returns the heading given the rotational angle, assuming degrees.
+ */
+inline sf::Vector2f computeHeading(const float theta)
+{
+    const float th = toRad(theta);
+    return sf::Vector2f(-std::sin(th), std::cos(th));
+}

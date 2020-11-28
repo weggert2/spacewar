@@ -4,6 +4,7 @@
 
 #include "components/PlayerControl.hpp"
 #include "components/Motion.hpp"
+#include "components/Weapon.hpp"
 
 PlayerControlSystem::PlayerControlSystem(
     const KeyManager &keyManager):
@@ -21,8 +22,9 @@ void PlayerControlSystem::update(
 
     PlayerControl::Handle playerControl;
     Motion::Handle motion;
+    Weapon::Handle weapon;
 
-    for (entityx::Entity e : entities.entities_with_components(playerControl, motion))
+    for (entityx::Entity e : entities.entities_with_components(playerControl, motion, weapon))
     {
         (void)e;
 
@@ -33,5 +35,7 @@ void PlayerControlSystem::update(
         motion->setRotate(
             mKeyManager.isPressed(playerControl->getBindLeft()),
             mKeyManager.isPressed(playerControl->getBindRight()));
+
+        weapon->setActive(mKeyManager.isPressed(playerControl->getBindShoot()));
     }
 }
