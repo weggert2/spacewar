@@ -5,6 +5,7 @@
 
 #include "components/Background.hpp"
 #include "components/Display.hpp"
+#include "components/Enemy.hpp"
 #include "components/Hitbox.hpp"
 #include "components/Menu.hpp"
 #include "components/Motion.hpp"
@@ -101,6 +102,7 @@ void EnemyCreator::create(
 
     // entity.assign<Control>();
     entity.assign<Display>(texture);
+    entity.assign<Enemy>();
     // entity.assign<Health>();
     entity.assign<Hitbox>(bounds.width, bounds.height);
     // entity.assign<Motion>();
@@ -134,7 +136,7 @@ void ProjectileCreator::create(
     const sf::FloatRect bounds = display.mSprite.getGlobalBounds();
     entity.assign_from_copy<Display>(display);
 
-    const float speed = 0.0;//-450.0f;
+    const float speed = -450.0f;
     const float omega = 0.0;
 
     entity.assign<Motion>(speed, omega, speed, omega);
