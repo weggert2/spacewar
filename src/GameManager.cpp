@@ -1,6 +1,6 @@
 #include "GameManager.hpp"
 #include "EntityFactory.hpp"
-#include "components/MenuComponent.hpp"
+#include "components/Menu.hpp"
 
 #include <iostream>
 
@@ -57,7 +57,7 @@ void GameManager::receive(
 {
     (void)event;
 
-    MenuComponent::Handle menu;
+    Menu::Handle menu;
     for (entityx::Entity e : mEntityManager.entities_with_components(menu))
     {
         e.destroy();

@@ -5,7 +5,7 @@
 
 #include "components/Background.hpp"
 #include "components/Display.hpp"
-#include "components/MenuComponent.hpp"
+#include "components/Menu.hpp"
 #include "components/Motion.hpp"
 #include "components/Position.hpp"
 #include "components/Player.hpp"
@@ -33,7 +33,7 @@ void StartMenuCreator::create(
         mMenuFont,
         mGameManager);
 
-    entity.assign<MenuComponent>(menu);
+    entity.assign<Menu>(menu);
 
     const float x = Game::screenWidth/2.0;
     const float y = Game::screenHeight/2.5;

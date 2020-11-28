@@ -8,10 +8,15 @@
 
 class MenuBase;
 
-class MenuComponent : public entityx::Component<MenuComponent>
+/*
+ * Menu is the component. MenuBase and the things that inherit it provide
+ * the menu logic.
+ */
+
+class Menu : public entityx::Component<Menu>
 {
 public:
-    explicit MenuComponent(
+    explicit Menu(
         std::shared_ptr<MenuBase> menu);
 
     void update(entityx::EventManager &events, const float dt);

@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 
 /*
- * Base class for menus.
+ * Base class for menus. These are the actual things that do the work.
+ * The "Menu" class is the component.
  */
 
 class MenuBase

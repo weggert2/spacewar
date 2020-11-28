@@ -1,6 +1,6 @@
 #include "MenuSystem.hpp"
 
-#include "components/MenuComponent.hpp"
+#include "components/Menu.hpp"
 #include "components/Position.hpp"
 
 MenuSystem::MenuSystem(
@@ -26,7 +26,7 @@ void MenuSystem::update(
 {
     (void)events;
 
-    MenuComponent::Handle menu;
+    Menu::Handle menu;
     Position::Handle position;
     for (entityx::Entity e : entities.entities_with_components(menu, position))
     {
@@ -45,7 +45,7 @@ void MenuSystem::receive(
         return;
     }
 
-    MenuComponent::Handle menu;
+    Menu::Handle menu;
     bool menuOpen = false;
     for (entityx::Entity e : mEntityManager.entities_with_components(menu))
     {

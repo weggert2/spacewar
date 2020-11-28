@@ -1,58 +1,58 @@
-#include "MenuComponent.hpp"
+#include "Menu.hpp"
 
 #include "MenuBase.hpp"
 
-MenuComponent::MenuComponent(
+Menu::Menu(
     std::shared_ptr<MenuBase> menu):
         mMenu(menu)
 {
 }
 
-void MenuComponent::update(
+void Menu::update(
     entityx::EventManager &events,
     const float dt)
 {
     mMenu->update(events, dt);
 }
 
-void MenuComponent::draw(
+void Menu::draw(
     sf::RenderWindow &window,
     const sf::Vector2f &pos)
 {
     mMenu->draw(window, pos);
 }
 
-void MenuComponent::select(
+void Menu::select(
     entityx::EventManager &eventManager)
 {
     mMenu->select(eventManager);
 }
 
-void MenuComponent::cancel(
+void Menu::cancel(
     entityx::EventManager &eventManager)
 {
     mMenu->cancel(eventManager);
 }
 
-void MenuComponent::up(
+void Menu::up(
     entityx::EventManager &eventManager)
 {
     mMenu->up(eventManager);
 }
 
-void MenuComponent::down(
+void Menu::down(
     entityx::EventManager &eventManager)
 {
     mMenu->down(eventManager);
 }
 
-void MenuComponent::left(
+void Menu::left(
     entityx::EventManager &eventManager)
 {
     mMenu->left(eventManager);
 }
 
-void MenuComponent::right(
+void Menu::right(
     entityx::EventManager &eventManager)
 {
     mMenu->right(eventManager);
