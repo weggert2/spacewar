@@ -3,12 +3,14 @@
 #include "components/Position.hpp"
 #include "components/Motion.hpp"
 
+#include "math_utils.hpp"
+
 #include <cmath>
 
 void Movement::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
-    float dt)
+    const double dt)
 {
     Position::Handle position;
     Motion::Handle motion;
@@ -17,11 +19,12 @@ void Movement::update(
     {
         (void)e;
 
-        position->rotate(motion->getOmega()*dt);
+        const float dtf = (float)dt;
+        position->rotate(motion->getOmega()*dtf);
 
         /* Rotate the y unit vector by theta to get the heading direction. */
-        const float theta = position->getTheta();
+        const float theta = toRad(position->getTheta());
         const sf::Vector2f n(-std::sin(theta), std::cos(theta));
-        position->move(motion->getSpeed()*n*dt);
+        position->move(motion->getSpeed()*n*dtf);
     }
 }

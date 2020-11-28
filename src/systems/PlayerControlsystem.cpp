@@ -2,6 +2,9 @@
 
 #include "KeyManager.hpp"
 
+#include "components/PlayerControl.hpp"
+#include "components/Motion.hpp"
+
 PlayerControlSystem::PlayerControlSystem(
     const KeyManager &keyManager):
         mKeyManager(keyManager)
@@ -13,5 +16,17 @@ void PlayerControlSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-    std::cout << "Got here" << std::endl;
+    PlayerControl::Handle playerControl;
+    Motion::Handle motion;
+
+    for (entityx::Entity e : entities.entities_with_components(playerControl, motion))
+    {
+        motion->setImpulse(
+            mKeyManager.isPressed(playerControl->getBindUp()),
+            mKeyManager.isPressed(playerControl->getBindDown()));
+
+        motion->setRotate(
+            mKeyManager.isPressed(playerControl->getBindLeft()),
+            mKeyManager.isPressed(playerControl->getBindRight()));
+    }
 }

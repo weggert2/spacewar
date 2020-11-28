@@ -5,15 +5,13 @@ class Motion : public entityx::Component<Motion>
 public:
     Motion(
         const float linearSpeed = 200.0,
-        const float angularSpeed = 100.0);
+        const float angularSpeed = 200.0);
 
     float getSpeed() const;
     float getOmega() const;
 
-    void setImpulseUp(const bool choice);
-    void setImpulseDown(const bool choice);
-    void setRotateLeft(const bool choice);
-    void setRotateRight(const bool choice);
+    void setImpulse(const bool up, const bool down);
+    void setRotate(const bool left, const bool right);
 
 private:
     /**

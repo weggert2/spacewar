@@ -5,6 +5,7 @@
 #include "KeyManager.hpp"
 
 #include "systems/MenuSystem.hpp"
+#include "systems/Movement.hpp"
 #include "systems/PlayerControlSystem.hpp"
 #include "systems/Render.hpp"
 #include "systems/Stage.hpp"
@@ -80,6 +81,7 @@ void Game::buildSystems()
     mSystemManager.add<MenuSystem>(mWindow, mEntityManager, mEventManager);
     mSystemManager.add<Stage>(mTextureManager, mEntityManager, mEventManager);
     mSystemManager.add<PlayerControlSystem>(mKeyManager);
+    mSystemManager.add<Movement>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -134,6 +136,7 @@ void Game::update(
     const float dt = deltaTime.asSeconds();
 
     mSystemManager.update<PlayerControlSystem>(dt);
+    mSystemManager.update<Movement>(dt);
     mSystemManager.update<Stage>(dt);
 }
 

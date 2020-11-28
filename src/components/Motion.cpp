@@ -20,26 +20,20 @@ float Motion::getOmega() const
     return mCurrOmega;
 }
 
-void Motion::setImpulseUp(
-    const bool choice)
+void Motion::setImpulse(
+    const bool up,
+    const bool down)
 {
-    mCurrSpeed = choice ? -mSpeed : 0.0f;
+    if      (up)   mCurrSpeed = -mSpeed;
+    else if (down) mCurrSpeed =  mSpeed;
+    else           mCurrSpeed =  0.0f;
 }
 
-void Motion::setImpulseDown(
-    const bool choice)
+void Motion::setRotate(
+    const bool left,
+    const bool right)
 {
-    mCurrSpeed = choice ? mSpeed : 0.0f;
-}
-
-void Motion::setRotateLeft(
-    const bool choice)
-{
-    mCurrOmega = choice ? -mOmega : 0.0f;
-}
-
-void Motion::setRotateRight(
-    const bool choice)
-{
-    mCurrOmega = choice ? mOmega : 0.0f;
+    if      (left)  mCurrOmega = -mOmega;
+    else if (right) mCurrOmega =  mOmega;
+    else            mCurrOmega =  0.0f;
 }
