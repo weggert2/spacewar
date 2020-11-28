@@ -27,6 +27,7 @@ void GameManager::subscribeEvents()
     mEventManager.subscribe<LaunchGameEvent>(*this);
     mEventManager.subscribe<StartGameEvent>(*this);
     mEventManager.subscribe<PauseGameEvent>(*this);
+    mEventManager.subscribe<ResumeGameEvent>(*this);
     // mEventManager.subscribe<ResumeGameEvent>(*this);
 
     /* Note the Game class is subscribed to the QuitGameEvent directly */
@@ -38,14 +39,15 @@ GameState GameManager::getGameState() const
 }
 
 void GameManager::receive(
-    const LaunchGameEvent &launch)
+    const LaunchGameEvent &event)
 {
-    (void)launch;
+    (void)event;
 
     StartMenuCreator creator(
         mTextManager.get(TextId::Logo).get(),
         mFontManager.get(FontId::Logo),
-        mFontManager.get(FontId::Menu));
+        mFontManager.get(FontId::Menu),
+        *this);
 
     creator.create(mEntityManager.create());
 }
@@ -67,6 +69,19 @@ void GameManager::receive(
 }
 
 void GameManager::receive(
+    const ResumeGameEvent &event)
+{
+    /* We want to do the same thing as a StartGameEvent. We just don't
+     * want an _actual_ StartGameEvent, since that has other implications with
+     * systems like the Stage system. Therefore, just defer to the relevant
+     * 'receive' method here. */
+    (void)event;
+    StartGameEvent dummyEvent;
+
+    receive(dummyEvent);
+}
+
+void GameManager::receive(
     const PauseGameEvent &event)
 {
     (void)event;
@@ -76,7 +91,8 @@ void GameManager::receive(
     StartMenuCreator creator(
         mTextManager.get(TextId::Pause).get(),
         mFontManager.get(FontId::Pause),
-        mFontManager.get(FontId::Menu));
+        mFontManager.get(FontId::Menu),
+        *this);
 
     creator.create(mEntityManager.create());
 }

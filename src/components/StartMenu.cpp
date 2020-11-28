@@ -1,15 +1,19 @@
 #include "StartMenu.hpp"
-#include "Game.hpp"
+
 #include "Events.hpp"
+#include "Game.hpp"
+#include "GameManager.hpp"
 
 StartMenu::StartMenu(
     const std::wstring &logoText,
     const sf::Font &logoFont,
-    const sf::Font &menuFont):
+    const sf::Font &menuFont,
+    const GameManager &gameManager):
         mLogoText(),
         mPlayText(),
         mQuitText(),
-        mMenuChoice(MenuChoice::Play)
+        mMenuChoice(MenuChoice::Play),
+        mGameManager(gameManager)
 {
     const auto setOrigin = [](sf::Text &t) {
         const sf::FloatRect sz = t.getLocalBounds();
@@ -81,7 +85,7 @@ void StartMenu::select(
 {
     switch (mMenuChoice)
     {
-        case MenuChoice::Play:     eventManager.emit<StartGameEvent>();    break;
+        case MenuChoice::Play:     resumeGame(eventManager); break;
         case MenuChoice::Quit:     eventManager.emit<QuitGameEvent>();     break;
         case MenuChoice::Controls: eventManager.emit<ShowControlsEvent>(); break;
     }
@@ -132,4 +136,16 @@ void StartMenu::right(
 {
     /* No left/right in this menu. */
     (void)eventManager;
+}
+
+void StartMenu::resumeGame(
+    entityx::EventManager &eventManager)
+{
+    switch (mGameManager.getGameState())
+    {
+        case GameState::StartMenu: eventManager.emit<StartGameEvent>();  break;
+        case GameState::Playing:   /* Do nothing */                      break;
+        case GameState::Paused:    eventManager.emit<ResumeGameEvent>(); break;
+        case GameState::GameOver:  eventManager.emit<StartGameEvent>();  break;
+    }
 }

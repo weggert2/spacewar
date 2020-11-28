@@ -1,6 +1,7 @@
 #include "EntityFactory.hpp"
 
 #include "Game.hpp"
+#include "GameManager.hpp"
 
 #include "components/Background.hpp"
 #include "components/Display.hpp"
@@ -14,17 +15,24 @@
 StartMenuCreator::StartMenuCreator(
     const std::wstring &logoText,
     const sf::Font &logoFont,
-    const sf::Font &menuFont):
+    const sf::Font &menuFont,
+    const GameManager &gameManager):
         mLogoText(logoText),
         mLogoFont(logoFont),
-        mMenuFont(menuFont)
+        mMenuFont(menuFont),
+        mGameManager(gameManager)
 {
 }
 
 void StartMenuCreator::create(
     entityx::Entity entity)
 {
-    auto menu = std::make_shared<StartMenu>(mLogoText, mLogoFont, mMenuFont);
+    auto menu = std::make_shared<StartMenu>(
+        mLogoText,
+        mLogoFont,
+        mMenuFont,
+        mGameManager);
+
     entity.assign<MenuComponent>(menu);
 
     const float x = Game::screenWidth/2.0;

@@ -4,13 +4,16 @@
 
 #include "AssetManager.hpp"
 
+class GameManager;
+
 class StartMenu : public MenuBase
 {
 public:
     StartMenu(
         const std::wstring &logoText,
         const sf::Font &logoFont,
-        const sf::Font &menuFont);
+        const sf::Font &menuFont,
+        const GameManager &gameManager);
 
     virtual void update(entityx::EventManager &events, float dt) override final;
     virtual void draw(sf::RenderWindow &window, const sf::Vector2f &pos) override final;
@@ -20,6 +23,9 @@ public:
     virtual void down(entityx::EventManager &eventManager) override final;
     virtual void left(entityx::EventManager &eventManager) override final;
     virtual void right(entityx::EventManager &eventManager) override final;
+
+private:
+    void resumeGame(entityx::EventManager &eventManager);
 
 private:
     enum class MenuChoice
@@ -34,4 +40,6 @@ private:
     sf::Text mQuitText;
     sf::Text mControlsText;
     MenuChoice mMenuChoice;
+
+    const GameManager &mGameManager;
 };

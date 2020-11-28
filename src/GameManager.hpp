@@ -31,8 +31,9 @@ public:
 
     GameState getGameState() const;
 
-    void receive(const LaunchGameEvent &launch);
-    void receive(const StartGameEvent &start);
+    void receive(const LaunchGameEvent &event);
+    void receive(const StartGameEvent &event);
+    void receive(const ResumeGameEvent &event);
     void receive(const PauseGameEvent &event);
 
     // void receive(const QuitGameEvent &quit);

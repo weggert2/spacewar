@@ -4,6 +4,8 @@
 
 #include <entityx/Entity.h>
 
+class GameManager;
+
 /*
  * Base class for Entities.
  */
@@ -23,7 +25,8 @@ public:
     StartMenuCreator(
         const std::wstring &logoText,
         const sf::Font &logoFont,
-        const sf::Font &menuFont);
+        const sf::Font &menuFont,
+        const GameManager &gameManager);
 
     virtual void create(
         entityx::Entity entity) override final;
@@ -32,6 +35,7 @@ private:
     const std::wstring &mLogoText;
     const sf::Font &mLogoFont;
     const sf::Font &mMenuFont;
+    const GameManager &mGameManager;
 };
 
 /*
