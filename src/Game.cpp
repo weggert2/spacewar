@@ -15,9 +15,6 @@
 
 #include <iostream>
 
-/* Debug printing. In production, you want a logging framework. */
-// #define DEBUG 1
-
 Game::Game(
     const TextureManager &textureManager,
     const SoundManager &soundManager,
@@ -118,7 +115,7 @@ void Game::processEvents()
             default:
             {
                 #ifdef DEBUG
-                std::cout << "Unexpected event: " << event.type << '\n';
+                // std::cout << "Unexpected event: " << event.type << '\n';
                 #endif
             }
         }

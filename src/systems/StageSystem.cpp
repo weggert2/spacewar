@@ -13,8 +13,6 @@
 #include <random>
 #include <set>
 
-#define DEBUG 1
-
 StageSystem::StageSystem(
     const TextureManager &textureManager,
     entityx::EntityManager &entityManager,
