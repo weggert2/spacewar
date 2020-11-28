@@ -30,7 +30,9 @@ bool loadAllText(
 {
     bool success = true;
 
-    success &= textManager.load(TextId::Logo, "../assets/text/space_war.txt");
+    success &= textManager.load(TextId::Logo,     "../assets/text/space_war.txt");
+    success &= textManager.load(TextId::Pause,    "../assets/text/pause.txt");
+    success &= textManager.load(TextId::GameOver, "../assets/text/game_over.txt");
 
     return success;
 }
@@ -40,8 +42,9 @@ bool loadAllFonts(
 {
     bool success = true;
 
-    success &= fontManager.load(FontId::Default, "../assets/fonts/RobotoMono-Regular.ttf");
-    success &= fontManager.load(FontId::Menu, "../assets/fonts/galiver-sans.ttf");
+    success &= fontManager.load(FontId::Logo,  "../assets/fonts/RobotoMono-Regular.ttf");
+    success &= fontManager.load(FontId::Menu,  "../assets/fonts/galiver-sans.ttf");
+    success &= fontManager.load(FontId::Pause, "../assets/fonts/Monospace.ttf");
 
     return success;
 }

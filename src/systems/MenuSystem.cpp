@@ -46,9 +46,11 @@ void MenuSystem::receive(
     }
 
     MenuComponent::Handle menu;
+    bool menuOpen = false;
     for (entityx::Entity e : mEntityManager.entities_with_components(menu))
     {
         (void)e;
+        menuOpen = true;
 
         switch (event.getKey())
         {
@@ -59,6 +61,11 @@ void MenuSystem::receive(
             case sf::Keyboard::Enter: menu->select(mEventManager); break;
             default: break;
         }
+    }
+
+    if (!menuOpen && event.getKey() == sf::Keyboard::Escape)
+    {
+        mEventManager.emit<PauseGameEvent>();
     }
 }
 

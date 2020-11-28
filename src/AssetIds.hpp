@@ -22,6 +22,7 @@ enum class TextId
 
 enum class FontId
 {
-    Default,
+    Logo,
     Menu,
+    Pause,
 };

@@ -33,6 +33,8 @@ public:
 
     void receive(const LaunchGameEvent &launch);
     void receive(const StartGameEvent &start);
+    void receive(const PauseGameEvent &event);
+
     // void receive(const QuitGameEvent &quit);
     // void receive(const PauseGameEvent &pause);
     // void receive(const ResumeGameEvent &resume);

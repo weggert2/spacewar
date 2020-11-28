@@ -12,17 +12,19 @@
 #include "components/StartMenu.hpp"
 
 StartMenuCreator::StartMenuCreator(
-    const TextManager &textManager,
-    const FontManager &fontManager):
-        mTextManager(textManager),
-        mFontManager(fontManager)
+    const std::wstring &logoText,
+    const sf::Font &logoFont,
+    const sf::Font &menuFont):
+        mLogoText(logoText),
+        mLogoFont(logoFont),
+        mMenuFont(menuFont)
 {
 }
 
 void StartMenuCreator::create(
     entityx::Entity entity)
 {
-    auto menu = std::make_shared<StartMenu>(mTextManager, mFontManager);
+    auto menu = std::make_shared<StartMenu>(mLogoText, mLogoFont, mMenuFont);
     entity.assign<MenuComponent>(menu);
 
     const float x = Game::screenWidth/2.0;

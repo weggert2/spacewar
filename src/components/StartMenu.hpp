@@ -8,8 +8,9 @@ class StartMenu : public MenuBase
 {
 public:
     StartMenu(
-        const TextManager &textManager,
-        const FontManager &fontManager);
+        const std::wstring &logoText,
+        const sf::Font &logoFont,
+        const sf::Font &menuFont);
 
     virtual void update(entityx::EventManager &events, float dt) override final;
     virtual void draw(sf::RenderWindow &window, const sf::Vector2f &pos) override final;

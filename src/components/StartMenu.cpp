@@ -3,17 +3,14 @@
 #include "Events.hpp"
 
 StartMenu::StartMenu(
-    const TextManager &textManager,
-    const FontManager &fontManager):
+    const std::wstring &logoText,
+    const sf::Font &logoFont,
+    const sf::Font &menuFont):
         mLogoText(),
         mPlayText(),
         mQuitText(),
         mMenuChoice(MenuChoice::Play)
 {
-    const sf::Font &logoFont = fontManager.get(FontId::Default);
-    const sf::Font &menuFont = fontManager.get(FontId::Menu);
-    const std::string &logoText = textManager.get(TextId::Logo).get();
-
     const auto setOrigin = [](sf::Text &t) {
         const sf::FloatRect sz = t.getLocalBounds();
         t.setOrigin(sz.width/2.0f, sz.height/2.0f);

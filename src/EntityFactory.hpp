@@ -21,15 +21,17 @@ class StartMenuCreator : public EntityCreator
 {
 public:
     StartMenuCreator(
-        const TextManager &textManager,
-        const FontManager &fontManager);
+        const std::wstring &logoText,
+        const sf::Font &logoFont,
+        const sf::Font &menuFont);
 
     virtual void create(
         entityx::Entity entity) override final;
 
 private:
-    const TextManager &mTextManager;
-    const FontManager &mFontManager;
+    const std::wstring &mLogoText;
+    const sf::Font &mLogoFont;
+    const sf::Font &mMenuFont;
 };
 
 /*
