@@ -4,7 +4,7 @@ class Motion : public entityx::Component<Motion>
 {
 public:
     Motion(
-        const float linearSpeed = 200.0,
+        const float linearSpeed = 300.0,
         const float angularSpeed = 200.0);
 
     float getSpeed() const;
