@@ -39,6 +39,9 @@ static void printRect(
               << r.width << ", " << r.height << std::endl;
 }
 
+/* See comment in detectCollisions for the explanation of this shameful hack. */
+static bool firstCycle = true;
+
 /**
  * Detect collision between two entities - applying damage to them if
  * it exists.

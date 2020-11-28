@@ -11,7 +11,6 @@
 #include "math_utils.hpp"
 
 #include <random>
-#include <set>
 
 StageSystem::StageSystem(
     const TextureManager &textureManager,

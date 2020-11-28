@@ -18,8 +18,4 @@ public:
         const double dt);
 
     void receive(const LoseGameEvent &event);
-
-private:
-    /* The shame. */
-    bool firstCycle = true;
 };
