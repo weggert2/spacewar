@@ -13,6 +13,7 @@ class StageClearedEvent : public entityx::Event<StageClearedEvent> {};
 class PauseGameEvent    : public entityx::Event<PauseGameEvent>    {};
 class ResumeGameEvent   : public entityx::Event<ResumeGameEvent>   {};
 class ShowControlsEvent : public entityx::Event<ShowControlsEvent> {};
+class ShowCreditsEvent  : public entityx::Event<ShowCreditsEvent>  {};
 
 class KeyboardEvent : public entityx::Event<KeyboardEvent>
 {

@@ -13,7 +13,8 @@ public:
         const std::wstring &logoText,
         const sf::Font &logoFont,
         const sf::Font &menuFont,
-        const GameManager &gameManager);
+        const GameManager &gameManager,
+        const int logoFontSize);
 
     virtual void update(entityx::EventManager &events, float dt) override final;
     virtual void draw(sf::RenderWindow &window, const sf::Vector2f &pos) override final;

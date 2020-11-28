@@ -6,6 +6,7 @@
 #include "components/Background.hpp"
 #include "components/Display.hpp"
 #include "components/Enemy.hpp"
+#include "components/EnemyControl.hpp"
 #include "components/Hitbox.hpp"
 #include "components/Menu.hpp"
 #include "components/Motion.hpp"
@@ -20,11 +21,13 @@ StartMenuCreator::StartMenuCreator(
     const std::wstring &logoText,
     const sf::Font &logoFont,
     const sf::Font &menuFont,
-    const GameManager &gameManager):
+    const GameManager &gameManager,
+    const int logoFontSize):
         mLogoText(logoText),
         mLogoFont(logoFont),
         mMenuFont(menuFont),
-        mGameManager(gameManager)
+        mGameManager(gameManager),
+        mLogoFontSize(logoFontSize)
 {
 }
 
@@ -35,7 +38,8 @@ void StartMenuCreator::create(
         mLogoText,
         mLogoFont,
         mMenuFont,
-        mGameManager);
+        mGameManager,
+        mLogoFontSize);
 
     entity.assign<Menu>(menu);
 
@@ -100,10 +104,10 @@ void EnemyCreator::create(
     const sf::Texture &texture = mTextureManager.get(TextureId::EnemyShip);
     const sf::FloatRect bounds = Display(texture).mSprite.getGlobalBounds();
 
-    // entity.assign<Control>();
     entity.assign<Display>(texture);
     entity.assign<Enemy>();
     // entity.assign<Health>();
+    entity.assign<EnemyControl>();
     entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Motion>();
     entity.assign<Position>(mInitialPos, mInitialAngle);
@@ -136,7 +140,7 @@ void ProjectileCreator::create(
     const sf::FloatRect bounds = display.mSprite.getGlobalBounds();
     entity.assign_from_copy<Display>(display);
 
-    const float speed = -450.0f;
+    const float speed = -450.0f; /* Negative? Ok I guess. */
     const float omega = 0.0;
 
     entity.assign<Motion>(speed, omega, speed, omega);

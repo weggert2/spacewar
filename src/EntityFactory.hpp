@@ -26,7 +26,8 @@ public:
         const std::wstring &logoText,
         const sf::Font &logoFont,
         const sf::Font &menuFont,
-        const GameManager &gameManager);
+        const GameManager &gameManager,
+        const int logoFontSize = 20);
 
     virtual void create(
         entityx::Entity entity) override final;
@@ -36,6 +37,7 @@ private:
     const sf::Font &mLogoFont;
     const sf::Font &mMenuFont;
     const GameManager &mGameManager;
+    const int mLogoFontSize;
 };
 
 /*

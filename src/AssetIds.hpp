@@ -18,6 +18,7 @@ enum class TextId
     Logo,
     Pause,
     Controls,
+    Credits,
     GameOver,
 };
 

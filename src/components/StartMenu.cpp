@@ -8,7 +8,8 @@ StartMenu::StartMenu(
     const std::wstring &logoText,
     const sf::Font &logoFont,
     const sf::Font &menuFont,
-    const GameManager &gameManager):
+    const GameManager &gameManager,
+    const int logoFontSize):
         mLogoText(),
         mPlayText(),
         mStoryText(),
@@ -23,7 +24,7 @@ StartMenu::StartMenu(
     };
 
     mLogoText.setFont(logoFont);
-    mLogoText.setCharacterSize(20);
+    mLogoText.setCharacterSize(logoFontSize);
     mLogoText.setString(logoText);
     mLogoText.setFillColor(sf::Color::Red);
     setOrigin(mLogoText);
@@ -100,6 +101,7 @@ void StartMenu::select(
         case MenuChoice::Play:     resumeGame(eventManager); break;
         case MenuChoice::Quit:     eventManager.emit<QuitGameEvent>();     break;
         case MenuChoice::Controls: eventManager.emit<ShowControlsEvent>(); break;
+        case MenuChoice::Credits:  eventManager.emit<ShowCreditsEvent>();  break;
     }
 }
 
