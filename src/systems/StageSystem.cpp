@@ -7,6 +7,7 @@
 #include "Game.hpp"
 #include "Events.hpp"
 #include "EntityFactory.hpp"
+#include "entity_utils.hpp"
 #include "math_utils.hpp"
 
 #include <random>
@@ -74,9 +75,9 @@ void StageSystem::receive(
      * enemy.
      */
 
-    sf::Vector2f playerPos;
-    float edgeOffset;
-    getPlayerData(playerPos, edgeOffset);
+    const sf::Vector2f playerPos = getPlayerPos(mEntityManager);
+    const sf::FloatRect playerBounds = getPlayerBounds(mEntityManager);
+    const float edgeOffset = playerBounds.width/2.0;
     const float playerOffset = edgeOffset*edgeOffset;
 
     std::vector<sf::Vector2f> placed;
@@ -118,32 +119,6 @@ void StageSystem::receive(
 
         toPlace--;
     }
-}
-
-void StageSystem::getPlayerData(
-    sf::Vector2f &playerPos,
-    float &offset) const
-{
-    Player::Handle player;
-    Position::Handle position;
-    Display::Handle display;
-
-    /* I don't know if there's a better way to retrieve a specific entity.
-     * Some textbooks suggest that the Player should not be an entity at all,
-     * probably for this reason. */
-    for (entityx::Entity e : mEntityManager.entities_with_components(player, display, position))
-    {
-        (void)e;
-
-        /* There should only ever be one of these, so we don't mind iterating. */
-        playerPos = position->getX();
-
-        /* To prevent ships from being placed too close to the edge: */
-        offset = display->mSprite.getLocalBounds().width/2.0f;
-        return;
-    }
-
-    std::cerr << "entity manager couldn't find a player\n";
 }
 
 bool StageSystem::validEnemyPos(

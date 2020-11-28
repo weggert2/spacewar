@@ -28,10 +28,6 @@ public:
     void receive(const StageClearedEvent &event);
 
 private:
-    void getPlayerData(
-        sf::Vector2f &playerPos,
-        float &offset) const;
-
     bool validEnemyPos(
         const sf::Vector2f &pos,
         const std::vector<sf::Vector2f> &placed,
