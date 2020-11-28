@@ -7,12 +7,12 @@
 #include <SFML/Window/Keyboard.hpp>
 
 class LaunchGameEvent   : public entityx::Event<LaunchGameEvent>   {};
-class ShowControlsEvent : public entityx::Event<ShowControlsEvent> {};
 class StartGameEvent    : public entityx::Event<StartGameEvent>    {};
 class QuitGameEvent     : public entityx::Event<QuitGameEvent>     {};
 class StageClearedEvent : public entityx::Event<StageClearedEvent> {};
 class PauseGameEvent    : public entityx::Event<PauseGameEvent>    {};
 class ResumeGameEvent   : public entityx::Event<ResumeGameEvent>   {};
+class ShowControlsEvent : public entityx::Event<ShowControlsEvent> {};
 
 class KeyboardEvent : public entityx::Event<KeyboardEvent>
 {

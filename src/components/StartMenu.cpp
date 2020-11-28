@@ -11,6 +11,8 @@ StartMenu::StartMenu(
     const GameManager &gameManager):
         mLogoText(),
         mPlayText(),
+        mStoryText(),
+        mCreditsText(),
         mQuitText(),
         mMenuChoice(MenuChoice::Play),
         mGameManager(gameManager)
@@ -28,13 +30,15 @@ StartMenu::StartMenu(
 
     const auto initMenu = [&](sf::Text &t, const std::string &s) {
         t.setFont(menuFont);
-        t.setCharacterSize(60);
+        t.setCharacterSize(35);
         t.setString(s);
         setOrigin(t);
     };
 
     initMenu(mPlayText,     "Play");
     initMenu(mControlsText, "Controls");
+    initMenu(mStoryText,    "Story");
+    initMenu(mCreditsText,  "Credits");
     initMenu(mQuitText,     "Quit");
 }
 
@@ -54,29 +58,37 @@ void StartMenu::draw(
 {
     mLogoText.setPosition(pos);
 
-    const auto nextY = [](const sf::Text &t, const float spacing = 40.0f) {
+    const auto nextY = [](const sf::Text &t, const float spacing = 20.0f) {
         const sf::FloatRect sz = t.getGlobalBounds();
         return sz.top + sz.height + spacing;
     };
 
     mPlayText.setPosition(pos.x,     nextY(mLogoText));
-    mControlsText.setPosition(pos.x, nextY(mPlayText, 20.0f));
-    mQuitText.setPosition(pos.x,     nextY(mControlsText));
+    mControlsText.setPosition(pos.x, nextY(mPlayText));
+    mStoryText.setPosition(pos.x,    nextY(mControlsText, 30.0f));
+    mCreditsText.setPosition(pos.x,  nextY(mStoryText));
+    mQuitText.setPosition(pos.x,     nextY(mCreditsText, 30.0f));
 
     mPlayText.setStyle(sf::Text::Regular);
     mControlsText.setStyle(sf::Text::Regular);
+    mStoryText.setStyle(sf::Text::Regular);
+    mCreditsText.setStyle(sf::Text::Regular);
     mQuitText.setStyle(sf::Text::Regular);
 
     switch (mMenuChoice)
     {
         case MenuChoice::Play:     mPlayText.setStyle(sf::Text::Underlined);     break;
         case MenuChoice::Controls: mControlsText.setStyle(sf::Text::Underlined); break;
+        case MenuChoice::Story:    mStoryText.setStyle(sf::Text::Underlined);    break;
+        case MenuChoice::Credits:  mCreditsText.setStyle(sf::Text::Underlined);  break;
         case MenuChoice::Quit:     mQuitText.setStyle(sf::Text::Underlined);     break;
     }
 
     window.draw(mLogoText);
     window.draw(mPlayText);
     window.draw(mControlsText);
+    window.draw(mStoryText);
+    window.draw(mCreditsText);
     window.draw(mQuitText);
 }
 
@@ -104,24 +116,20 @@ void StartMenu::up(
 {
     (void)eventManager;
 
-    switch (mMenuChoice)
-    {
-        case MenuChoice::Play:     mMenuChoice = MenuChoice::Quit;     break;
-        case MenuChoice::Controls: mMenuChoice = MenuChoice::Play;     break;
-        case MenuChoice::Quit:     mMenuChoice = MenuChoice::Controls; break;
-    }
+    const auto it = std::find(choices.begin(), choices.end(), mMenuChoice);
+    int pos = std::distance(choices.begin(), it) - 1;
+    if (pos < 0) pos = choices.size() - 1;
+    mMenuChoice = choices[pos];
 }
 
 void StartMenu::down(
     entityx::EventManager &eventManager)
 {
     (void)eventManager;
-    switch (mMenuChoice)
-    {
-        case MenuChoice::Play:     mMenuChoice = MenuChoice::Controls; break;
-        case MenuChoice::Controls: mMenuChoice = MenuChoice::Quit;     break;
-        case MenuChoice::Quit:     mMenuChoice = MenuChoice::Play;     break;
-    }
+
+    const auto it = std::find(choices.begin(), choices.end(), mMenuChoice);
+    const int pos = std::distance(choices.begin(), it);
+    mMenuChoice = choices[(pos+1)%choices.size()];
 }
 
 void StartMenu::left(

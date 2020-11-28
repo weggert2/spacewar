@@ -17,6 +17,7 @@ enum class TextId
 {
     Logo,
     Pause,
+    Controls,
     GameOver,
 };
 

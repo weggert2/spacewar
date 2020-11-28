@@ -28,7 +28,7 @@ void GameManager::subscribeEvents()
     mEventManager.subscribe<StartGameEvent>(*this);
     mEventManager.subscribe<PauseGameEvent>(*this);
     mEventManager.subscribe<ResumeGameEvent>(*this);
-    // mEventManager.subscribe<ResumeGameEvent>(*this);
+    mEventManager.subscribe<ShowControlsEvent>(*this);
 
     /* Note the Game class is subscribed to the QuitGameEvent directly */
 }
@@ -87,9 +87,28 @@ void GameManager::receive(
     (void)event;
     mGameState = GameState::Paused;
 
-
     StartMenuCreator creator(
         mTextManager.get(TextId::Pause).get(),
+        mFontManager.get(FontId::Pause),
+        mFontManager.get(FontId::Menu),
+        *this);
+
+    creator.create(mEntityManager.create());
+}
+
+void GameManager::receive(
+    const ShowControlsEvent &event)
+{
+    (void)event;
+
+    Menu::Handle menu;
+    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
+    {
+        e.destroy();
+    }
+
+    StartMenuCreator creator(
+        mTextManager.get(TextId::Controls).get(),
         mFontManager.get(FontId::Pause),
         mFontManager.get(FontId::Menu),
         *this);
