@@ -104,7 +104,7 @@ public:
         float mScaleY;
         float mOrigX;
         float mOrigY;
-    }
+    };
 
     ProjectileCreator(
         const TextureManager &textureManager,
@@ -116,8 +116,8 @@ public:
         entityx::Entity) override final;
 
 private:
-    const TextureManger &mTextureManager
+    const TextureManager &mTextureManager;
     const TextureInfo mTextureInfo;
-    const sf::Vector2f mInitialPos,
+    const sf::Vector2f mInitialPos;
     const float mInitialAngle;
 };

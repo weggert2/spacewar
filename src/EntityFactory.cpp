@@ -105,7 +105,7 @@ ProjectileCreator::ProjectileCreator(
     const sf::Vector2f &initialPos,
     const float initialAngle):
         mTextureManager(textureManager),
-        mTextureInfo(textureInfo)0,
+        mTextureInfo(textureInfo),
         mInitialPos(initialPos),
         mInitialAngle(initialAngle)
 {
@@ -114,7 +114,12 @@ ProjectileCreator::ProjectileCreator(
 void ProjectileCreator::create(
     entityx::Entity entity)
 {
-    entity.assign<Display>(mTextureInfo);
+    entity.assign<Display>(
+        mTextureManager.get(mTextureInfo.mTextureId),
+        mTextureInfo.mScaleX,
+        mTextureInfo.mScaleY,
+        mTextureInfo.mOrigX,
+        mTextureInfo.mOrigY);
 
     const float bulletSpeed = 450.0f;
     const float bulletOmega = 0.0;
