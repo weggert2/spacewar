@@ -1,6 +1,7 @@
 #include "GameManager.hpp"
 #include "EntityFactory.hpp"
 #include "components/Menu.hpp"
+#include "systems/PlayerScoreSystem.hpp"
 
 #include <iostream>
 
@@ -10,13 +11,15 @@ GameManager::GameManager(
     const TextManager &textManager,
     const FontManager &fontManager,
     entityx::EntityManager &entityManager,
-    entityx::EventManager &eventManager):
+    entityx::EventManager &eventManager,
+    entityx::SystemManager &systemManager):
         mTextureManager(textureManager),
         mSoundManager(soundManager),
         mTextManager(textManager),
         mFontManager(fontManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
+        mSystemManager(systemManager),
         mGameState(GameState::StartMenu)
 {
     subscribeEvents();
@@ -30,6 +33,7 @@ void GameManager::subscribeEvents()
     mEventManager.subscribe<ResumeGameEvent>(*this);
     mEventManager.subscribe<ShowControlsEvent>(*this);
     mEventManager.subscribe<ShowCreditsEvent>(*this);
+    mEventManager.subscribe<ShowScoresEvent>(*this);
     mEventManager.subscribe<WinGameEvent>(*this);
     mEventManager.subscribe<LoseGameEvent>(*this);
 
@@ -59,12 +63,7 @@ void GameManager::receive(
     const StartGameEvent &event)
 {
     (void)event;
-
-    Menu::Handle menu;
-    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
-    {
-        e.destroy();
-    }
+    destroyMenus();
 
     mGameState = GameState::Playing;
 
@@ -103,12 +102,7 @@ void GameManager::receive(
     const ShowControlsEvent &event)
 {
     (void)event;
-
-    Menu::Handle menu;
-    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
-    {
-        e.destroy();
-    }
+    destroyMenus();
 
     StartMenuCreator creator(
         mTextManager.get(TextId::Controls).get(),
@@ -123,12 +117,7 @@ void GameManager::receive(
     const ShowCreditsEvent &event)
 {
     (void)event;
-
-    Menu::Handle menu;
-    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
-    {
-        e.destroy();
-    }
+    destroyMenus();
 
     StartMenuCreator creator(
         mTextManager.get(TextId::Credits).get(),
@@ -144,12 +133,7 @@ void GameManager::receive(
     const WinGameEvent &event)
 {
     (void)event;
-
-    Menu::Handle menu;
-    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
-    {
-        e.destroy();
-    }
+    destroyMenus();
 
     mGameState = GameState::GameOver;
 
@@ -177,4 +161,32 @@ void GameManager::receive(
         *this);
 
     creator.create(mEntityManager.create());
+}
+
+void GameManager::receive(
+    const ShowScoresEvent &event)
+{
+    (void)event;
+    destroyMenus();
+
+    auto scoreSystem = mSystemManager.system<PlayerScoreSystem>();
+    scoreSystem->updateHighScores();
+
+    StartMenuCreator creator(
+        scoreSystem->getScores(),
+        mFontManager.get(FontId::Menu),
+        mFontManager.get(FontId::Menu),
+        *this,
+        40.0f);
+
+    creator.create(mEntityManager.create());
+}
+
+void GameManager::destroyMenus()
+{
+    Menu::Handle menu;
+    for (entityx::Entity e : mEntityManager.entities_with_components(menu))
+    {
+        e.destroy();
+    }
 }

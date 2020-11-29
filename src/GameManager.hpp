@@ -5,6 +5,7 @@
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
+#include <entityx/System.h>
 
 enum class GameState
 {
@@ -31,7 +32,8 @@ public:
         const TextManager &textManager,
         const FontManager &fontManager,
         entityx::EntityManager &entityManager,
-        entityx::EventManager &eventManager);
+        entityx::EventManager &eventManager,
+        entityx::SystemManager &systemManager);
 
     GameState getGameState() const;
 
@@ -41,11 +43,13 @@ public:
     void receive(const PauseGameEvent &event);
     void receive(const ShowControlsEvent &event);
     void receive(const ShowCreditsEvent &event);
+    void receive(const ShowScoresEvent &event);
     void receive(const WinGameEvent &event);
     void receive(const LoseGameEvent &event);
 
 private:
     void subscribeEvents();
+    void destroyMenus();
 
 private:
     /* Asset managers */
@@ -57,6 +61,7 @@ private:
     /* Entity-component system. */
     entityx::EntityManager &mEntityManager;
     entityx::EventManager &mEventManager;
+    entityx::SystemManager &mSystemManager;
 
     /* Current game state. */
     GameState mGameState;

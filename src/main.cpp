@@ -43,7 +43,8 @@ int main()
         textManager,
         fontManager,
         entityManager,
-        eventManager);
+        eventManager,
+        systemManager);
 
     /* Make the game. */
     Game game(

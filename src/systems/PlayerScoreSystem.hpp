@@ -17,7 +17,7 @@ public:
         entityx::EventManager &events,
         const double dt);
 
-    const std::string & getScores() const;
+    const std::wstring &getScores() const;
 
     void receive(const LoseGameEvent &event);
     void receive(const WinGameEvent &event);
@@ -25,8 +25,6 @@ public:
     void receive(const EnemyDestroyedEvent &event);
     void receive(const PauseGameEvent &event);
     void receive(const ResumeGameEvent &event);
-
-private:
     void updateHighScores();
 
 private:
@@ -36,4 +34,6 @@ private:
 
     /* String storage */
     std::wstring mScoreStr;
+
+    static constexpr size_t mMaxNumScores = 9u;
 };

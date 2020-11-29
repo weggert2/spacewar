@@ -38,6 +38,11 @@ void PlayerScoreSystem::update(
     }
 }
 
+const std::wstring &PlayerScoreSystem::getScores() const
+{
+    return mScoreStr;
+}
+
 void PlayerScoreSystem::receive(
     const LoseGameEvent &event)
 {
@@ -78,7 +83,7 @@ void PlayerScoreSystem::receive(
 }
 
 /* Store the scores next to the binary. */
-static const std::string    fname = "scores.json";
+static const std::string fname = "scores.json";
 
 void PlayerScoreSystem::updateHighScores()
 {
@@ -90,10 +95,9 @@ void PlayerScoreSystem::updateHighScores()
         ifs >> j;
     }
 
+    auto &node = j["scores"];
     using set_t = std::set<float, std::greater<float>>;
     set_t scores;
-
-    auto &node = j["scores"];
     if (!node.empty())
     {
         scores = node.get<set_t>();
@@ -103,7 +107,7 @@ void PlayerScoreSystem::updateHighScores()
     scores.insert(mScore);
 
     /* Keep only the 10 highest scores. */
-    while (scores.size() > 10.0)
+    while (scores.size() > mMaxNumScores)
     {
         auto it = scores.end();
         it--;
@@ -115,21 +119,20 @@ void PlayerScoreSystem::updateHighScores()
     std::ofstream ofs(fname);
     ofs << j;
 
-    /* Pretty print to the string so we can display on screen. */
+    /* Pretty print to the string so we can display on screen.  This needs
+     * to be done since we need to manage the lifetime of the string. */
     std::wstringstream wss;
-
-    if (scores.empty())
+    wss << L"High Scores:\n";
+    size_t i = 1;
+    for (const float score : scores)
     {
-        wss << L"No high scores yet!";
+        wss << L"   " << i << L":     " << std::setprecision(2) << score << L"\n";
+        i++;
     }
-    else
+
+    for (; i <= mMaxNumScores; ++i)
     {
-        size_t i = 1;
-        for (const float score : scores)
-        {
-            wss << i << L": " << std::setprecision(2) << score << L"\n";
-            i++;
-        }
+        wss << L"   " << i << L":     0\n";
     }
 
     mScoreStr = wss.str();
