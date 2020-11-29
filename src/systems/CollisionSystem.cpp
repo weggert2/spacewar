@@ -13,6 +13,9 @@
 #include "components/Player.hpp"
 #include "components/Position.hpp"
 #include "components/Projectile.hpp"
+#include "components/Radius.hpp"
+
+#include "math_utils.hpp"
 
 CollisionSystem::CollisionSystem(
     entityx::EventManager &eventManager):
@@ -118,6 +121,40 @@ void CollisionSystem::detectCollisions(
     }
 }
 
+template<typename EntityType>
+void CollisionSystem::detectBHCollisions(
+    entityx::EntityManager &entities,
+    entityx::EventManager &events,
+    const double dt,
+    const float hitboxFac)
+{
+    (void)events;
+    (void)dt;
+
+    Position::Handle bhPos;
+    Radius::Handle bhRad;
+    for (entityx::Entity bh : entities.entities_with_components(bhPos, bhRad))
+    {
+        (void)bh;
+
+        const sf::Vector2f &pos = bhPos->getPos();
+        const float rad = bhRad->get();
+
+        typename EntityType::Handle entity;
+        Display::Handle box;
+        for (entityx::Entity e : entities.entities_with_components(entity, box))
+        {
+            const sf::FloatRect bounds = box->getGlobalBounds();
+            const sf::FloatRect rect = adjustHitbox(bounds, hitboxFac);
+
+            if (intersects(rect, Circle(pos, rad)))
+            {
+                destroyEntity(e);
+            }
+        }
+    }
+}
+
 void CollisionSystem::update(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
@@ -127,6 +164,10 @@ void CollisionSystem::update(
     detectCollisions<Player, Projectile>(entities, events, dt);
     detectCollisions<Enemy, Projectile>(entities, events, dt);
     detectCollisions<Projectile, Projectile>(entities, events, dt, 0.35f, 0.35f);
+
+    detectBHCollisions<Projectile>(entities, events, dt, 0.35f);
+    detectBHCollisions<Player>(entities, events, dt);
+    detectBHCollisions<Enemy>(entities, events, dt);
 }
 
 void CollisionSystem::receive(

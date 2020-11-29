@@ -40,6 +40,13 @@ private:
         const float hitbox1Fac = 0.45,
         const float hitbox2Fac = 1.0);
 
+    template<typename EntityType>
+    void detectBHCollisions(
+        entityx::EntityManager &entities,
+        entityx::EventManager &events,
+        const double dt,
+        const float hitboxFac = 0.45);
+
     void destroyEntity(entityx::Entity e) const;
 
 private:

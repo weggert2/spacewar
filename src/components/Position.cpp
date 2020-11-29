@@ -38,7 +38,7 @@ void Position::move(
     mX += dx;
 }
 
-void Position::setX(
+void Position::setPos(
     const sf::Vector2f &x)
 {
     mX = x;

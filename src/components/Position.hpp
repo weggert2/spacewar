@@ -25,7 +25,7 @@ public:
     float getTheta() const;
 
     void move(const sf::Vector2f &dx);
-    void setX(const sf::Vector2f &x);
+    void setPos(const sf::Vector2f &x);
 
     void rotate(const float dTheta);
     void setTheta(const float theta);

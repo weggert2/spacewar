@@ -40,7 +40,7 @@ void MovementSystem::update(
         /* Wrap around for things that aren't projectiles. */
         if (!e.has_component<Projectile>())
         {
-            position->setX(wrap(position->getPos()));
+            position->setPos(wrap(position->getPos()));
         }
     }
 }

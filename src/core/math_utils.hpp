@@ -15,6 +15,20 @@
 
 #include <iostream>
 
+struct Circle
+{
+    Circle(
+        const sf::Vector2f &p_,
+        const float r_):
+            p(p_),
+            r(r_)
+    {
+    }
+
+    sf::Vector2f p;
+    float r;
+};
+
 
 /**
  * SFML uses degrees, cmath uses radians. This converts.
@@ -74,3 +88,25 @@ inline void printRect(
               << r.width << ", " << r.height << std::endl;
 }
 
+/**
+ * Dumb detection for whether a circle intersects an axis-aligned rectangle.
+ */
+inline bool intersects(
+    const sf::FloatRect &rect,
+    const Circle &circle)
+{
+    const float r = circle.r;
+    const float cx = circle.p.x;
+    const float cy = circle.p.y;
+
+    const auto circleContains = [&](float x, float y) {
+        const float dx = cx - x;
+        const float dy = cy - y;
+        return dx*dx + dy*dy < r*r;
+    };
+
+    return circleContains(rect.left,              rect.top)                ||
+           circleContains(rect.left + rect.width, rect.top)                ||
+           circleContains(rect.left,              rect.top + rect.height)  ||
+           circleContains(rect.left + rect.width, rect.top + rect.height);
+}
