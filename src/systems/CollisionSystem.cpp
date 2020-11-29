@@ -52,13 +52,7 @@ static bool firstCycle = true;
  * @tparam BoxType1 The type that defines how EntityType1 computes its global bounds.
  * @tparam BoxType2 The type that defines how EntityType2 computes its global bounds
  */
-template
-<
-    typename EntityType1,
-    typename EntityType2,
-    typename BoxType1 = Display,
-    typename BoxType2 = Display
->
+template<typename EntityType1, typename EntityType2>
 void CollisionSystem::detectCollisions(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
@@ -74,11 +68,11 @@ void CollisionSystem::detectCollisions(
      * easier/faster to implement. */
 
     typename EntityType1::Handle entity1;
-    typename BoxType1::Handle box1;
+    Display::Handle box1;
     for (entityx::Entity e1 : entities.entities_with_components(entity1, box1))
     {
         typename EntityType2::Handle entity2;
-        typename BoxType2::Handle box2;
+        Display::Handle box2;
         bool e1Destroyed = false;
         for (entityx::Entity e2 : entities.entities_with_components(entity2, box2))
         {

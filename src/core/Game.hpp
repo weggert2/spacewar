@@ -55,6 +55,16 @@ public:
     static constexpr int screenWidth  = 1920;
     static constexpr int screenHeight = 1200;
 
+    /* Black hole info. */
+    static constexpr float BHCenterX = screenWidth/2.03f;
+    static constexpr float BHCenterY = screenHeight/2.2f;
+
+    /* Use this radius for collision detection. */
+    static constexpr float BHRadus = 190.0f;
+
+    /* Use this factor for enemy AI to try to avoid the black hole. */
+    static constexpr float BHFac = 1.25f;
+
 private:
     /* The render window */
     sf::RenderWindow mWindow;

@@ -32,13 +32,7 @@ private:
      * We can get away with implementing this in the cpp since the
      * CollisionSystem is the only thing that will ever use it.
      */
-    template
-    <
-        typename EntityType1,
-        typename EntityType2,
-        typename BoxType1 = Display,
-        typename BoxType2 = Display
-    >
+    template<typename EntityType1, typename EntityType2>
     void detectCollisions(
         entityx::EntityManager &entities,
         entityx::EventManager &events,
