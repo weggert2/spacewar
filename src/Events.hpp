@@ -2,6 +2,8 @@
 
 /* Defines the events that can be emitted / received. */
 
+#include "AssetManager.hpp"
+
 #include <entityx/Entity.h>
 #include <entityx/Event.h>
 #include <SFML/Window/Keyboard.hpp>
@@ -50,4 +52,22 @@ public:
 
 private:
     const float mPointValue;
+};
+
+class PlaySoundEvent : public entityx::Event<PlaySoundEvent>
+{
+public:
+    explicit PlaySoundEvent(
+        const SoundId soundId):
+            mSoundId(soundId)
+    {
+    }
+
+    SoundId get() const
+    {
+        return mSoundId;
+    }
+
+private:
+    const SoundId mSoundId;
 };

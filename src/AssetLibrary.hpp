@@ -6,4 +6,5 @@ namespace AssetLibrary
     bool loadAllSounds(SoundManager &soundManager);
     bool loadAllText(TextManager &textManager);
     bool loadAllFonts(FontManager &fontManager);
+    // bool loadAllMusic()
 }; /* end namespace AssetLibrary. */
