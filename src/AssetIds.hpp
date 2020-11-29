@@ -11,6 +11,17 @@ enum class TextureId
 
 enum class SoundId
 {
+    PlayerShoot, // sci-fi-plasma-gun-powerup,
+    PlayerShoot2, //laser-weapon-shot
+    PlayerFly, // robotic-fast-sweep
+    PlayerHit, // dramatic-metal-explosion
+
+    EnemyShoot, // laser-cannon-shot
+    EnemyHit, //sea-mine explosion
+
+    Pause, // video-game-lock
+    MenuScroll, //changing-tab
+    MenuSelect, // positive-notification
 };
 
 enum class MusicId
