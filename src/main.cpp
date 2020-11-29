@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: main.cpp $
+ * @author Bill Eggert
+ */
+
 #include "AssetIds.hpp"
 #include "AssetLibrary.hpp"
 #include "AssetManager.hpp"

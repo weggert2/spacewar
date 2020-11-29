@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Events.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 /* Defines the events that can be emitted / received. */

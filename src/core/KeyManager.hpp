@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: KeyManager.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <SFML/Window/Keyboard.hpp>

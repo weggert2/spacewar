@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: AssedIds.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 enum class TextureId

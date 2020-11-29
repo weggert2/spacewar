@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Game.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Game.hpp"
 
 #include "GameManager.hpp"

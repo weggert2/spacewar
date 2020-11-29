@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: EntityFactory.cpp $
+ * @author Bill Eggert
+ */
+
 #include "EntityFactory.hpp"
 
 #include "Game.hpp"

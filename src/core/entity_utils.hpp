@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: enemy_utils.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "components/Display.hpp"

@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: GameManager.cpp $
+ * @author Bill Eggert
+ */
+
 #include "GameManager.hpp"
 #include "EntityFactory.hpp"
 #include "components/Menu.hpp"

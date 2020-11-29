@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: EntityFactory.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "AssetManager.hpp"

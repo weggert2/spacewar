@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: KeyManager.cpp $
+ * @author Bill Eggert
+ */
+
 #include "KeyManager.hpp"
 
 void KeyManager::updateKey(

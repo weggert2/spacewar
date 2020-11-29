@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: AssetManager.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "AssetIds.hpp"

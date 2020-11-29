@@ -1,5 +1,11 @@
-#include "AssetLibrary.hpp"
+/**
+ * @file
+ *
+ * $Id: AssetLibrary.cpp $
+ * @author Bill Eggert
+ */
 
+#include "AssetLibrary.hpp"
 
 namespace AssetLibrary
 {

@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: meth_utils.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <SFML/System/Vector2.hpp>

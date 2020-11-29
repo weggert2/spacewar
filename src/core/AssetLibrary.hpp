@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: AssetLibrary.hpp $
+ * @author Bill Eggert
+ */
+
 #include "AssetManager.hpp"
 
 namespace AssetLibrary

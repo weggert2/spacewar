@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: MusicWrapper.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <SFML/Audio/Music.hpp>

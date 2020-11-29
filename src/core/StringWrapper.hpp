@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: StringWrapper.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <fstream>
