@@ -126,7 +126,7 @@ void PlayerScoreSystem::updateHighScores()
     size_t i = 1;
     for (const float score : scores)
     {
-        wss << L"   " << i << L":     " << std::setprecision(2) << score << L"\n";
+        wss << L"   " << i << L":     " << (int)score << L"\n";
         i++;
     }
 

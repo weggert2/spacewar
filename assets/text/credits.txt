@@ -1,6 +1,5 @@
-The year is 3067, five hundred years after Earth's destruction.
-Remaining survivors now wander the Galaxy, in constant competition
-for supplies.
+The year is 3067, five hundred years after Earth's destruction. Remaining
+survivors now wander the Galaxy, in constant competition for supplies.
 
 You are Commander Castor, leader of a small band of migrants. On a routine
 scouting mission, your entire squadron was ambushed by the evil Gromulon
@@ -11,8 +10,8 @@ to warn the rest of your caravan!
 
                Programming ---------------- Bill Eggert
                Story --------------------------- Bill Eggert
-               Sprites ------------------------ UnLuckY Studio (unluckystudio.com)
-               Background Texture ------ Sci-News (sci-news.com)
+               Sprites ------------------------- UnLuckY Studio (unluckystudio.com)
+               Background Texture ------- Sci-News (sci-news.com)
                ASCII Art --------------------- patorjk  (patorjk.com)
                Sound Effects ----------------
                Music ----------------------------
