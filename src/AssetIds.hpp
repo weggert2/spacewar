@@ -13,6 +13,10 @@ enum class SoundId
 {
 };
 
+enum class MusicId
+{
+};
+
 enum class TextId
 {
     Logo,
