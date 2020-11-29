@@ -11,6 +11,8 @@ enum class GameState
     StartMenu,
     Playing,
     Paused,
+    Controls,
+    Scores,
     GameOver,
 };
 

@@ -70,4 +70,7 @@ void PlayerScoreSystem::receive(
     mShouldUpdate = true;
 }
 
-void PlayerScoreSystem::updateHighScores();
+void PlayerScoreSystem::updateHighScores()
+{
+
+}
