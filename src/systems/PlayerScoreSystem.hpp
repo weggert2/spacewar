@@ -24,7 +24,6 @@ public:
     void receive(const StartGameEvent &event);
     void receive(const EnemyDestroyedEvent &event);
 
-
 private:
     entityx::EventManager &mEventManager;
     bool mShouldUpdate;

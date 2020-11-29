@@ -8,9 +8,10 @@
 #include "components/Projectile.hpp"
 
 CollisionSystem::CollisionSystem(
-    entityx::EventManager &eventManager)
+    entityx::EventManager &eventManager):
+        mEventManager(eventManager)
 {
-    eventManager.subscribe<LoseGameEvent>(*this);
+    mEventManager.subscribe<LoseGameEvent>(*this);
 }
 
 /*
@@ -47,12 +48,12 @@ static bool firstCycle = true;
  * it exists.
  */
 template <typename T, typename U>
-static void detectCollisions(
+void CollisionSystem::detectCollisions(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
     const double dt,
-    const float hitbox1Fac = 0.45,
-    const float hitbox2Fac = 1.0)
+    const float hitbox1Fac,
+    const float hitbox2Fac)
 {
     (void)events;
 
