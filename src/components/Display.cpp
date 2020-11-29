@@ -29,6 +29,12 @@ Display::Display(
     mSprite.setOrigin(origX*spriteSize.x, origY*spriteSize.y);
 }
 
+void Display::setColor(
+    const sf::Color color)
+{
+    mSprite.setColor(color);
+}
+
 sf::FloatRect Display::getGlobalBounds() const
 {
     return mSprite.getGlobalBounds();

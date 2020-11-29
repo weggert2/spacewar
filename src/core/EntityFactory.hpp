@@ -135,4 +135,7 @@ class BlackHoleCreator : public EntityCreator
 {
 public:
     BlackHoleCreator() = default;
+
+    virtual void create(
+        entityx::Entity) override final;
 };

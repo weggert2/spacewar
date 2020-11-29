@@ -67,9 +67,10 @@ void StageSystem::receive(
 {
     (void)event;
 
-    /* Make the background. */
+    /* Make the background, player, and the black hole. */
     BackgroundCreator(mTextureManager).create(mEntityManager.create());
     PlayerCreator(mTextureManager).create(mEntityManager.create());
+    BlackHoleCreator().create(mEntityManager.create());
 
     /* Clear the zero'th stage. */
     mEventManager.emit<StageClearedEvent>();
@@ -108,8 +109,8 @@ void StageSystem::receive(
 
     const int maxIter = 20;
     int toPlace = (int)mStage;
-    std::uniform_real_distribution<float> xrange(edgeOffset, Game::screenWidth-edgeOffset);
-    std::uniform_real_distribution<float> yrange(edgeOffset, Game::screenHeight-edgeOffset);
+    std::uniform_real_distribution<float> xrange(edgeOffset/2.0f, Game::screenWidth - edgeOffset/2.0f);
+    std::uniform_real_distribution<float> yrange(edgeOffset/2.0f, Game::screenHeight - edgeOffset/2.0f);
     std::uniform_real_distribution<float> rotrange(0.0f, 360.0f);
     std::random_device rd;
 
@@ -156,6 +157,18 @@ bool StageSystem::validEnemyPos(
     const std::vector<sf::Vector2f> &placed,
     const float threshold) const
 {
+    /* Don't spawn in the black hole */
+    const sf::Vector2f bhPos = sf::Vector2f(
+        Game::BHCenterX,
+        Game::BHCenterY);
+
+    const float bhThreshold = Game::BHRadius*Game::BHRadius + threshold/2.0f;
+    if (distsq(pos, bhPos) < bhThreshold)
+    {
+        return false;
+    }
+
+    /* Don't spawn on top of the player or on top of other ships. */
     for (const sf::Vector2f &p : placed)
     {
         if (distsq(pos, p) < threshold)

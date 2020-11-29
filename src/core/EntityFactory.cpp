@@ -22,6 +22,7 @@
 #include "components/Player.hpp"
 #include "components/PlayerControl.hpp"
 #include "components/Projectile.hpp"
+#include "components/Radius.hpp"
 #include "components/StartMenu.hpp"
 #include "components/Weapon.hpp"
 

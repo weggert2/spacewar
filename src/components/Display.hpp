@@ -22,6 +22,8 @@ public:
 
     sf::FloatRect getGlobalBounds() const;
 
+    void setColor(const sf::Color color);
+
 public:
     sf::Sprite mSprite;
 };

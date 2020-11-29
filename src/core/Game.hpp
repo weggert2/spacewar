@@ -60,7 +60,7 @@ public:
     static constexpr float BHCenterY = screenHeight/2.2f;
 
     /* Use this radius for collision detection. */
-    static constexpr float BHRadus = 190.0f;
+    static constexpr float BHRadius = 190.0f;
 
     /* Use this factor for enemy AI to try to avoid the black hole. */
     static constexpr float BHFac = 1.25f;
