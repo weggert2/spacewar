@@ -78,6 +78,11 @@ void MusicSystem::receive(
 void MusicSystem::play(
     const MusicId id)
 {
+    #ifdef NO_SOUND_DEBUG
+    /* No music while debugging. */
+    return;
+    #endif
+
     /* Stop the current music. */
     {
         sf::Music &music = mMusicManager.get(mCurrId).get();

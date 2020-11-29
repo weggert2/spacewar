@@ -51,7 +51,11 @@ void SoundSystem::receive(
     sound.setPosition(position.x, -position.y, 00.f);
     sound.setAttenuation(Attenuation);
     sound.setMinDistance(MinDistance3D);
+
+    #ifndef NO_SOUND_DEBUG
+    /* No sounds while debugging. */
     sound.play();
+    #endif
 }
 
 void SoundSystem::removeStoppedSounds()

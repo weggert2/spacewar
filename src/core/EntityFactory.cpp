@@ -113,6 +113,7 @@ void EnemyCreator::create(
 
     entity.assign<Display>(texture);
     entity.assign<Enemy>();
+    entity.assign<EnemyControl>();
     // entity.assign<Health>();
     entity.assign<EnemyControl>();
     entity.assign<Hitbox>(bounds.width, bounds.height);
