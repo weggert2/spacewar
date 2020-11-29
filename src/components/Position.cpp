@@ -10,7 +10,7 @@ Position::Position(
 {
 }
 
-const sf::Vector2f &Position::getX() const
+const sf::Vector2f &Position::getPos() const
 {
     return mX;
 }

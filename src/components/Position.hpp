@@ -13,7 +13,7 @@ public:
         const double rotation,
         const sf::Vector2f &offset = sf::Vector2f(80.0, -50.0));
 
-    const sf::Vector2f &getX() const;
+    const sf::Vector2f &getPos() const;
     const sf::Vector2f &getOffset() const;
     double getTheta() const;
 

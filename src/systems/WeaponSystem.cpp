@@ -51,7 +51,7 @@ void WeaponSystem::update(
         /* Move the bulletPos in the direction of the heading so the bullet
          * isn't immediately in collision */
         const sf::Vector2f bulletPos =
-            position->getX() + rotate(position->getOffset(), theta);
+            position->getPos() + rotate(position->getOffset(), theta);
 
         ProjectileCreator creator(
             mTextureManager,

@@ -18,7 +18,7 @@ inline sf::Vector2f getPlayerPos(
     for (entityx::Entity e : entityManager.entities_with_components(player, position))
     {
         (void)e;
-        return position->getX();
+        return position->getPos();
     }
 
     return sf::Vector2f();

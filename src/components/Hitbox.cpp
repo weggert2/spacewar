@@ -36,12 +36,12 @@ bool Hitbox::collides(
     };
 
     const sf::FloatRect thisRect = buildRect(
-        thisPos.getX(),
+        thisPos.getPos(),
         mWidth,
         mHeight);
 
     const sf::FloatRect otherRect = buildRect(
-        otherPos.getX(),
+        otherPos.getPos(),
         otherBox.getWidth(),
         otherBox.getHeight());
 

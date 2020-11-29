@@ -28,7 +28,7 @@ void RenderSystem::update(
     {
         (void)e;
 
-        background->mSprite.setPosition(position->getX());
+        background->mSprite.setPosition(position->getPos());
         mWindow.draw(background->mSprite);
     }
 
@@ -37,7 +37,7 @@ void RenderSystem::update(
     {
         (void)e;
 
-        display->mSprite.setPosition(position->getX());
+        display->mSprite.setPosition(position->getPos());
         display->mSprite.setRotation(position->getTheta());
         mWindow.draw(display->mSprite);
     }
