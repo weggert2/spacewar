@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Projectile.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Projectile.hpp"
 
 Projectile::Projectile(

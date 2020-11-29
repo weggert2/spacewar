@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Health.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Health.hpp"
 
 Health::Health(

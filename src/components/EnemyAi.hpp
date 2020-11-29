@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: EnemyAi.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <entityx/Entity.h>

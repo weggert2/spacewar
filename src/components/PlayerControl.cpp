@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: PlayerControl.cpp $
+ * @author Bill Eggert
+ */
+
 #include "PlayerControl.hpp"
 
 PlayerControl::PlayerControl():

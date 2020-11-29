@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Hitbox.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <entityx/Entity.h>

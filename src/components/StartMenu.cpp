@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: StartMenu.cpp $
+ * @author Bill Eggert
+ */
+
 #include "StartMenu.hpp"
 
 #include "Events.hpp"

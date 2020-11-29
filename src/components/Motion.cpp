@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Motion.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Motion.hpp"
 
 Motion::Motion(

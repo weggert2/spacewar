@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: MenuBase.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <entityx/Event.h>

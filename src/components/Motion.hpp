@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Motion.hpp $
+ * @author Bill Eggert
+ */
+
 #include <entityx/Entity.h>
 
 class Motion : public entityx::Component<Motion>

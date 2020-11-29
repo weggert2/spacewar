@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Menu.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Menu.hpp"
 
 #include "MenuBase.hpp"

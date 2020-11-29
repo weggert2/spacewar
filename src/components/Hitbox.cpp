@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Hitbox.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Hitbox.hpp"
 
 #include <SFML/Graphics/Rect.hpp>

@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Enemy.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Enemy.hpp"
 
 Enemy::Enemy(

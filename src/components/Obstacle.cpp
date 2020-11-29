@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Obstacle.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Obstacle.hpp"
 
 Obstacle::Obstacle(

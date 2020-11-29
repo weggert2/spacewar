@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Weapon.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Weapon.hpp"
 
 Weapon::Weapon(

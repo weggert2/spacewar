@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: StartMenu.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "MenuBase.hpp"

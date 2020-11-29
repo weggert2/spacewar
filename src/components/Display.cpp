@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Display.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Display.hpp"
 
 Display::Display(

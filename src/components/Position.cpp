@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: Position.cpp $
+ * @author Bill Eggert
+ */
+
 #include "Position.hpp"
 
 Position::Position(
