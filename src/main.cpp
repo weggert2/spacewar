@@ -55,6 +55,7 @@ int main()
         soundManager,
         textManager,
         fontManager,
+        musicManager,
         eventManager,
         entityManager,
         systemManager,

@@ -30,7 +30,7 @@ enum class MusicId
     Pause, // Solve the Puzzle
     Playing, // Interplanetary Odyssey
     GameOver, // Ruined Planet
-    Winning, // Chiptronical
+    Win, // Chiptronical
 };
 
 enum class TextId

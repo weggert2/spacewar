@@ -7,6 +7,7 @@
 #include "systems/CollisionSystem.hpp"
 #include "systems/MenuSystem.hpp"
 #include "systems/MovementSystem.hpp"
+#include "systems/MusicSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
 #include "systems/PlayerDeathSystem.hpp"
 #include "systems/PlayerScoreSystem.hpp"
@@ -23,6 +24,7 @@ Game::Game(
     const SoundManager &soundManager,
     const TextManager &textManager,
     const FontManager &fontManager,
+    MusicManager &musicManager,
     entityx::EventManager &eventManager,
     entityx::EntityManager &entityManager,
     entityx::SystemManager &systemManager,
@@ -33,6 +35,7 @@ Game::Game(
         mSoundManager(soundManager),
         mTextManager(textManager),
         mFontManager(fontManager),
+        mMusicManager(musicManager),
         mEventManager(eventManager),
         mEntityManager(entityManager),
         mSystemManager(systemManager),
@@ -90,6 +93,7 @@ void Game::buildSystems()
     mSystemManager.add<CollisionSystem>(mEventManager);
     mSystemManager.add<PlayerScoreSystem>(mEventManager);
     mSystemManager.add<SoundSystem>(mSoundManager, mEventManager);
+    mSystemManager.add<MusicSystem>(mMusicManager, mEventManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -153,6 +157,7 @@ void Game::update(
     mSystemManager.update<CollisionSystem>(dt);
     mSystemManager.update<PlayerScoreSystem>(dt);
     mSystemManager.update<SoundSystem>(dt);
+    mSystemManager.update<MusicSystem>(dt);
 }
 
 void Game::render(

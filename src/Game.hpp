@@ -23,6 +23,7 @@ public:
         const SoundManager &soundManager,
         const TextManager &textManager,
         const FontManager &fontManager,
+        MusicManager &musicManager,
         entityx::EventManager &eventManager,
         entityx::EntityManager &entityManager,
         entityx::SystemManager &systemManager,
@@ -56,6 +57,7 @@ private:
     const SoundManager &mSoundManager;
     const TextManager &mTextManager;
     const FontManager &mFontManager;
+    MusicManager &mMusicManager;
 
     /* Entity-component system */
     entityx::EventManager  &mEventManager;

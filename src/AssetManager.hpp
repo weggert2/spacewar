@@ -58,6 +58,26 @@ public:
         return *found->second;
     }
 
+    AssetType &get(const AssetId id)
+    {
+        auto found = mAssetMap.find(id);
+        if (found == mAssetMap.end())
+        {
+            std::cerr << "Could not get asset\n";
+            if (mAssetMap.empty())
+            {
+                /* No assets at all, we're sunk. */
+                throw std::logic_error("No assets!");
+            }
+
+            /* Try to use a default asset. */
+            return *mAssetMap.begin()->second;
+        }
+
+        return *found->second;
+    }
+
+
 private:
     std::unordered_map<AssetId, AssetType *> mAssetMap;
 };

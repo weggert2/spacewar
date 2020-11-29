@@ -15,6 +15,11 @@ public:
         return mMusic;
     }
 
+    sf::Music &get()
+    {
+        return mMusic;
+    }
+
     bool loadFromFile(
         const std::string &filename)
     {
