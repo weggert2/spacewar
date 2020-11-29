@@ -23,6 +23,8 @@ public:
     void receive(const WinGameEvent &event);
     void receive(const StartGameEvent &event);
     void receive(const EnemyDestroyedEvent &event);
+    void receive(const PauseGameEvent &event);
+    void receive(const ResumeGameEvent &event);
 
 private:
     entityx::EventManager &mEventManager;

@@ -13,6 +13,8 @@ PlayerScoreSystem::PlayerScoreSystem(
     eventManager.subscribe<WinGameEvent>(*this);
     eventManager.subscribe<StartGameEvent>(*this);
     eventManager.subscribe<EnemyDestroyedEvent>(*this);
+    eventManager.subscribe<PauseGameEvent>(*this);
+    eventManager.subscribe<ResumeGameEvent>(*this);
 }
 
 void PlayerScoreSystem::update(
@@ -59,5 +61,16 @@ void PlayerScoreSystem::receive(
     const EnemyDestroyedEvent &event)
 {
     mScore += event.getPointValue();
-    std::cout << mScore << std::endl;
+}
+
+void PlayerScoreSystem::receive(
+    const PauseGameEvent &event)
+{
+    mShouldUpdate = false;
+}
+
+void PlayerScoreSystem::receive(
+    const ResumeGameEvent &event)
+{
+    mShouldUpdate = true;
 }
