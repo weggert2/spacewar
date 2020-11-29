@@ -11,15 +11,14 @@
 
 enum class ObstacleType
 {
-    black_hole,
-    unknown,
+    BlackHole,
 };
 
 class Obstacle : public entityx::Component<Obstacle>
 {
 public:
     explicit Obstacle(
-        const ObstacleType type = ObstacleType::black_hole);
+        const ObstacleType type);
 
     ObstacleType getType() const;
 

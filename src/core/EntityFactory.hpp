@@ -130,3 +130,9 @@ private:
     const sf::Vector2f mInitialPos;
     const float mInitialAngle;
 };
+
+class BlackHoleCreator : public EntityCreator
+{
+public:
+    BlackHoleCreator() = default;
+};

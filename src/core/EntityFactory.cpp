@@ -17,6 +17,7 @@
 #include "components/Hitbox.hpp"
 #include "components/Menu.hpp"
 #include "components/Motion.hpp"
+#include "components/Obstacle.hpp"
 #include "components/Position.hpp"
 #include "components/Player.hpp"
 #include "components/PlayerControl.hpp"
@@ -154,4 +155,13 @@ void ProjectileCreator::create(
     entity.assign<Position>(mInitialPos, mInitialAngle);
     entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Projectile>();
+}
+
+void BlackHoleCreator::create(
+    entityx::Entity entity)
+{
+    const sf::Vector2f pos(Game::BHCenterX, Game::BHCenterY);
+    entity.assign<Position>(pos, 0.0f);
+    entity.assign<Radius>(Game::BHRadius);
+    entity.assign<Obstacle>(ObstacleType::BlackHole);
 }
