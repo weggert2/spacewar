@@ -13,5 +13,5 @@ to warn the rest of your caravan!
                Sprites ------------------------- UnLuckY Studio (unluckystudio.com)
                Background Texture ------- Sci-News (sci-news.com)
                ASCII Art --------------------- patorjk  (patorjk.com)
-               Sound Effects ----------------
-               Music ----------------------------
+               Sound Effects ---------------- mixkit.co
+               Music ---------------------------- Patrick de Arteaga (patrickdearteaga.com)
