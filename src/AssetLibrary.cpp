@@ -63,4 +63,18 @@ bool loadAllFonts(
     return success;
 }
 
+bool loadAllMusic(
+    MusicManager &musicManager)
+{
+    bool success = true;
+
+    success &= musicManager.load(MusicId::StartScreen, "../assets/music/Intergalactic-Odyssey.ogg");
+    success &= musicManager.load(MusicId::Pause,       "../assets/music/Solve-The-Puzzle.ogg");
+    success &= musicManager.load(MusicId::Playing,     "../assets/music/Interplanetary-Odyssey.ogg");
+    success &= musicManager.load(MusicId::GameOver,    "../assets/music/Ruined-Planet.ogg");
+    success &= musicManager.load(MusicId::Winning,     "../assets/music/Chiptronical.ogg");
+
+    return success;
+}
+
 } /* end namespace AssetLibrary. */

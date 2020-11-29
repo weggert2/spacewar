@@ -1,9 +1,9 @@
+#include "AssetIds.hpp"
 #include "AssetLibrary.hpp"
 #include "AssetManager.hpp"
 #include "Game.hpp"
 #include "GameManager.hpp"
 #include "KeyManager.hpp"
-#include "AssetIds.hpp"
 
 #include <entityx/Event.h>
 #include <entityx/Entity.h>
@@ -26,10 +26,12 @@ int main()
     SoundManager soundManager;
     TextManager textManager;
     FontManager fontManager;
+    MusicManager musicManager;
     AssetLibrary::loadAllTextures(textureManager);
     AssetLibrary::loadAllSounds(soundManager);
     AssetLibrary::loadAllText(textManager);
     AssetLibrary::loadAllFonts(fontManager);
+    AssetLibrary::loadAllMusic(musicManager);
 
     /* Make the entity, event, and system managers. */
     entityx::EventManager eventManager;
@@ -42,6 +44,7 @@ int main()
         soundManager,
         textManager,
         fontManager,
+        musicManager,
         entityManager,
         eventManager,
         systemManager);

@@ -10,6 +10,7 @@ GameManager::GameManager(
     const SoundManager &soundManager,
     const TextManager &textManager,
     const FontManager &fontManager,
+    const MusicManager &musicManager,
     entityx::EntityManager &entityManager,
     entityx::EventManager &eventManager,
     entityx::SystemManager &systemManager):
@@ -17,6 +18,7 @@ GameManager::GameManager(
         mSoundManager(soundManager),
         mTextManager(textManager),
         mFontManager(fontManager),
+        mMusicManager(musicManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
         mSystemManager(systemManager),

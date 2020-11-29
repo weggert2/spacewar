@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AssetIds.hpp"
+#include "MusicWrapper.hpp"
 #include "StringWrapper.hpp"
 
 #include <iostream>
@@ -66,3 +67,4 @@ typedef AssetManager<sf::Texture,     TextureId> TextureManager;
 typedef AssetManager<sf::SoundBuffer, SoundId>   SoundManager;
 typedef AssetManager<sf::Font,        FontId>    FontManager;
 typedef AssetManager<StringWrapper,   TextId>    TextManager;
+typedef AssetManager<MusicWrapper,    MusicId>   MusicManager;

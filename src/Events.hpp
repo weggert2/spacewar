@@ -71,3 +71,21 @@ public:
 private:
     const SoundId mSoundId;
 };
+
+class PlayMusicEvent : public entityx::Event<PlayMusicEvent>
+{
+public:
+    explicit PlayMusicEvent(
+        const MusicId musicId):
+            mMusicId(musicId)
+    {
+    }
+
+    MusicId get() const
+    {
+        return mMusicId;
+    }
+
+private:
+    const MusicId mMusicId;
+};
