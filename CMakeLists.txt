@@ -14,7 +14,12 @@ file(
 )
 
 # Build the game. Hope you enjoy!
-add_executable(${PROJECT_NAME} ${all_srcs})
+if (MSVC)
+    add_executable(${PROJECT_NAME} WIN32 ${all_srcs} )
+else()
+    add_executable(${PROJECT_NAME} ${all_srcs} )
+endif()
+
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 install(FILES windows/openal32.dll DESTINATION ${PROJECT_NAME}/bin)
@@ -30,11 +35,11 @@ target_compile_options(${PROJECT_NAME} PRIVATE
         -Wformat=2
         -Wno-narrowing
         -fPIC
-        >
+    >
     $<$<CXX_COMPILER_ID:MSVC>:
         /W3
         /WX
-        >
+    >
 )
 
 # Compile our dependencies
@@ -69,6 +74,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE src src/core)
 
 target_link_libraries(
     ${PROJECT_NAME}
+    sfml-main
     sfml-system
     sfml-audio
     sfml-window

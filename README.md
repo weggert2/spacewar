@@ -24,7 +24,7 @@ mkdir -p build
 mkdir -p install
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install
-cmake --build . --config Release
+cmake --build . --config Release --parallel 6
 cmake --install .
 ```
 
