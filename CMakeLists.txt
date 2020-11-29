@@ -17,6 +17,7 @@ file(
 add_executable(${PROJECT_NAME} ${all_srcs})
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
+install(FILES windows/openal32.dll DESTINATION ${PROJECT_NAME}/bin)
 
 # Turn on compile warnings
 target_compile_options(${PROJECT_NAME} PRIVATE
@@ -35,14 +36,6 @@ target_compile_options(${PROJECT_NAME} PRIVATE
         /WX
         >
 )
-
-# target_compile_options(${PROJECT_NAME} PRIVATE
-#     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
-#         >
-#     $<$<CXX_COMPILER_ID:MSVC>:
-#         _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS=1
-#         >
-# )
 
 # Compile our dependencies
 
