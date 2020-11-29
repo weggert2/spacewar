@@ -1,6 +1,7 @@
 #include "WeaponSystem.hpp"
 
 #include "EntityFactory.hpp"
+#include "Events.hpp"
 
 #include "components/Player.hpp"
 #include "components/Position.hpp"
@@ -35,8 +36,19 @@ void WeaponSystem::update(
             weapon->resetCooldown();
         }
 
-        const TextureId textureId = e.has_component<Player>() ?
-            TextureId::PlayerBullet : TextureId::EnemyBullet;
+        TextureId textureId;
+        SoundId soundId;
+
+        if (e.has_component<Player>())
+        {
+            textureId = TextureId::PlayerBullet;
+            soundId = SoundId::PlayerShoot;
+        }
+        else
+        {
+            textureId = TextureId::EnemyBullet;
+            soundId = SoundId::EnemyShoot;
+        }
 
         const ProjectileCreator::TextureInfo textureInfo {
             .mTextureId = textureId,
@@ -60,5 +72,6 @@ void WeaponSystem::update(
             theta);
 
         creator.create(entities.create());
+        eventManager.emit<PlaySoundEvent>(soundId);
     }
 }

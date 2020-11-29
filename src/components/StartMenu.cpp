@@ -80,7 +80,7 @@ void StartMenu::draw(
     {
         case MenuChoice::Play:     mPlayText.setStyle(sf::Text::Underlined);     break;
         case MenuChoice::Controls: mControlsText.setStyle(sf::Text::Underlined); break;
-        case MenuChoice::Scores:    mScoresText.setStyle(sf::Text::Underlined);    break;
+        case MenuChoice::Scores:   mScoresText.setStyle(sf::Text::Underlined);    break;
         case MenuChoice::Credits:  mCreditsText.setStyle(sf::Text::Underlined);  break;
         case MenuChoice::Quit:     mQuitText.setStyle(sf::Text::Underlined);     break;
     }
@@ -104,14 +104,14 @@ void StartMenu::select(
         case MenuChoice::Scores:   eventManager.emit<ShowScoresEvent>();   break;
         case MenuChoice::Credits:  eventManager.emit<ShowCreditsEvent>();  break;
     }
+
+    eventManager.emit<PlaySoundEvent>(SoundId::MenuSelect);
 }
 
 void StartMenu::cancel(
     entityx::EventManager &eventManager)
 {
-    (void)eventManager;
-
-    /* Nothing needed. */
+    eventManager.emit<ResumeGameEvent>();
 }
 
 void StartMenu::up(
@@ -123,6 +123,8 @@ void StartMenu::up(
     int pos = std::distance(choices.begin(), it) - 1;
     if (pos < 0) pos = choices.size() - 1;
     mMenuChoice = choices[pos];
+
+    eventManager.emit<PlaySoundEvent>(SoundId::MenuScroll);
 }
 
 void StartMenu::down(
@@ -133,6 +135,8 @@ void StartMenu::down(
     const auto it = std::find(choices.begin(), choices.end(), mMenuChoice);
     const int pos = std::distance(choices.begin(), it);
     mMenuChoice = choices[(pos+1)%choices.size()];
+
+    eventManager.emit<PlaySoundEvent>(SoundId::MenuScroll);
 }
 
 void StartMenu::left(

@@ -89,6 +89,7 @@ void Game::buildSystems()
     mSystemManager.add<ProjectileDurationSystem>();
     mSystemManager.add<CollisionSystem>(mEventManager);
     mSystemManager.add<PlayerScoreSystem>(mEventManager);
+    mSystemManager.add<SoundSystem>(mSoundManager, mEventManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -151,6 +152,7 @@ void Game::update(
     mSystemManager.update<ProjectileDurationSystem>(dt);
     mSystemManager.update<CollisionSystem>(dt);
     mSystemManager.update<PlayerScoreSystem>(dt);
+    mSystemManager.update<SoundSystem>(dt);
 }
 
 void Game::render(

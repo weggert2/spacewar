@@ -61,6 +61,8 @@ void MenuSystem::receive(
 
             case sf::Keyboard::Space:
             case sf::Keyboard::Enter: menu->select(mEventManager); break;
+
+            case sf::Keyboard::Escape: menu->cancel(mEventManager); break;
             default: break;
         }
     }
@@ -68,6 +70,7 @@ void MenuSystem::receive(
     if (!menuOpen && event.getKey() == sf::Keyboard::Escape)
     {
         mEventManager.emit<PauseGameEvent>();
+        mEventManager.emit<PlaySoundEvent>(SoundId::Pause);
     }
 }
 

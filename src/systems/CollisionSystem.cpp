@@ -100,7 +100,7 @@ void CollisionSystem::detectCollisions(
                  * TODO: Damage, don't destroy. Let another system do that.
                  * TODO: Animation.
                  */
-                destroyEntity(e2);//e2.destroy();
+                destroyEntity(e2);
                 e1Destroyed = true;
             }
         }
@@ -134,9 +134,15 @@ void CollisionSystem::destroyEntity(
     entityx::Entity e) const
 {
     entityx::ComponentHandle<Enemy> enemy = e.component<Enemy>();
+    entityx::ComponentHandle<Player> player = e.component<Player>();
     if (enemy)
     {
         mEventManager.emit<EnemyDestroyedEvent>(enemy->getPointValue());
+        mEventManager.emit<PlaySoundEvent>(SoundId::EnemyHit);
+    }
+    else if (player)
+    {
+        mEventManager.emit<PlaySoundEvent>(SoundId::PlayerHit);
     }
 
     e.destroy();
