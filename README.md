@@ -18,7 +18,7 @@ cmake ..
 make
 ```
 
-Windows:
+Windows MSVC:
 ```
 mkdir -p build
 mkdir -p install
