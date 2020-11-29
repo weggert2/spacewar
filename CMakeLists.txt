@@ -24,7 +24,13 @@ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
 
 if (MSVC)
-    install(FILES windows/openal32.dll DESTINATION ${PROJECT_NAME}/bin)
+    install(
+        FILES
+        windows/openal32.dll
+        windows/COPYING.openal
+        DESTINATION
+        ${PROJECT_NAME}/bin
+    )
 endif()
 
 # Turn on compile warnings
