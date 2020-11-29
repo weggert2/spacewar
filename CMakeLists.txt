@@ -3,12 +3,12 @@ cmake_minimum_required (VERSION 3.3)
 project(spacewar)
 set (CMAKE_CXX_STANDARD 17)
 
-
 # Shortcut - get all of the sources. You probably don't want
 # to do this in production.
 file(
     GLOB all_srcs
-    src/*.c*            src/*.h*
+    src/main.cpp
+    src/core/*.c*       src/core/*.h*
     src/components/*.c* src/components/*.h*
     src/systems/*.c*    src/systems/*.h*
 )
@@ -57,7 +57,7 @@ add_subdirectory(${JSON_DIR}    EXCLUDE_FROM_ALL)
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${SFML_DIR}/include)
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${ENTITYX_DIR})
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${JSON_DIR}/include)
-target_include_directories(${PROJECT_NAME} PRIVATE src)
+target_include_directories(${PROJECT_NAME} PRIVATE src src/core)
 
 target_link_libraries(
     ${PROJECT_NAME}
