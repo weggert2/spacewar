@@ -12,6 +12,7 @@
 #include "systems/PlayerScoreSystem.hpp"
 #include "systems/ProjectileDurationSystem.hpp"
 #include "systems/RenderSystem.hpp"
+#include "systems/SoundSystem.hpp"
 #include "systems/StageSystem.hpp"
 #include "systems/WeaponSystem.hpp"
 
