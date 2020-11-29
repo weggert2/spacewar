@@ -100,14 +100,15 @@ void CollisionSystem::detectCollisions(
                  * TODO: Damage, don't destroy. Let another system do that.
                  * TODO: Animation.
                  */
-                e2.destroy();
+                destroyEntity(e2);//e2.destroy();
                 e1Destroyed = true;
             }
         }
 
         if (e1Destroyed)
         {
-            e1.destroy();
+            destroyEntity(e1);
+            // e1.destroy();
         }
     }
 }
@@ -127,4 +128,16 @@ void CollisionSystem::receive(
     const LoseGameEvent &event)
 {
     firstCycle = true;
+}
+
+void CollisionSystem::destroyEntity(
+    entityx::Entity e) const
+{
+    entityx::ComponentHandle<Enemy> enemy = e.component<Enemy>();
+    if (enemy)
+    {
+        mEventManager.emit<EnemyDestroyedEvent>(enemy->getPointValue());
+    }
+
+    e.destroy();
 }

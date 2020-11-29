@@ -1,5 +1,8 @@
 #include "PlayerScoreSystem.hpp"
 
+#include <algorithm>
+#include <cmath>
+
 PlayerScoreSystem::PlayerScoreSystem(
     entityx::EventManager &eventManager):
         mEventManager(eventManager),
@@ -22,7 +25,7 @@ void PlayerScoreSystem::update(
 
     if (mShouldUpdate)
     {
-        mScore -= dt;
+        mScore = std::max(mScore-dt, 0.0);
     }
 }
 
@@ -56,4 +59,5 @@ void PlayerScoreSystem::receive(
     const EnemyDestroyedEvent &event)
 {
     mScore += event.getPointValue();
+    std::cout << mScore << std::endl;
 }
