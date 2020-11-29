@@ -46,8 +46,19 @@ static bool firstCycle = true;
 /**
  * Detect collision between two entities - applying damage to them if
  * it exists.
+ *
+ * @tparam EntityType1 The first type of entity to retrieve
+ * @tparam EntityType2 The second type of entity to retrieve
+ * @tparam BoxType1 The type that defines how EntityType1 computes its global bounds.
+ * @tparam BoxType2 The type that defines how EntityType2 computes its global bounds
  */
-template <typename T, typename U>
+template
+<
+    typename EntityType1,
+    typename EntityType2,
+    typename BoxType1 = Display,
+    typename BoxType2 = Display
+>
 void CollisionSystem::detectCollisions(
     entityx::EntityManager &entities,
     entityx::EventManager &events,
@@ -62,20 +73,20 @@ void CollisionSystem::detectCollisions(
      * an AABB tree to do this faster. We have so few objects that this is
      * easier/faster to implement. */
 
-    typename T::Handle handle1;
-    Display::Handle display1;
-    for (entityx::Entity e1 : entities.entities_with_components(handle1, display1))
+    typename EntityType1::Handle entity1;
+    typename BoxType1::Handle box1;
+    for (entityx::Entity e1 : entities.entities_with_components(entity1, box1))
     {
-        typename U::Handle handle2;
-        Display::Handle display2;
+        typename EntityType2::Handle entity2;
+        typename BoxType2::Handle box2;
         bool e1Destroyed = false;
-        for (entityx::Entity e2 : entities.entities_with_components(handle2, display2))
+        for (entityx::Entity e2 : entities.entities_with_components(entity2, box2))
         {
             if (e1.id() == e2.id())
                 continue;
 
-            const sf::FloatRect bounds1 = display1->mSprite.getGlobalBounds();
-            const sf::FloatRect bounds2 = display2->mSprite.getGlobalBounds();
+            const sf::FloatRect bounds1 = box1->getGlobalBounds();
+            const sf::FloatRect bounds2 = box2->getGlobalBounds();
 
             const sf::FloatRect rect1 = adjustHitbox(bounds1, hitbox1Fac);
             const sf::FloatRect rect2 = adjustHitbox(bounds2, hitbox2Fac);
@@ -109,7 +120,6 @@ void CollisionSystem::detectCollisions(
         if (e1Destroyed)
         {
             destroyEntity(e1);
-            // e1.destroy();
         }
     }
 }

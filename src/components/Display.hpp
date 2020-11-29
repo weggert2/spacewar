@@ -20,6 +20,8 @@ public:
         const float origX = 1.0f,
         const float origY = 1.35f);
 
+    sf::FloatRect getGlobalBounds() const;
+
 public:
     sf::Sprite mSprite;
 };

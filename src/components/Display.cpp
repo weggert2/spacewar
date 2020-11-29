@@ -28,3 +28,8 @@ Display::Display(
     /* 1.35 = magic number found by fiddling. */
     mSprite.setOrigin(origX*spriteSize.x, origY*spriteSize.y);
 }
+
+sf::FloatRect Display::getGlobalBounds() const
+{
+    return mSprite.getGlobalBounds();
+}

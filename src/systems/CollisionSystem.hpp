@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Events.hpp"
+#include "components/Display.hpp"
 
 #include <entityx/Entity.h>
 #include <entityx/System.h>
@@ -31,7 +32,13 @@ private:
      * We can get away with implementing this in the cpp since the
      * CollisionSystem is the only thing that will ever use it.
      */
-    template <typename T, typename U>
+    template
+    <
+        typename EntityType1,
+        typename EntityType2,
+        typename BoxType1 = Display,
+        typename BoxType2 = Display
+    >
     void detectCollisions(
         entityx::EntityManager &entities,
         entityx::EventManager &events,

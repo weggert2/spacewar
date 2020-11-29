@@ -178,6 +178,8 @@ void Game::render(
     mSystemManager.update<RenderSystem>(dt);
     mSystemManager.update<MenuSystem>(dt);
 
+
+
     mWindow.display();
 }
 
