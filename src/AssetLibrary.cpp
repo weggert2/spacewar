@@ -25,12 +25,12 @@ bool loadAllSounds(
 
     success &= soundManager.load(SoundId::PlayerShoot,  "../assets/sounds/mixkit-sci-fi-plasma-gun-power-up-1679.wav");
     success &= soundManager.load(SoundId::PlayerShoot2, "../assets/sounds/mixkit-laser-weapon-shot-1681.wav");
-    // success &= soundManager.load(SoundId::PlayerFly,    "../assets/sounds/mixkit-futuristic-robotic-fast-sweep-171.wav");
+    success &= soundManager.load(SoundId::PlayerFly,    "../assets/sounds/mixkit-futuristic-robotic-fast-sweep-171.wav");
     success &= soundManager.load(SoundId::PlayerHit,    "../assets/sounds/mixkit-dramatic-metal-explosion-impact-1687.wav");
     success &= soundManager.load(SoundId::EnemyShoot,   "../assets/sounds/mixkit-laser-cannon-shot-1678.wav");
     success &= soundManager.load(SoundId::EnemyHit,     "../assets/sounds/mixkit-sea-mine-explosion-1184.wav");
     success &= soundManager.load(SoundId::Pause,        "../assets/sounds/mixkit-video-game-lock-2851.wav");
-    // success &= soundManager.load(SoundId::MenuScroll,   "../assets/sounds/mixkit-arcade-retro-changing-tab-206.wav");
+    success &= soundManager.load(SoundId::MenuScroll,   "../assets/sounds/mixkit-arcade-retro-changing-tab-206.wav");
     success &= soundManager.load(SoundId::MenuSelect,   "../assets/sounds/mixkit-sci-fi-positive-notification-266.wav");
 
     return success;

@@ -65,9 +65,9 @@ void StartMenu::draw(
     };
 
     mPlayText.setPosition(pos.x,     nextY(mLogoText));
-    mControlsText.setPosition(pos.x, nextY(mPlayText));
-    mScoresText.setPosition(pos.x,    nextY(mControlsText, 30.0f));
-    mCreditsText.setPosition(pos.x,  nextY(mScoresText));
+    mControlsText.setPosition(pos.x, nextY(mPlayText, 10.0f));
+    mScoresText.setPosition(pos.x,   nextY(mControlsText));
+    mCreditsText.setPosition(pos.x,  nextY(mScoresText, 25.0f));
     mQuitText.setPosition(pos.x,     nextY(mCreditsText, 30.0f));
 
     mPlayText.setStyle(sf::Text::Regular);
