@@ -44,6 +44,8 @@ void StageSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
+    (void)dt;
+
     /* If there are no enemies, clear the stage. */
     bool enemiesRemain = false;
     Enemy::Handle enemy;
@@ -98,8 +100,8 @@ void StageSystem::receive(
 
     const sf::Vector2f playerPos = getPlayerPos(mEntityManager);
     const sf::FloatRect playerBounds = getPlayerBounds(mEntityManager);
-    const float edgeOffset = playerBounds.width/2.0;
-    const float playerOffset = 5.0*edgeOffset*edgeOffset;
+    const float edgeOffset = playerBounds.width/2.0f;
+    const float playerOffset = 5.0f*edgeOffset*edgeOffset;
 
     std::vector<sf::Vector2f> placed;
     placed.push_back(playerPos);
@@ -108,7 +110,7 @@ void StageSystem::receive(
     int toPlace = mStage;
     std::uniform_real_distribution<float> xrange(edgeOffset, Game::screenWidth-edgeOffset);
     std::uniform_real_distribution<float> yrange(edgeOffset, Game::screenHeight-edgeOffset);
-    std::uniform_real_distribution<float> rotrange(0.0, 360.0);
+    std::uniform_real_distribution<float> rotrange(0.0f, 360.0f);
     std::random_device rd;
 
     #ifdef DEBUG
@@ -167,10 +169,12 @@ bool StageSystem::validEnemyPos(
 
 void StageSystem::receive(const WinGameEvent &event)
 {
+    (void)event;
     mStage = 0;
 }
 
 void StageSystem::receive(const LoseGameEvent &event)
 {
+    (void)event;
     mStage = 0;
 }

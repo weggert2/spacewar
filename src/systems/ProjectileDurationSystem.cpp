@@ -14,8 +14,9 @@ void ProjectileDurationSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-    Projectile::Handle projectile;
+    (void)events;
 
+    Projectile::Handle projectile;
     for (entityx::Entity e : entities.entities_with_components(projectile))
     {
         projectile->increaseDuration(dt);

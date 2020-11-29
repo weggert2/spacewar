@@ -33,12 +33,12 @@ void WeaponSystem::update(
     for (entityx::Entity e : entities.entities_with_components(position, weapon))
     {
         weapon->decreaseCooldown(dt);
-        if (weapon->getCooldown() > 0.0 || !weapon->getActive())
+        if (weapon->getCooldown() > 0.0f || !weapon->getActive())
         {
             continue;
         }
 
-        if (weapon->getCooldown() <= 0.0)
+        if (weapon->getCooldown() <= 0.0f)
         {
             weapon->resetCooldown();
         }

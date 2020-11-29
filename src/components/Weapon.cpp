@@ -8,8 +8,8 @@
 #include "Weapon.hpp"
 
 Weapon::Weapon(
-    const double maxCooldown,
-    const double damageCoeff):
+    const float maxCooldown,
+    const float damageCoeff):
         mCurrCooldown(0.0),
         mActive(false),
         mMaxCooldown(maxCooldown),
@@ -32,13 +32,13 @@ void Weapon::decreaseCooldown(
     const float dt)
 {
     /* Prevent underflow, although it would take a _very_ long time. */
-    if (mCurrCooldown >= 0.0)
+    if (mCurrCooldown >= 0.0f)
     {
         mCurrCooldown -= dt;
     }
 }
 
-double Weapon::getCooldown() const
+float Weapon::getCooldown() const
 {
     return mCurrCooldown;
 }

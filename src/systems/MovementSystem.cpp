@@ -27,10 +27,6 @@ void MovementSystem::update(
     (void)events;
     const float dtf = (float)dt;
 
-    /* Get the ship width */
-    const sf::FloatRect shipBounds = getPlayerBounds(entities);
-    const float offset = shipBounds.width/2.0;
-
     Position::Handle position;
     Motion::Handle motion;
     for (entityx::Entity e : entities.entities_with_components(motion, position))

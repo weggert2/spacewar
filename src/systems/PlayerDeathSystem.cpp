@@ -15,6 +15,8 @@ void PlayerDeathSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
+    (void)dt;
+
     bool playerAlive = false;
     Player::Handle player;
     for (entityx::Entity e : entities.entities_with_components(player))

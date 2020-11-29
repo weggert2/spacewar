@@ -13,26 +13,26 @@ class Weapon : public entityx::Component<Weapon>
 {
 public:
     Weapon(
-        const double maxCooldown = 0.5,
-        const double damageCoeff = 1.0);
+        const float maxCooldown = 0.5,
+        const float damageCoeff = 1.0);
 
     void setActive(const bool active);
     bool getActive() const;
 
     void decreaseCooldown(const float dt);
-    double getCooldown() const;
+    float getCooldown() const;
     void resetCooldown();
 
 private:
     /* The current time left before you can shoot again. */
-    double mCurrCooldown;
+    float mCurrCooldown;
 
     /* Whether the shoot button is being pressed. */
     bool mActive;
 
     /* The maximum amount of time to wait before you can shoot again. */
-    const double mMaxCooldown;
+    const float mMaxCooldown;
 
     /* The damage multiplier of this weapon. */
-    const double mDamageCoeff;
+    const float mDamageCoeff;
 };

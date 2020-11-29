@@ -24,10 +24,14 @@ void SoundSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
+    (void)events;
+    (void)dt;
+
     Player::Handle player;
     Position::Handle position;
     for (entityx::Entity e : entities.entities_with_components(player, position))
     {
+        (void)e;
         setListenerPosition(position->getPos());
     }
 

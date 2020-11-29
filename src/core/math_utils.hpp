@@ -13,6 +13,8 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+#include <iostream>
+
 
 /**
  * SFML uses degrees, cmath uses radians. This converts.
@@ -63,5 +65,12 @@ inline sf::Vector2f rotate(
 inline sf::Vector2f computeHeading(const float theta)
 {
     return rotate(sf::Vector2f(0.0, 1.0), theta);
+}
+
+inline void printRect(
+    const sf::FloatRect &r)
+{
+    std::cout << r.left << ", " << r.top << ", "
+              << r.width << ", " << r.height << std::endl;
 }
 

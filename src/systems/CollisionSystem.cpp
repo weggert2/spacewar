@@ -31,20 +31,13 @@ static sf::FloatRect adjustHitbox(
     const sf::FloatRect &r,
     const float fac)
 {
-    const float d = (1.0-2.0*fac); /* How much to scale the height/width */
+    const float d = (1.0f-2.0f*fac); /* How much to scale the height/width */
     const float l2 = r.left + fac*r.width; /* new left   */
     const float t2 = r.top + fac*r.height; /* new top    */
     const float w2 = d*r.width;    /* new width  */
     const float h2 = d*r.height;   /* new height */
 
     return sf::FloatRect(l2,t2,w2,h2);
-}
-
-static void printRect(
-    const sf::FloatRect &r)
-{
-    std::cout << r.left << ", " << r.top << ", "
-              << r.width << ", " << r.height << std::endl;
 }
 
 /* See comment in detectCollisions for the explanation of this shameful hack. */
@@ -63,6 +56,7 @@ void CollisionSystem::detectCollisions(
     const float hitbox2Fac)
 {
     (void)events;
+    (void)dt;
 
     /* Dumb n^2 collision detection. We could do scan and sweep, or maintain
      * an AABB tree to do this faster. We have so few objects that this is
@@ -134,6 +128,7 @@ void CollisionSystem::update(
 void CollisionSystem::receive(
     const LoseGameEvent &event)
 {
+    (void)event;
     firstCycle = true;
 }
 

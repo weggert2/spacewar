@@ -41,7 +41,7 @@ void PlayerScoreSystem::update(
 
     if (mShouldUpdate)
     {
-        mScore = std::max(mScore-dt, 0.0);
+        mScore = std::max(mScore-(float)dt, 0.0f);
     }
 }
 
@@ -53,6 +53,7 @@ const std::wstring &PlayerScoreSystem::getScores() const
 void PlayerScoreSystem::receive(
     const LoseGameEvent &event)
 {
+    (void)event;
     mShouldUpdate = false;
     updateHighScores();
 }
@@ -60,6 +61,7 @@ void PlayerScoreSystem::receive(
 void PlayerScoreSystem::receive(
     const WinGameEvent &event)
 {
+    (void)event;
     mShouldUpdate = false;
     updateHighScores();
 }
@@ -67,6 +69,7 @@ void PlayerScoreSystem::receive(
 void PlayerScoreSystem::receive(
     const StartGameEvent &event)
 {
+    (void)event;
     mShouldUpdate = true;
     mScore = 0.0;
 }
@@ -80,12 +83,14 @@ void PlayerScoreSystem::receive(
 void PlayerScoreSystem::receive(
     const PauseGameEvent &event)
 {
+    (void)event;
     mShouldUpdate = false;
 }
 
 void PlayerScoreSystem::receive(
     const ResumeGameEvent &event)
 {
+    (void)event;
     mShouldUpdate = true;
 }
 
@@ -102,6 +107,7 @@ void PlayerScoreSystem::updateHighScores()
         ifs >> j;
     }
 
+    /* convert from json -> STL container. */
     auto &node = j["scores"];
     using set_t = std::set<float, std::greater<float>>;
     set_t scores;
@@ -121,12 +127,12 @@ void PlayerScoreSystem::updateHighScores()
         scores.erase(it);
     }
 
-    /* Write to file. */
+    /* Write the updates scores to file. */
     node = nlohmann::json(scores);
     std::ofstream ofs(fname);
     ofs << j;
 
-    /* Pretty print to the string so we can display on screen.  This needs
+    /* Pretty print to the string so we can display on screen. This needs
      * to be done since we need to manage the lifetime of the string. */
     std::wstringstream wss;
     wss << L"High Scores:\n";

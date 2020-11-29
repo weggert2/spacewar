@@ -5,7 +5,7 @@
  * @author Bill Eggert
  */
 
-#pragma
+#pragma once
 
 #include <entityx/System.h>
 
