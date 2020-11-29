@@ -15,6 +15,10 @@ enum class SoundId
 
 enum class MusicId
 {
+    StartScreen, // alter-ego
+    Playing,  //space-game
+    GameOver, //own the night
+    Winning, // time-heals
 };
 
 enum class TextId
