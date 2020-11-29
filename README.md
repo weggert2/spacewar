@@ -1,4 +1,4 @@
-Welcome to SpaceWar! This is a variant of the classic 1962 computer game. It is my attempt to learn how to use an entity-component system. I made heavy use of the book [SFML Game Development](https://github.com/SFML/SFML-Game-Development-Book) and [Triangulum](https://github.com/TransNeptunianStudios/Triangulum) to guide me in the right direction.
+Welcome to SpaceWar! This is a variant of the classic [1962 computer game](https://en.wikipedia.org/wiki/Spacewar!). It is my attempt to learn how to use an entity-component system. I made heavy use of the book [SFML Game Development](https://github.com/SFML/SFML-Game-Development-Book) and [Triangulum](https://github.com/TransNeptunianStudios/Triangulum) to guide me in the right direction.
 
 Assets (textures, music, sound effects) are credited in the "Credits" menu.
 
