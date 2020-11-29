@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: RenderSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "AssetManager.hpp"

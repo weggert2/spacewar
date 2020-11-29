@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: PlayerControlSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "PlayerControlSystem.hpp"
 
 #include "KeyManager.hpp"

@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: StageSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "StageSystem.hpp"
 
 #include "components/Display.hpp"

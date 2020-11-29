@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: WeaponSystem.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "AssetManager.hpp"

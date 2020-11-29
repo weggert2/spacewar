@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: ProjectileDurationSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #pragma
 
 #include <entityx/System.h>

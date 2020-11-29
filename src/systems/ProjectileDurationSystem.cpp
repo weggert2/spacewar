@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: ProjectileDurationSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "ProjectileDurationSystem.hpp"
 
 #include "components/Projectile.hpp"

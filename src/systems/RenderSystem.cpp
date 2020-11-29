@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: RenderSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "RenderSystem.hpp"
 
 #include "components/Background.hpp"

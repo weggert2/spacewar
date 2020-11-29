@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: WeaponSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "WeaponSystem.hpp"
 
 #include "EntityFactory.hpp"

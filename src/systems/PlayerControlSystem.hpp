@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: PlayerCOntrolSystem.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include <entityx/System.h>

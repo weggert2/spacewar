@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: MusicSystem.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "AssetManager.hpp"

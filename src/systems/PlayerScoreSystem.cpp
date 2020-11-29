@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: PlayerScoreSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "PlayerScoreSystem.hpp"
 
 #include <nlohmann/json.hpp>

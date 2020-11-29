@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: PlayerDeathSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "PlayerDeathSystem.hpp"
 
 #include "components/Player.hpp"

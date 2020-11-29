@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: MusicSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "MusicSystem.hpp"
 
 MusicSystem::MusicSystem(

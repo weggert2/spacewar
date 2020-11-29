@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: CollisionSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "CollisionSystem.hpp"
 
 #include "components/Display.hpp"

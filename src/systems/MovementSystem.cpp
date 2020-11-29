@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: MovementSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "MovementSystem.hpp"
 
 #include "Game.hpp"

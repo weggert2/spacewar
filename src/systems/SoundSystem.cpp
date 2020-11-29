@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: SoundSystem.cpp $
+ * @author Bill Eggert
+ */
+
 #include "SoundSystem.hpp"
 
 #include "components/Player.hpp"

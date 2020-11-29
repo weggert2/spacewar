@@ -1,3 +1,10 @@
+/**
+ * @file
+ *
+ * $Id: CollisionSystem.hpp $
+ * @author Bill Eggert
+ */
+
 #pragma once
 
 #include "Events.hpp"
