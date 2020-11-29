@@ -22,7 +22,10 @@ endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME}/bin)
 install(DIRECTORY assets DESTINATION ${PROJECT_NAME})
-install(FILES windows/openal32.dll DESTINATION ${PROJECT_NAME}/bin)
+
+if (MSVC)
+    install(FILES windows/openal32.dll DESTINATION ${PROJECT_NAME}/bin)
+endif()
 
 # Turn on compile warnings
 target_compile_options(${PROJECT_NAME} PRIVATE
@@ -74,10 +77,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE src src/core)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    sfml-main
     sfml-system
     sfml-audio
     sfml-window
     sfml-graphics
     entityx
     nlohmann_json)
+
+if (MSVC)
+    target_link_libraries(${PROJECT_NAME} sfml-main)
+endif()
