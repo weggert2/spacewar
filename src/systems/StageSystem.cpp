@@ -107,7 +107,7 @@ void StageSystem::receive(
     placed.push_back(playerPos);
 
     const int maxIter = 20;
-    int toPlace = mStage;
+    int toPlace = (int)mStage;
     std::uniform_real_distribution<float> xrange(edgeOffset, Game::screenWidth-edgeOffset);
     std::uniform_real_distribution<float> yrange(edgeOffset, Game::screenHeight-edgeOffset);
     std::uniform_real_distribution<float> rotrange(0.0f, 360.0f);

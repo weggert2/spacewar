@@ -25,6 +25,7 @@ mkdir -p install
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install
 cmake --build . --config Release
+cmake --install .
 ```
 
 I don't own a Mac but I'm sure XCode can interpret CMake.

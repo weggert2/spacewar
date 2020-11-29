@@ -50,9 +50,9 @@ void StartMenuCreator::create(
 
     entity.assign<Menu>(menu);
 
-    const float x = Game::screenWidth/2.0;
-    const float y = Game::screenHeight/2.5;
-    entity.assign<Position>(sf::Vector2f(x,y), 0.0);
+    const float x = Game::screenWidth/2.0f;
+    const float y = Game::screenHeight/2.5f;
+    entity.assign<Position>(sf::Vector2f(x,y), 0.0f);
 }
 
 BackgroundCreator::BackgroundCreator(
@@ -65,7 +65,7 @@ void BackgroundCreator::create(
     entityx::Entity entity)
 {
     entity.assign<Background>(mTextureManager.get(TextureId::Background));
-    entity.assign<Position>(sf::Vector2f(), 0.0);
+    entity.assign<Position>(sf::Vector2f(), 0.0f);
 }
 
 PlayerCreator::PlayerCreator(
@@ -91,7 +91,7 @@ void PlayerCreator::create(
 
     /* Start the player in the lower right of the screen. */
     auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);
-    entity.assign<Position>(pos, 0.0);
+    entity.assign<Position>(pos, 0.0f);
 }
 
 EnemyCreator::EnemyCreator(
@@ -148,7 +148,7 @@ void ProjectileCreator::create(
     entity.assign_from_copy<Display>(display);
 
     const float speed = -450.0f; /* Negative? Ok I guess. */
-    const float omega = 0.0;
+    const float omega = 0.0f;
 
     entity.assign<Motion>(speed, omega, speed, omega);
     entity.assign<Position>(mInitialPos, mInitialAngle);

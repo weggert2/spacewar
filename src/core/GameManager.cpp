@@ -186,7 +186,7 @@ void GameManager::receive(
         mFontManager.get(FontId::Menu),
         mFontManager.get(FontId::Menu),
         *this,
-        40.0f);
+        40);
 
     creator.create(mEntityManager.create());
 }

@@ -39,7 +39,7 @@ void MenuSystem::update(
     {
         (void)e;
 
-        menu->update(events, dt);
+        menu->update(events, (float)dt);
         menu->draw(mWindow, position->getPos());
     }
 }

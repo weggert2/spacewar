@@ -31,8 +31,18 @@ target_compile_options(${PROJECT_NAME} PRIVATE
         -fPIC
         >
     $<$<CXX_COMPILER_ID:MSVC>:
-        /W4
-        /WX>)
+        /W3
+        /WX
+        >
+)
+
+# target_compile_options(${PROJECT_NAME} PRIVATE
+#     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
+#         >
+#     $<$<CXX_COMPILER_ID:MSVC>:
+#         _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS=1
+#         >
+# )
 
 # Compile our dependencies
 
@@ -49,6 +59,11 @@ set(ENTITYX_BUILD_TESTING 0 CACHE BOOL "Don't build entityx tests")
 
 # Json
 set(JSON_DIR ${DEPS_DIR}/nlohmann_json)
+
+# Windows compatibility for EntityX
+set_directory_properties(
+    PROPERTIES COMPILE_DEFINITIONS
+    _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS=1)
 
 add_subdirectory(${SFML_DIR}    EXCLUDE_FROM_ALL)
 add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)

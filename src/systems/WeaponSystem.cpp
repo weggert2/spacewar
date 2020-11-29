@@ -32,7 +32,7 @@ void WeaponSystem::update(
 
     for (entityx::Entity e : entities.entities_with_components(position, weapon))
     {
-        weapon->decreaseCooldown(dt);
+        weapon->decreaseCooldown((float)dt);
         if (weapon->getCooldown() > 0.0f || !weapon->getActive())
         {
             continue;
@@ -58,12 +58,7 @@ void WeaponSystem::update(
         }
 
         const ProjectileCreator::TextureInfo textureInfo {
-            .mTextureId = textureId,
-            .mScaleX = 1.0f,
-            .mScaleY = 1.0f,
-            .mOrigX = 1.0f,
-            .mOrigY = 1.0f,
-        };
+            textureId, 1.0f, 1.0f, 1.0f, 1.0f };
 
         const float theta = position->getTheta();
 

@@ -119,10 +119,10 @@ void CollisionSystem::update(
     entityx::EventManager &events,
     const double dt)
 {
-    detectCollisions<Player, Enemy>(entities, events, dt, 0.25, 0.25);
+    detectCollisions<Player, Enemy>(entities, events, dt, 0.25f, 0.25f);
     detectCollisions<Player, Projectile>(entities, events, dt);
     detectCollisions<Enemy, Projectile>(entities, events, dt);
-    detectCollisions<Projectile, Projectile>(entities, events, dt, 0.35, 0.35);
+    detectCollisions<Projectile, Projectile>(entities, events, dt, 0.35f, 0.35f);
 }
 
 void CollisionSystem::receive(

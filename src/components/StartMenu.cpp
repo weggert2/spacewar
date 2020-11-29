@@ -127,7 +127,7 @@ void StartMenu::up(
     (void)eventManager;
 
     const auto it = std::find(choices.begin(), choices.end(), mMenuChoice);
-    int pos = std::distance(choices.begin(), it) - 1;
+    int64_t pos = std::distance(choices.begin(), it) - 1;
     if (pos < 0) pos = choices.size() - 1;
     mMenuChoice = choices[pos];
 
@@ -140,7 +140,7 @@ void StartMenu::down(
     (void)eventManager;
 
     const auto it = std::find(choices.begin(), choices.end(), mMenuChoice);
-    const int pos = std::distance(choices.begin(), it);
+    const int64_t pos = std::distance(choices.begin(), it);
     mMenuChoice = choices[(pos+1)%choices.size()];
 
     eventManager.emit<PlaySoundEvent>(SoundId::MenuScroll);

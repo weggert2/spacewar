@@ -49,6 +49,6 @@ private:
     static constexpr float Attenuation = 8.0f;
     static constexpr float ListenerZ = 300.0f;
     static constexpr float MinDistance2D = 200.0f;
-    static constexpr float MinDistance3D = std::sqrt(
+    inline static float MinDistance3D = std::sqrt(
         MinDistance2D*MinDistance2D + ListenerZ*ListenerZ);
 };

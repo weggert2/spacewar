@@ -11,6 +11,7 @@
 #include <locale>
 #include <string>
 #include <sstream>
+#include <codecvt>
 
 /*
  * Gives loading a string from file the same interface as the SFML asset

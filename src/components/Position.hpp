@@ -17,22 +17,22 @@ public:
      * center of ships. TODO: remove the ugly hack. */
     Position(
         const sf::Vector2f &position,
-        const double rotation,
+        const float rotation,
         const sf::Vector2f &offset = sf::Vector2f(80.0, -50.0));
 
     const sf::Vector2f &getPos() const;
     const sf::Vector2f &getOffset() const;
-    double getTheta() const;
+    float getTheta() const;
 
     void move(const sf::Vector2f &dx);
     void setX(const sf::Vector2f &x);
 
-    void rotate(const double dTheta);
-    void setTheta(const double theta);
+    void rotate(const float dTheta);
+    void setTheta(const float theta);
 
 private:
     /* Position and rotation. */
     sf::Vector2f mX;
-    double mTheta;
+    float mTheta;
     const sf::Vector2f mOffset;
 };

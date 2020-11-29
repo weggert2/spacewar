@@ -9,7 +9,7 @@
 
 Position::Position(
     const sf::Vector2f &position,
-    const double rotation,
+    const float rotation,
     const sf::Vector2f &offset):
         mX(position),
         mTheta(rotation),
@@ -27,7 +27,7 @@ const sf::Vector2f &Position::getOffset() const
     return mOffset;
 }
 
-double Position::getTheta() const
+float Position::getTheta() const
 {
     return mTheta;
 }
@@ -45,13 +45,13 @@ void Position::setX(
 }
 
 void Position::rotate(
-    const double dTheta)
+    const float dTheta)
 {
     mTheta += dTheta;
 }
 
 void Position::setTheta(
-    const double theta)
+    const float theta)
 {
     mTheta = theta;
 }
