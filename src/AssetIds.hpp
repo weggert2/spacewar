@@ -26,10 +26,11 @@ enum class SoundId
 
 enum class MusicId
 {
-    StartScreen, // alter-ego
-    Playing,  //space-game
-    GameOver, //own the night
-    Winning, // time-heals
+    StartScreen, // Intergalactic Odyssey
+    Pause, // Solve the Puzzle
+    Playing, // Interplanetary Odyssey
+    GameOver, // Ruined Planet
+    Winning, // Chiptronical
 };
 
 enum class TextId
