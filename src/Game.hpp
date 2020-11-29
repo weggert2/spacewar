@@ -10,7 +10,6 @@ class GameManager;
 class KeyManager;
 class Player;
 class QuitGameEvent;
-class UpdateHighScoreEvent;
 
 /*
  * The monolithic game class. Responsible for running your game!
@@ -32,7 +31,6 @@ public:
 
     void run();
     void receive(const QuitGameEvent &event);
-    void receive(const UpdateHighScoreEvent &event);
 
 private:
     void subscribeEvents();

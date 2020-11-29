@@ -73,7 +73,6 @@ void Game::subscribeEvents()
 {
     /* Connect the event manager to the events. */
     mEventManager.subscribe<QuitGameEvent>(*this);
-    mEventManager.subscribe<UpdateHighScoreEvent>(*this);
 }
 
 void Game::buildSystems()
@@ -131,11 +130,6 @@ void Game::receive(const QuitGameEvent &event)
 {
     (void)event;
     mWindow.close();
-}
-
-void Game::receive(const UpdateHighScoreEvent &event)
-{
-    std::cout << "got here\n";
 }
 
 void Game::update(

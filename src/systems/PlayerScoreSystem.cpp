@@ -31,23 +31,18 @@ void PlayerScoreSystem::update(
     }
 }
 
-float PlayerScoreSystem::getScore() const
-{
-    return mScore;
-}
-
 void PlayerScoreSystem::receive(
     const LoseGameEvent &event)
 {
     mShouldUpdate = false;
-    mEventManager.emit<UpdateHighScoreEvent>(mScore);
+    updateHighScores();
 }
 
 void PlayerScoreSystem::receive(
     const WinGameEvent &event)
 {
     mShouldUpdate = false;
-    mEventManager.emit<UpdateHighScoreEvent>(mScore);
+    updateHighScores();
 }
 
 void PlayerScoreSystem::receive(
@@ -74,3 +69,5 @@ void PlayerScoreSystem::receive(
 {
     mShouldUpdate = true;
 }
+
+void PlayerScoreSystem::updateHighScores();

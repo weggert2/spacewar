@@ -17,7 +17,7 @@ public:
         entityx::EventManager &events,
         const double dt);
 
-    float getScore() const;
+    const std::string & getScores() const;
 
     void receive(const LoseGameEvent &event);
     void receive(const WinGameEvent &event);
@@ -27,7 +27,13 @@ public:
     void receive(const ResumeGameEvent &event);
 
 private:
+    void updateHighScores();
+
+private:
     entityx::EventManager &mEventManager;
     bool mShouldUpdate;
     float mScore;
+
+    /* String storage */
+    std::wstring mScores;
 };

@@ -12,7 +12,7 @@ StartMenu::StartMenu(
     const int logoFontSize):
         mLogoText(),
         mPlayText(),
-        mStoryText(),
+        mScoresText(),
         mCreditsText(),
         mQuitText(),
         mMenuChoice(MenuChoice::Play),
@@ -38,7 +38,7 @@ StartMenu::StartMenu(
 
     initMenu(mPlayText,     "Play");
     initMenu(mControlsText, "Controls");
-    initMenu(mStoryText,    "Story");
+    initMenu(mScoresText,   "Scores");
     initMenu(mCreditsText,  "Credits");
     initMenu(mQuitText,     "Quit");
 }
@@ -66,13 +66,13 @@ void StartMenu::draw(
 
     mPlayText.setPosition(pos.x,     nextY(mLogoText));
     mControlsText.setPosition(pos.x, nextY(mPlayText));
-    mStoryText.setPosition(pos.x,    nextY(mControlsText, 30.0f));
-    mCreditsText.setPosition(pos.x,  nextY(mStoryText));
+    mScoresText.setPosition(pos.x,    nextY(mControlsText, 30.0f));
+    mCreditsText.setPosition(pos.x,  nextY(mScoresText));
     mQuitText.setPosition(pos.x,     nextY(mCreditsText, 30.0f));
 
     mPlayText.setStyle(sf::Text::Regular);
     mControlsText.setStyle(sf::Text::Regular);
-    mStoryText.setStyle(sf::Text::Regular);
+    mScoresText.setStyle(sf::Text::Regular);
     mCreditsText.setStyle(sf::Text::Regular);
     mQuitText.setStyle(sf::Text::Regular);
 
@@ -80,7 +80,7 @@ void StartMenu::draw(
     {
         case MenuChoice::Play:     mPlayText.setStyle(sf::Text::Underlined);     break;
         case MenuChoice::Controls: mControlsText.setStyle(sf::Text::Underlined); break;
-        case MenuChoice::Story:    mStoryText.setStyle(sf::Text::Underlined);    break;
+        case MenuChoice::Scores:    mScoresText.setStyle(sf::Text::Underlined);    break;
         case MenuChoice::Credits:  mCreditsText.setStyle(sf::Text::Underlined);  break;
         case MenuChoice::Quit:     mQuitText.setStyle(sf::Text::Underlined);     break;
     }
@@ -88,7 +88,7 @@ void StartMenu::draw(
     window.draw(mLogoText);
     window.draw(mPlayText);
     window.draw(mControlsText);
-    window.draw(mStoryText);
+    window.draw(mScoresText);
     window.draw(mCreditsText);
     window.draw(mQuitText);
 }
@@ -101,6 +101,7 @@ void StartMenu::select(
         case MenuChoice::Play:     resumeGame(eventManager); break;
         case MenuChoice::Quit:     eventManager.emit<QuitGameEvent>();     break;
         case MenuChoice::Controls: eventManager.emit<ShowControlsEvent>(); break;
+        case MenuChoice::Scores:   eventManager.emit<ShowScoresEvent>();   break;
         case MenuChoice::Credits:  eventManager.emit<ShowCreditsEvent>();  break;
     }
 }
@@ -157,6 +158,9 @@ void StartMenu::resumeGame(
         case GameState::GameOver:  eventManager.emit<StartGameEvent>();  break;
 
         case GameState::Playing:   /* Do nothing */                      break;
+
+        case GameState::Controls:
+        case GameState::Scores:
         case GameState::Paused:    eventManager.emit<ResumeGameEvent>(); break;
     }
 }

@@ -33,14 +33,14 @@ private:
     {
         Play,
         Controls,
-        Story,
+        Scores,
         Credits,
         Quit,
     };
 
     sf::Text mLogoText;
     sf::Text mPlayText;
-    sf::Text mStoryText;
+    sf::Text mScoresText;
     sf::Text mCreditsText;
     sf::Text mQuitText;
     sf::Text mControlsText;
@@ -49,7 +49,7 @@ private:
     const std::vector<MenuChoice> choices {
         MenuChoice::Play,
         MenuChoice::Controls,
-        MenuChoice::Story,
+        MenuChoice::Scores,
         MenuChoice::Credits,
         MenuChoice::Quit,
     };
