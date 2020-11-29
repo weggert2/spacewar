@@ -2,13 +2,13 @@
 
 Enemy::Enemy(
     const EnemyType type,
-    const size_t pointValue):
+    const float pointValue):
         mType(type),
         mPointValue(pointValue)
 {
 }
 
-size_t Enemy::getPointValue() const
+float Enemy::getPointValue() const
 {
     return mPointValue;
 }

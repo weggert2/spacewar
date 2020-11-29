@@ -9,6 +9,7 @@
 #include "systems/MovementSystem.hpp"
 #include "systems/PlayerControlSystem.hpp"
 #include "systems/PlayerDeathSystem.hpp"
+#include "systems/PlayerScoreSystem.hpp"
 #include "systems/ProjectileDurationSystem.hpp"
 #include "systems/RenderSystem.hpp"
 #include "systems/StageSystem.hpp"
@@ -72,6 +73,7 @@ void Game::subscribeEvents()
 {
     /* Connect the event manager to the events. */
     mEventManager.subscribe<QuitGameEvent>(*this);
+    mEventManager.subscribe<UpdateHighScoreEvent>(*this);
 }
 
 void Game::buildSystems()
@@ -86,6 +88,7 @@ void Game::buildSystems()
     mSystemManager.add<WeaponSystem>(mTextureManager);
     mSystemManager.add<ProjectileDurationSystem>();
     mSystemManager.add<CollisionSystem>(mEventManager);
+    mSystemManager.add<PlayerScoreSystem>(mEventManager);
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -130,6 +133,11 @@ void Game::receive(const QuitGameEvent &event)
     mWindow.close();
 }
 
+void Game::receive(const UpdateHighScoreEvent &event)
+{
+    std::cout << "got here\n";
+}
+
 void Game::update(
     const sf::Time &deltaTime)
 {
@@ -147,6 +155,7 @@ void Game::update(
     mSystemManager.update<WeaponSystem>(dt);
     mSystemManager.update<ProjectileDurationSystem>(dt);
     mSystemManager.update<CollisionSystem>(dt);
+    mSystemManager.update<PlayerScoreSystem>(dt);
 }
 
 void Game::render(

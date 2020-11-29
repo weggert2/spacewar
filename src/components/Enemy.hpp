@@ -14,11 +14,11 @@ class Enemy : public entityx::Component<Enemy>
 public:
     explicit Enemy(
         const EnemyType type = EnemyType::ship,
-        const size_t pointValue = 10);
+        const float pointValue = 10.0f);
 
-    size_t getPointValue() const;
+    float getPointValue() const;
 
 private:
     const EnemyType mType;
-    const size_t mPointValue;
+    const float mPointValue;
 };

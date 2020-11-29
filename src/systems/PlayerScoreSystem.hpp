@@ -5,11 +5,11 @@
 #include <entityx/Entity.h>
 #include <entityx/System.h>
 
-class CollisionSystem : public entityx::System<CollisionSystem>,
-                        public entityx::Receiver<CollisionSystem>
+class PlayerScoreSystem : public entityx::System<PlayerScoreSystem>,
+                          public entityx::Receiver<PlayerScoreSystem>
 {
 public:
-    explicit CollisionSystem(
+    explicit PlayerScoreSystem(
         entityx::EventManager &eventManager);
 
     void update(
@@ -26,7 +26,7 @@ public:
 
 
 private:
-    entityx::EventManager mEventManager;
+    entityx::EventManager &mEventManager;
     bool mShouldUpdate;
     float mScore;
 };

@@ -14,6 +14,8 @@ enum class GameState
     GameOver,
 };
 
+class PlayerScoreSystem;
+
 /**
  * The state stack
  */
