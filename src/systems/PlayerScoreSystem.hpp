@@ -35,5 +35,5 @@ private:
     float mScore;
 
     /* String storage */
-    std::wstring mScores;
+    std::wstring mScoreStr;
 };

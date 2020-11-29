@@ -47,11 +47,16 @@ set(ENTITYX_DIR ${DEPS_DIR}/entityx)
 set(ENTITYX_BUILD_SHARED 0 CACHE BOOL "Build entityx statically")
 set(ENTITYX_BUILD_TESTING 0 CACHE BOOL "Don't build entityx tests")
 
+# Json
+set(JSON_DIR ${DEPS_DIR}/nlohmann_json)
+
 add_subdirectory(${SFML_DIR}    EXCLUDE_FROM_ALL)
 add_subdirectory(${ENTITYX_DIR} EXCLUDE_FROM_ALL)
+add_subdirectory(${JSON_DIR}    EXCLUDE_FROM_ALL)
 
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${SFML_DIR}/include)
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${ENTITYX_DIR})
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${JSON_DIR}/include)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 target_link_libraries(
@@ -60,4 +65,5 @@ target_link_libraries(
     sfml-audio
     sfml-window
     sfml-graphics
-    entityx)
+    entityx
+    nlohmann_json)

@@ -1,13 +1,20 @@
 #include "PlayerScoreSystem.hpp"
 
+#include <nlohmann/json.hpp>
+
 #include <algorithm>
 #include <cmath>
+#include <fstream>
+#include <iomanip>
+#include <set>
+#include <sstream>
 
 PlayerScoreSystem::PlayerScoreSystem(
     entityx::EventManager &eventManager):
         mEventManager(eventManager),
         mShouldUpdate(false),
-        mScore(0.0)
+        mScore(0.0),
+        mScoreStr()
 {
     eventManager.subscribe<LoseGameEvent>(*this);
     eventManager.subscribe<WinGameEvent>(*this);
@@ -70,7 +77,60 @@ void PlayerScoreSystem::receive(
     mShouldUpdate = true;
 }
 
+/* Store the scores next to the binary. */
+static const std::string    fname = "scores.json";
+
 void PlayerScoreSystem::updateHighScores()
 {
+    /* Read any existing scores. */
+    nlohmann::json j;
+    std::ifstream ifs(fname);
+    if (ifs)
+    {
+        ifs >> j;
+    }
 
+    using set_t = std::set<float, std::greater<float>>;
+    set_t scores;
+
+    auto &node = j["scores"];
+    if (!node.empty())
+    {
+        scores = node.get<set_t>();
+    }
+
+    /* Insert the current score. */
+    scores.insert(mScore);
+
+    /* Keep only the 10 highest scores. */
+    while (scores.size() > 10.0)
+    {
+        auto it = scores.end();
+        it--;
+        scores.erase(it);
+    }
+
+    /* Write to file. */
+    node = nlohmann::json(scores);
+    std::ofstream ofs(fname);
+    ofs << j;
+
+    /* Pretty print to the string so we can display on screen. */
+    std::wstringstream wss;
+
+    if (scores.empty())
+    {
+        wss << L"No high scores yet!";
+    }
+    else
+    {
+        size_t i = 1;
+        for (const float score : scores)
+        {
+            wss << i << L": " << std::setprecision(2) << score << L"\n";
+            i++;
+        }
+    }
+
+    mScoreStr = wss.str();
 }
