@@ -9,6 +9,16 @@ git submodule update
 ```
 
 Build Instructions
+
+Linux:
+```
+mkdir -p build
+cd build
+cmake ..
+make
+```
+
+Windows:
 ```
 mkdir -p build
 mkdir -p install
@@ -16,6 +26,8 @@ cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install
 cmake --build . --config Release
 ```
+
+I don't own a Mac but I'm sure XCode can interpret CMake.
 
 Run from within the install directory so that the binary can find the assets.
 
