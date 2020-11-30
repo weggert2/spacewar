@@ -192,8 +192,17 @@ void Game::render(
 
 sf::RenderWindow Game::defaultWindow()
 {
+    auto monitorSize = sf::VideoMode::getDesktopMode();
+
+    const std::string name = "SpaceWar";
+    if (monitorSize.width == ScreenWidth &&
+        monitorSize.height == ScreenHeight)
+    {
+        return sf::RenderWindow(sf::VideoMode(), name, sf::Style::Fullscreen);
+    }
+
     return sf::RenderWindow(
         sf::VideoMode(ScreenWidth, ScreenHeight),
-        "SpaceWar",
+        name,
         sf::Style::Titlebar | sf::Style::Close);
 }

@@ -27,6 +27,7 @@ if (MSVC)
     install(
         FILES
         windows/openal32.dll
+        windows/vcruntime140_1.dll
         windows/COPYING.openal
         DESTINATION
         ${PROJECT_NAME}/bin
