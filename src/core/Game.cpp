@@ -181,6 +181,12 @@ void Game::render(
     mSystemManager.update<RenderSystem>(dt);
     mSystemManager.update<MenuSystem>(dt);
 
+    /* For finding where the black hole is. */
+    // sf::CircleShape circle(BHRadius);
+    // circle.setOrigin(BHRadius,BHRadius);
+    // circle.setPosition(sf::Vector2f(BHCenterX, BHCenterY));
+    // mWindow.draw(circle);
+
     mWindow.display();
 }
 

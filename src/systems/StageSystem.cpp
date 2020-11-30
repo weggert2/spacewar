@@ -67,6 +67,11 @@ void StageSystem::receive(
 {
     (void)event;
 
+    /* Destroy any existing players (e.g. if we've won the game) */
+    mEntityManager.each<Player>([](entityx::Entity e, Player&) {
+        e.destroy();
+    });
+
     /* Make the background, player, and the black hole. */
     BackgroundCreator(mTextureManager).create(mEntityManager.create());
     PlayerCreator(mTextureManager).create(mEntityManager.create());

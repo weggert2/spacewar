@@ -53,11 +53,11 @@ private:
 public:
     /* Misc settings */
     static constexpr int ScreenWidth  = 1920;
-    static constexpr int ScreenHeight = 1200;
+    static constexpr int ScreenHeight = 1080;
 
     /* Black hole info. */
     static constexpr float BHCenterX = ScreenWidth/2.03f;
-    static constexpr float BHCenterY = ScreenHeight/2.2f;
+    static constexpr float BHCenterY = ScreenHeight/2.0f;
 
     /* Use this radius for collision detection. */
     static constexpr float BHRadius = 190.0f;

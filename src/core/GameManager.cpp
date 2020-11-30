@@ -63,7 +63,8 @@ void GameManager::receive(
         mTextManager.get(TextId::Logo).get(),
         mFontManager.get(FontId::Logo),
         mFontManager.get(FontId::Menu),
-        *this);
+        *this,
+        18);
 
     creator.create(mEntityManager.create());
 }
