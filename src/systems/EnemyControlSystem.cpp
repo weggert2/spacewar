@@ -16,11 +16,8 @@ void EnemyControlSystem::update(
 {
     (void)events;
     (void)dt;
-
-    const sf::Vector2f bhPos = Game::getBHPos();
     const sf::Vector2f playerPos = getPlayerPos(entities);
 
-    size_t i = 0;
     entities.each<EnemyControl, Motion, Weapon, Position>([&](
         entityx::Entity e,
         EnemyControl &control,
@@ -28,9 +25,10 @@ void EnemyControlSystem::update(
         Weapon &weapon,
         Position &position)
     {
+        (void)e;
+        (void)control;
         pursuePlayer(motion, weapon, position, playerPos);
     });
-
 }
 
 void EnemyControlSystem::pursuePlayer(
@@ -44,7 +42,8 @@ void EnemyControlSystem::pursuePlayer(
     const sf::Vector2f d = normalize(pos - playerPos);
     const float dist = std::sqrt(distsq(pos, playerPos));
 
-    /* Get the cos of the angle between the player and the enemy.
+    /*
+     * Get the cos of the angle between the player and the enemy.
      *
      * A value > 0 means we are pointing "towards" the player. Turn the thrusters
      * on in this case. Conversely, a value < 0 means we are pointing away,
@@ -76,6 +75,7 @@ void EnemyControlSystem::pursuePlayer(
      */
     const float th = std::atan2(cross(heading, d), cosTh);
     const float threshold = 0.0f;
+    constexpr float PI_F = (float)M_PI;
     motion.setRotate(th < -threshold, th > threshold);
-    weapon.setActive(std::fabs(th) < M_PI/8.0f);
+    weapon.setActive(std::fabs(th) < PI_F/8.0f);
 }
