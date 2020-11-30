@@ -37,14 +37,14 @@ endif()
 # Turn on compile warnings
 target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
-        # -Wall
-        # -Wextra
-        # -Werror
-        # -Wdouble-promotion
-        # -Wshadow
-        # -Wformat=2
-        # -Wno-narrowing
-        # -fPIC
+        -Wall
+        -Wextra
+        -Werror
+        -Wdouble-promotion
+        -Wshadow
+        -Wformat=2
+        -Wno-narrowing
+        -fPIC
     >
     $<$<CXX_COMPILER_ID:MSVC>:
         /W3
