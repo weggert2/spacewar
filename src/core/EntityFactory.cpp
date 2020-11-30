@@ -161,8 +161,7 @@ void ProjectileCreator::create(
     entity.assign_from_copy<Display>(display);
 
     const float omega = 0.0f;
-
-    entity.assign<Motion>(mSpeed, 0.0f, mSpeed, 0.0f);
+    entity.assign<Motion>(mSpeed, omega, mSpeed, omega);
     entity.assign<Position>(mInitialPos, mInitialAngle);
     entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Projectile>();

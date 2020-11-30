@@ -15,7 +15,15 @@
 #include <entityx/System.h>
 #include <SFML/Graphics.hpp>
 
+/*
+ * This file defines some helpful methods for getting information about
+ * common entities.
+ */
 
+
+/**
+ * Get the position of the player from the entity manager.
+ */
 inline sf::Vector2f getPlayerPos(
     entityx::EntityManager &entityManager)
 {
@@ -31,6 +39,9 @@ inline sf::Vector2f getPlayerPos(
     return sf::Vector2f();
 }
 
+/**
+ * Get the axis-aligned bounds of the player from the entity manager.
+ */
 inline sf::FloatRect getPlayerBounds(
     entityx::EntityManager &entityManager)
 {

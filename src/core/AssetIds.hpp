@@ -7,6 +7,7 @@
 
 #pragma once
 
+/* The texture ids, to be used by a TextureManager */
 enum class TextureId
 {
     Background,
@@ -16,6 +17,7 @@ enum class TextureId
     EnemyBullet
 };
 
+/* The sound ids, to be used by a SoundManager. */
 enum class SoundId
 {
     PlayerShoot, // sci-fi-plasma-gun-powerup,
@@ -31,6 +33,7 @@ enum class SoundId
     MenuSelect, // positive-notification
 };
 
+/* The music ids, to be used by a MusicManager */
 enum class MusicId
 {
     StartScreen, // Intergalactic Odyssey
@@ -40,6 +43,7 @@ enum class MusicId
     Win, // Chiptronical
 };
 
+/* The text ids, to be used by a TextManager. */
 enum class TextId
 {
     Logo,
@@ -50,6 +54,7 @@ enum class TextId
     GameOver,
 };
 
+/* The font ids, to be used by a font manager. */
 enum class FontId
 {
     Logo,
