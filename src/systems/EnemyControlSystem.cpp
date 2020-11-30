@@ -29,12 +29,8 @@ void EnemyControlSystem::update(
         Position &position)
     {
         pursuePlayer(motion, weapon, position, playerPos);
-        // shootAtPlayer();
-        // weapon.setActive(true);
-        // i++;
     });
 
-    // std::cout << "num enemies: " << i << std::endl;
 }
 
 void EnemyControlSystem::pursuePlayer(
@@ -54,14 +50,13 @@ void EnemyControlSystem::pursuePlayer(
      * on in this case. Conversely, a value < 0 means we are pointing away,
      * so turn the thrusters off.
      *
-     * The enemies aren't suicidal, so if we get too close to the player,
-     * reverse thrust.
+     * The enemies aren't suicidal, so if we get too close to the player, stop.
      */
     const float cosTh = dot(heading, d);
 
     if (dist < Game::ScreenWidth/5.0f)
     {
-        motion.setImpulse(false, true);
+        motion.setImpulse(false, false);
     }
     else
     {
@@ -70,9 +65,17 @@ void EnemyControlSystem::pursuePlayer(
 
     /* Get the quadrant angle between us and the player. This will tell us
      * which direction to turn. When we're pointed right at the player,
-     * and within a certain distance, shoot. */
+     * and within a certain distance, shoot.
+     *
+     * However, if our path takes us through the black hole, that's no good
+     * either! We could make the ships avoid the black hole with some ray-circle
+     * intersection, and then some not-so-tricky pathfinding around it. But,
+     * after playtesting, the AI is hard enough to beat already. Moreover,
+     * it is FUN to trick them into killing themselves in the black hole. So
+     * let's deliberately not do the hard math, since I think it's more fun!
+     */
     const float th = std::atan2(cross(heading, d), cosTh);
     const float threshold = 0.0f;
     motion.setRotate(th < -threshold, th > threshold);
-    weapon.setActive(std::fabs(th) < M_PI/10.0f);
+    weapon.setActive(std::fabs(th) < M_PI/8.0f);
 }
