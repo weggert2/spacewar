@@ -20,8 +20,8 @@ make
 
 Windows MSVC:
 ```
-mkdir -p build
-mkdir -p install
+mkdir build
+mkdir install
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../install
 cmake --build . --config Release --parallel 6
