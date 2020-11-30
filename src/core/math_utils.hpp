@@ -110,3 +110,33 @@ inline bool intersects(
            circleContains(rect.left,              rect.top + rect.height)  ||
            circleContains(rect.left + rect.width, rect.top + rect.height);
 }
+
+inline bool epsilon_compare(
+    const double a,
+    const double b,
+    const double epsilon = 1e-8)
+{
+    return std::fabs(a - b) <= epsilon;
+}
+
+inline bool intersects(
+    const sf::FloatRect &rect1,
+    const sf::FloatRect &rect2)
+{
+    /*
+     * HACK HACK HACK - If the rects are _nearly identical_, this is
+     * a spurious detection.
+     *
+     * This just shows that buggy code propagates :'(
+     */
+
+    if (epsilon_compare(rect1.top, rect2.top) &&
+        epsilon_compare(rect1.left, rect2.left) &&
+        epsilon_compare(rect1.width, rect2.width) &&
+        epsilon_compare(rect1.height, rect2.height))
+    {
+        return false;
+    }
+
+    return rect1.intersects(rect2);
+}

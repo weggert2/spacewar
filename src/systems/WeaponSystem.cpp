@@ -33,13 +33,6 @@ void WeaponSystem::update(
 
     for (entityx::Entity e : entities.entities_with_components(position, weapon))
     {
-        if (e.has_component<Enemy>())
-        {
-            std::cout
-                << e.id() << ": "
-                << weapon->getCooldown() << ", "
-                << weapon->getActive() << '\n';
-        }
         weapon->decreaseCooldown((float)dt);
         if (weapon->getCooldown() > 0.0f || !weapon->getActive())
         {

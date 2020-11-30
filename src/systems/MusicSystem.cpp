@@ -78,7 +78,7 @@ void MusicSystem::receive(
 void MusicSystem::play(
     const MusicId id)
 {
-    #ifdef NO_SOUND_DEBUG
+    #ifdef NO_SOUND
     /* No music while debugging. */
     return;
     #endif

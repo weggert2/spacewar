@@ -8,10 +8,12 @@
 #include "Weapon.hpp"
 
 Weapon::Weapon(
+    const float currCoolDown,
+    const bool active,
     const float maxCooldown,
     const float damageCoeff):
-        mCurrCooldown(0.0),
-        mActive(false),
+        mCurrCooldown(currCoolDown),
+        mActive(active),
         mMaxCooldown(maxCooldown),
         mDamageCoeff(damageCoeff)
 {

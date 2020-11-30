@@ -52,7 +52,7 @@ void SoundSystem::receive(
     sound.setAttenuation(Attenuation);
     sound.setMinDistance(MinDistance3D);
 
-    #ifndef NO_SOUND_DEBUG
+    #ifndef NO_SOUND
     /* No sounds while debugging. */
     sound.play();
     #endif

@@ -26,6 +26,8 @@
 #include "components/StartMenu.hpp"
 #include "components/Weapon.hpp"
 
+#include <random>
+
 StartMenuCreator::StartMenuCreator(
     const std::wstring &logoText,
     const sf::Font &logoFont,
@@ -120,7 +122,14 @@ void EnemyCreator::create(
     entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Motion>();
     entity.assign<Position>(mInitialPos, mInitialAngle);
-    entity.assign<Weapon>();
+
+    /* Give them a random starting cooldown, between 50% and 150% of their
+     * max cooldown. */
+    const float cooldown = 1.5f;
+    std::uniform_real_distribution<float> dist(0.5f*cooldown, 1.5f*cooldown);
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    entity.assign<Weapon>(dist(rng), false, cooldown);
 }
 
 ProjectileCreator::ProjectileCreator(

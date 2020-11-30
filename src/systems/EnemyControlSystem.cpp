@@ -31,5 +31,5 @@ void EnemyControlSystem::update(
         i++;
     });
 
-    std::cout << "num enemies: " << i << std::endl;
+    // std::cout << "num enemies: " << i << std::endl;
 }

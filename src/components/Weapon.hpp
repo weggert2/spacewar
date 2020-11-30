@@ -13,6 +13,8 @@ class Weapon : public entityx::Component<Weapon>
 {
 public:
     Weapon(
+        const float currCooldown = 0.0f,
+        const bool active = false,
         const float maxCooldown = 0.5,
         const float damageCoeff = 1.0);
 

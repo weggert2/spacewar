@@ -21,7 +21,6 @@ CollisionSystem::CollisionSystem(
     entityx::EventManager &eventManager):
         mEventManager(eventManager)
 {
-    mEventManager.subscribe<LoseGameEvent>(*this);
 }
 
 /*
@@ -42,9 +41,6 @@ static sf::FloatRect adjustHitbox(
 
     return sf::FloatRect(l2,t2,w2,h2);
 }
-
-/* See comment in detectCollisions for the explanation of this shameful hack. */
-static bool firstCycle = true;
 
 /**
  * Detect collision between two entities - applying damage to them if
@@ -88,23 +84,8 @@ void CollisionSystem::detectCollisions(
             const sf::FloatRect rect1 = adjustHitbox(bounds1, hitbox1Fac);
             const sf::FloatRect rect2 = adjustHitbox(bounds2, hitbox2Fac);
 
-            if (rect1.intersects(rect2))
+            if (intersects(rect1, rect2))
             {
-
-                /*
-                 * I really don't know what's going on here. On the first cycle,
-                 * the global bounding boxes of the enemy and the player are
-                 * identical. After the first cycle, they're in the right spot.
-                 * Maybe it's the ordering of how the systems are updated?
-                 * I don't know. Let's hack around it for now.
-                 *
-                 * Obviously this is not appropriate for production code.
-                 */
-                if (firstCycle)
-                {
-                    firstCycle = false;
-                    return;
-                }
                 /*
                  * TODO: Damage, don't destroy. Let another system do that.
                  * TODO: Animation.
@@ -168,13 +149,6 @@ void CollisionSystem::update(
     detectBHCollisions<Projectile>(entities, events, dt, 0.35f);
     detectBHCollisions<Player>(entities, events, dt);
     detectBHCollisions<Enemy>(entities, events, dt);
-}
-
-void CollisionSystem::receive(
-    const LoseGameEvent &event)
-{
-    (void)event;
-    firstCycle = true;
 }
 
 void CollisionSystem::destroyEntity(
