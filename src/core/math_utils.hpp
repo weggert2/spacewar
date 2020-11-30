@@ -140,3 +140,24 @@ inline bool intersects(
 
     return rect1.intersects(rect2);
 }
+
+inline float dot(
+    const sf::Vector2f &a,
+    const sf::Vector2f &b)
+{
+    return a.x*b.x + a.y*b.y;
+}
+
+inline float cross(
+    const sf::Vector2f &a,
+    const sf::Vector2f &b)
+{
+    return a.x*b.y - b.x*a.y;
+}
+
+inline sf::Vector2f normalize(
+    const sf::Vector2f &v)
+{
+    const float norm = std::sqrt(dot(v,v));
+    return v/norm;
+}

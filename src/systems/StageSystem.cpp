@@ -26,7 +26,7 @@ StageSystem::StageSystem(
         mTextureManager(textureManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
-        mStage(1u)
+        mStage(0u)
 {
     subscribeEvents();
 }
@@ -109,8 +109,8 @@ void StageSystem::receive(
 
     const int maxIter = 20;
     int toPlace = (int)mStage;
-    std::uniform_real_distribution<float> xrange(edgeOffset/2.0f, Game::screenWidth - edgeOffset/2.0f);
-    std::uniform_real_distribution<float> yrange(edgeOffset/2.0f, Game::screenHeight - edgeOffset/2.0f);
+    std::uniform_real_distribution<float> xrange(edgeOffset/2.0f, Game::ScreenWidth - edgeOffset/2.0f);
+    std::uniform_real_distribution<float> yrange(edgeOffset/2.0f, Game::ScreenHeight - edgeOffset/2.0f);
     std::uniform_real_distribution<float> rotrange(0.0f, 360.0f);
     std::random_device rd;
 

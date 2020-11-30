@@ -46,16 +46,19 @@ void WeaponSystem::update(
 
         TextureId textureId;
         SoundId soundId;
+        float projSpeed;
 
         if (e.has_component<Player>())
         {
             textureId = TextureId::PlayerBullet;
             soundId = SoundId::PlayerShoot;
+            projSpeed = -450.0f;
         }
         else
         {
             textureId = TextureId::EnemyBullet;
             soundId = SoundId::EnemyShoot;
+            projSpeed = -250.0f;
         }
 
         const ProjectileCreator::TextureInfo textureInfo {
@@ -72,6 +75,7 @@ void WeaponSystem::update(
             mTextureManager,
             textureInfo,
             bulletPos,
+            projSpeed,
             theta);
 
         creator.create(entities.create());

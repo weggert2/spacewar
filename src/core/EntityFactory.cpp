@@ -54,8 +54,8 @@ void StartMenuCreator::create(
 
     entity.assign<Menu>(menu);
 
-    const float x = Game::screenWidth/2.0f;
-    const float y = Game::screenHeight/2.5f;
+    const float x = Game::ScreenWidth/2.0f;
+    const float y = Game::ScreenHeight/2.5f;
     entity.assign<Position>(sf::Vector2f(x,y), 0.0f);
 }
 
@@ -94,7 +94,7 @@ void PlayerCreator::create(
     entity.assign<Weapon>();
 
     /* Start the player in the lower right of the screen. */
-    auto pos = 0.8f*sf::Vector2f(Game::screenWidth, Game::screenHeight);
+    auto pos = 0.8f*sf::Vector2f(Game::ScreenWidth, Game::ScreenHeight);
     entity.assign<Position>(pos, 0.0f);
 }
 
@@ -120,7 +120,7 @@ void EnemyCreator::create(
     entity.assign<EnemyControl>();
     // entity.assign<Health>();
     entity.assign<Hitbox>(bounds.width, bounds.height);
-    entity.assign<Motion>();
+    entity.assign<Motion>(0.0f, 0.0f, 150.0f, 50.0f);
     entity.assign<Position>(mInitialPos, mInitialAngle);
 
     /* Give them a random starting cooldown, between 50% and 150% of their
@@ -136,10 +136,12 @@ ProjectileCreator::ProjectileCreator(
     const TextureManager &textureManager,
     const TextureInfo &textureInfo,
     const sf::Vector2f &initialPos,
+    const float speed,
     const float initialAngle):
         mTextureManager(textureManager),
         mTextureInfo(textureInfo),
         mInitialPos(initialPos),
+        mSpeed(speed),
         mInitialAngle(initialAngle)
 {
 }
@@ -158,10 +160,9 @@ void ProjectileCreator::create(
     const sf::FloatRect bounds = display.mSprite.getGlobalBounds();
     entity.assign_from_copy<Display>(display);
 
-    const float speed = -450.0f; /* Negative? Ok I guess. */
     const float omega = 0.0f;
 
-    entity.assign<Motion>(speed, omega, speed, omega);
+    entity.assign<Motion>(mSpeed, 0.0f, mSpeed, 0.0f);
     entity.assign<Position>(mInitialPos, mInitialAngle);
     entity.assign<Hitbox>(bounds.width, bounds.height);
     entity.assign<Projectile>();

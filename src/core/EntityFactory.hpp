@@ -119,6 +119,7 @@ public:
         const TextureManager &textureManager,
         const TextureInfo &textureInfo,
         const sf::Vector2f &initialPos,
+        const float speed,
         const float initialAngle);
 
     virtual void create(
@@ -128,6 +129,7 @@ private:
     const TextureManager &mTextureManager;
     const TextureInfo mTextureInfo;
     const sf::Vector2f mInitialPos;
+    const float mSpeed;
     const float mInitialAngle;
 };
 

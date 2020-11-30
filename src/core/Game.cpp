@@ -187,7 +187,7 @@ void Game::render(
 sf::RenderWindow Game::defaultWindow()
 {
     return sf::RenderWindow(
-        sf::VideoMode(screenWidth, screenHeight),
+        sf::VideoMode(ScreenWidth, ScreenHeight),
         "SpaceWar",
         sf::Style::Titlebar | sf::Style::Close);
 }

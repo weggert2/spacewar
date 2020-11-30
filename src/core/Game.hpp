@@ -52,18 +52,23 @@ private:
 
 public:
     /* Misc settings */
-    static constexpr int screenWidth  = 1920;
-    static constexpr int screenHeight = 1200;
+    static constexpr int ScreenWidth  = 1920;
+    static constexpr int ScreenHeight = 1200;
 
     /* Black hole info. */
-    static constexpr float BHCenterX = screenWidth/2.03f;
-    static constexpr float BHCenterY = screenHeight/2.2f;
+    static constexpr float BHCenterX = ScreenWidth/2.03f;
+    static constexpr float BHCenterY = ScreenHeight/2.2f;
 
     /* Use this radius for collision detection. */
     static constexpr float BHRadius = 190.0f;
 
     /* Use this factor for enemy AI to try to avoid the black hole. */
     static constexpr float BHFac = 1.25f;
+
+    inline static sf::Vector2f getBHPos()
+    {
+        return sf::Vector2f(BHCenterX, BHCenterY);
+    }
 
 private:
     /* The render window */

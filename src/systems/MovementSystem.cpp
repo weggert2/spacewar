@@ -55,6 +55,6 @@ sf::Vector2f MovementSystem::wrap(
     };
 
     return sf::Vector2f(
-        wrapImpl(pos.x, Game::screenWidth),
-        wrapImpl(pos.y, Game::screenHeight));
+        wrapImpl(pos.x, Game::ScreenWidth),
+        wrapImpl(pos.y, Game::ScreenHeight));
 }
