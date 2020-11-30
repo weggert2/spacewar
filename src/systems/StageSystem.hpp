@@ -49,5 +49,5 @@ private:
      * a stage are killed, the stage increases and more enemies are added. */
     size_t mStage;
 
-    const size_t winStage = 15u;
+    const size_t winStage = 10u;
 };
