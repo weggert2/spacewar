@@ -12,6 +12,7 @@
 #include "KeyManager.hpp"
 
 #include "systems/CollisionSystem.hpp"
+#include "systems/EnemyControlSystem.hpp"
 #include "systems/MenuSystem.hpp"
 #include "systems/MovementSystem.hpp"
 #include "systems/MusicSystem.hpp"
@@ -101,6 +102,7 @@ void Game::buildSystems()
     mSystemManager.add<PlayerScoreSystem>(mEventManager);
     mSystemManager.add<SoundSystem>(mSoundManager, mEventManager);
     mSystemManager.add<MusicSystem>(mMusicManager, mEventManager);
+    mSystemManager.add<EnemyControlSystem>();
 
     /* Required by entityx to be called after all the systems are added. */
     mSystemManager.configure();
@@ -165,6 +167,7 @@ void Game::update(
     mSystemManager.update<PlayerScoreSystem>(dt);
     mSystemManager.update<SoundSystem>(dt);
     mSystemManager.update<MusicSystem>(dt);
+    mSystemManager.update<EnemyControlSystem>(dt);
 }
 
 void Game::render(

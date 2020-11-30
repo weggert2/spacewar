@@ -26,7 +26,7 @@ StageSystem::StageSystem(
         mTextureManager(textureManager),
         mEntityManager(entityManager),
         mEventManager(eventManager),
-        mStage(0u)
+        mStage(1u)
 {
     subscribeEvents();
 }
