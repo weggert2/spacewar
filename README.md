@@ -32,4 +32,4 @@ I don't own a Mac but I'm sure XCode can interpret CMake.
 
 Run from within the install directory so that the binary can find the assets.
 
-The C++ standard is C++17, although it can probably work with lower. Compilation has been tested on Ubuntu 20.04 with GCC 9.3.0, And Windows 10 with Visual Studio 2019. I'm sure you can get away with older versions though.
+The C++ standard is C++17. Compilation has been tested on Ubuntu 20.04 with GCC 9.3.0, And Windows 10 with Visual Studio 2019. I'm sure you can get away with older versions though.
