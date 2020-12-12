@@ -27,6 +27,9 @@
 
 #include <iostream>
 
+const float Game::BHRadius = 190.0f;
+const float Game::BHFac = 1.25f;
+
 Game::Game(
     const TextureManager &textureManager,
     const SoundManager &soundManager,

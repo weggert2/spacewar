@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 project(spacewar)
-set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD 11)
 
 # Shortcut - get all of the sources. You probably don't want
 # to do this in production.
