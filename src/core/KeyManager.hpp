@@ -8,7 +8,7 @@
 #pragma once
 
 #include <SFML/Window/Keyboard.hpp>
-#include <unordered_map>
+#include <map>
 
 class KeyManager
 {
@@ -21,5 +21,5 @@ public:
         const sf::Keyboard::Key key) const;
 
 private:
-    std::unordered_map<sf::Keyboard::Key, bool> pressedMap;
+    std::map<sf::Keyboard::Key, bool> pressedMap;
 };

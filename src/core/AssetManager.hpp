@@ -13,7 +13,7 @@
 
 #include <iostream>
 #include <string>
-#include <unordered_map>
+#include <map>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -109,7 +109,7 @@ public:
 
 private:
     /** The asset storage. */
-    std::unordered_map<AssetId, AssetType *> mAssetMap;
+    std::map<AssetId, AssetType *> mAssetMap;
 };
 
 /* Convenience typedefs. */
