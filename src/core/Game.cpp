@@ -38,7 +38,7 @@ Game::Game(
     entityx::SystemManager &systemManager,
     GameManager &gameManager,
     KeyManager &keyManager):
-        mWindow(defaultWindow()),
+        mWindow(),
         mTextureManager(textureManager),
         mSoundManager(soundManager),
         mTextManager(textManager),
@@ -50,6 +50,7 @@ Game::Game(
         mGameManager(gameManager),
         mKeyManager(keyManager)
 {
+    defaultWindow();
     subscribeEvents();
     buildSystems();
 
@@ -190,18 +191,18 @@ void Game::render(
     mWindow.display();
 }
 
-sf::RenderWindow Game::defaultWindow()
+void Game::defaultWindow()
 {
     auto monitorSize = sf::VideoMode::getDesktopMode();
-
     const std::string name = "SpaceWar";
+
     if (monitorSize.width == ScreenWidth &&
         monitorSize.height == ScreenHeight)
     {
-        return sf::RenderWindow(sf::VideoMode(), name, sf::Style::Fullscreen);
+        mWindow.create(sf::VideoMode(), name, sf::Style::Fullscreen);
     }
 
-    return sf::RenderWindow(
+    mWindow.create(
         sf::VideoMode(ScreenWidth, ScreenHeight),
         name,
         sf::Style::Titlebar | sf::Style::Close);

@@ -10,6 +10,13 @@
 #include "components/Player.hpp"
 #include "components/Position.hpp"
 
+/* These numbers taken from the SFML textbook. */
+static constexpr float Attenuation = 8.0f;
+static constexpr float ListenerZ = 300.0f;
+static constexpr float MinDistance2D = 200.0f;
+static const float MinDistance3D = std::sqrt(
+    MinDistance2D*MinDistance2D + ListenerZ*ListenerZ);
+
 SoundSystem::SoundSystem(
     const SoundManager &soundManager,
     entityx::EventManager &eventManager):

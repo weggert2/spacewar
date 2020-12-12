@@ -48,7 +48,7 @@ private:
     void update(const sf::Time &deltaTime);
     void render(const sf::Time &deltaTime);
 
-    static sf::RenderWindow defaultWindow();
+    void defaultWindow();
 
 public:
     /* Misc settings */
