@@ -204,9 +204,12 @@ void Game::defaultWindow()
     {
         mWindow.create(sf::VideoMode(), name, sf::Style::Fullscreen);
     }
+    else
+    {
 
-    mWindow.create(
-        sf::VideoMode(ScreenWidth, ScreenHeight),
-        name,
-        sf::Style::Titlebar | sf::Style::Close);
+        mWindow.create(
+            sf::VideoMode(ScreenWidth, ScreenHeight),
+            name,
+            sf::Style::Titlebar | sf::Style::Close);
+    }
 }
