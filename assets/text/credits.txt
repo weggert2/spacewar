@@ -10,6 +10,7 @@
 
                Programming ---------------- Bill Eggert
                Story --------------------------- Bill Eggert
+               Sound Design ----------------- Megan M
                Sprites ------------------------- UnLuckY Studio (unluckystudio.com)
                Background ------------------- Sci-News (sci-news.com)
                ASCII Art --------------------- patorjk  (patorjk.com)
