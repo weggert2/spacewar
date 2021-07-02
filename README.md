@@ -10,7 +10,10 @@ git submodule update
 
 Build Instructions
 
-Linux:
+Requires CMake.
+
+Linux and macOS:
+macOS requires Xcode or the Xcode command line tools. If you use homebrew, the command line tools are installed as part of initial setup.
 ```
 mkdir -p build
 cd build
@@ -27,8 +30,6 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../install
 cmake --build . --config Release --parallel 6
 cmake --install .
 ```
-
-I don't own a Mac but I'm sure XCode can interpret CMake.
 
 Run from within the install directory so that the binary can find the assets.
 
