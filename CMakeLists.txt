@@ -34,6 +34,11 @@ if (MSVC)
     )
 endif()
 
+# Build a single binary for both arm64 and x86_64 on macOS.
+# This also links the correct Library binaries for the SFML
+# and OpenAL dependencies.
+set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
+
 # Turn on compile warnings
 target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
